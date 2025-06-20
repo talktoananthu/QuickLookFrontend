@@ -1,0 +1,8 @@
+1)login Page
+2)registration page
+
+3)Two pages 
+3.1) partime to post their job
+3.2)users to check partime job
+
+users can write their reviews on their experince in their part time job
