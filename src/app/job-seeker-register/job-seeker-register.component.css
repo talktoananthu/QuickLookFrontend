@@ -63,7 +63,7 @@ position: absolute;
     height: 95%;
     top: 55px;
     width: 100%;
-   
+     background-color: rgba(41, 41, 40, 0.21);
     left: 2px;
     display: flex;
     justify-content: center;

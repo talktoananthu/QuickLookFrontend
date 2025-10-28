@@ -61,7 +61,7 @@ export class EmployerRegComponent {
       return;
     }
     else{
-
+ this.loadingService.show()
 
 //below method is for destructing the confirmPass is variable for separate varibale
 // ...data keyword  {...} is used for storing rest of object in a variable which is dataToSend
@@ -71,7 +71,7 @@ console.log('Employer Registration:',  this.employerDetails);
   this.employerService.storeEmployData(this.employerDetails).subscribe({ 
     next: (result) => {
     console.log('Submitting......',result);
-       this.loadingService.show()
+       this.loadingService.hide()
   },
   error: (err) => {
     console.error('Error:', err);
