@@ -116,7 +116,7 @@ goToEmployerProfile(): Observable<any>{
 
 //for posting a job of employer
     PostingJob(PostedJobDetails:FormData){
-    return   this.http.post<JobPost>(`${this.postingJobUrl}/employerPost`,PostedJobDetails)
+    return   this.http.post<Sucess>(`${this.postingJobUrl}/employerPost`,PostedJobDetails)
     }
 
     //getting posted jobs

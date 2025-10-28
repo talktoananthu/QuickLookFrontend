@@ -62,7 +62,11 @@
   </div>
 </div>
 </ng-container>
-<div class="ShowLoading" *ngIf="loadingService.loading$ | async">
+
+
+      </div>
+</div>
+<div class="ShowLoading" *ngIf=" loadingService.loading$ | async">
    <svg
     class="container"
     viewBox="0 0 40 40"
@@ -89,21 +93,17 @@
     />
   </svg>
 </div>
-<ng-container *ngIf="AvailablePostedJobs.length <0 && !(loadingService.loading$ |async)">
+<ng-container *ngIf="AvailablePostedJobs.length == 0 && !(loadingService.loading$ |async) && !(showDetailsForPostJob)">
   <div class="NoJObPosted">
-    <img src="../../assets/nojobposted.png" class="ImgNoJObPosted" alt="">
+    <img src="../../assets/nojobposted.png" class="ImgNoJObPosted" >
     <div>No Job Posted</div>
   </div>
 </ng-container>
-      </div>
-</div>
-
-
 
 <!-- Below div shows the available posted Job-->
 
 <!-- div for showing  available job post -->
- <div *ngIf="showDetailsForPostJob">
+ <div *ngIf="showDetailsForPostJob" >
  <div class="jobHeader">
   <button class="jobHeaderBtn" (click)="gotoJobPost()">Go Back</button>
   <h3 class="jobHeaderTitle">Find reliable part-timers without the hassle — post your job now!</h3>

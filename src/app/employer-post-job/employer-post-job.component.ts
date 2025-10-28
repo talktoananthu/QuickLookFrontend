@@ -60,6 +60,7 @@ selectedDays: string[] = [];
 
   ngOnInit(){
     //getting posted jobs
+     
  this.getPostedJObs()
 
   this.jobForm = this.fb.group({
@@ -86,22 +87,25 @@ selectedDays: string[] = [];
 });
  
   }
-getPostedJObs(){
-   this.loadingService.show();
-this.employerService.getPostedJobDetails().subscribe(result=>{
-  
-  if (result){
-    this.jobsAvailable = true
-    this.AvailablePostedJobs = result
-        this.loadingService.hide();
-  }
-  else{
-      this.jobsAvailable = false
-         this.loadingService.hide();
-  }
-     
- })
+getPostedJObs() {
+ this.loadingService.show();
+  this.employerService.getPostedJobDetails().subscribe({
+    next: (result) => {
+      if (result) {
+        this.AvailablePostedJobs = result;
+        console.log(' AvailablePostedJobs ', this.AvailablePostedJobs);
 
+      } else {
+          this.AvailablePostedJobs = result;
+        console.log(' No jobs found in result');
+      }
+      this.loadingService.hide();
+    },
+    error: (err) => {
+      console.error(' Error fetching posted jobs:', err);
+      this.loadingService.hide();
+    }
+  });
 }
 
   //form validation functions  ------------------
@@ -207,6 +211,7 @@ removeRequirement(index: number): void {
 
   addJob(){
       this.showDetailsForPostJob = true
+      this.loadingService.hide();
   }
 
   gotoJobPost(){
@@ -273,15 +278,24 @@ ShowPostedData() {
   formValue.requirements.forEach((item: string, index: number) => {
     formData.append(`requirements[${index}]`, item);
   });
- this.loadingService.show();
-  // Call service with FormData
- 
-this.employerService.PostingJob(formData)
-  .pipe(finalize(() => this.loadingService.hide()))
-  .subscribe({
-    next: (result) => console.log('Job posted', result),
-    error: (err) => console.error('Error posting job', err)
-  });
+this.loadingService.show();
+
+this.employerService.PostingJob(formData).subscribe({
+  next: (result) => {
+    console.log(' Job posted successfully:', result);
+    alert('Job posted successfully!');
+    this.loadingService.hide();
+  },
+  error: (err) => {
+    console.error('❌ Error posting job:', err);
+    alert('Error posting job. Please try again.');
+    this.loadingService.hide();
+  },
+  complete: () => {
+    // Just in case, ensure it hides even if no error/next triggered
+    this.loadingService.hide();
+  }
+});
 
   // Reset logic stays same
   this.selectedImageFile = null;

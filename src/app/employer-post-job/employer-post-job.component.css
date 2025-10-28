@@ -697,15 +697,17 @@ position: absolute;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    top: 229px;
+    top: 200px;
     background: #00ffff00;
-    left: 79px;
+     font-family: 'Poppins', sans-serif;
+    left: -1px;
 }
 .ImgNoJObPosted{
   height: 100px;
   width: 100px;
   object-fit: cover;
   top: 10px;
+   
 }
 /* Grid layout for 4 job cards per row */
 .jobsGrid {

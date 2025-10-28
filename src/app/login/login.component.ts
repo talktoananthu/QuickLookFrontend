@@ -324,6 +324,7 @@ GotoEmployer() {
         console.log('Token:', result.token);
          console.log('jobRole',result.jobRole)
          console.log('empId',result.empId)
+          this.loadingService.hide();
         //  console.log('employerId',result.empId)
          //for storing i details in localStorage session
          //storing th local Storage using that vale
@@ -345,8 +346,9 @@ GotoEmployerProfile(){
   next: (result) => {
     //checking for authmiddleware to show whether user should be naviagated or not 
     console.log('Employer Profile:', result);
+      this.loadingService.hide();
       this.router.navigate(['/employerlayout/dashboard'])
-          this.loadingService.hide();
+        
   },
   error: (err) => {
       this.loadingService.hide();
