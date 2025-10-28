@@ -139,7 +139,7 @@
    </div>
 
 </form>
-<div class="ForShowingLoadingPage" *ngIf="loadingService.loading$ ">
+<div class="ForShowingLoadingPage" *ngIf="loadingService.loading$ | async">
   <svg
     class="container"
     viewBox="0 0 40 40"
