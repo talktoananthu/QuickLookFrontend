@@ -14,7 +14,7 @@
     </div>
   </div>
 
-  <img (click)="thisgotProfile()" [src]="imageProfile" class="profile-photo" alt="Profile">
+  <img (click)="thisgotProfile()" [src]="imageProfile || '../../assets/profile.png'" class="profile-photo" alt="Profile">
    <div (click)="thisgotProfile()"  class="profile-name">{{employerName}}</div>
 </div>
 
