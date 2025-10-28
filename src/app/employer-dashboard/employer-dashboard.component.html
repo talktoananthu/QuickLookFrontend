@@ -1,0 +1,90 @@
+<div class="MainDiv">
+  <div class="profileInfo">
+     <div class="ProfileImgBorder">
+           <img [src]="employerProfileDetails.profileImg" class="ProfileImg">
+     </div>
+     <div class="ProfileDesc">
+         <div class="ProfileName">Welcome , {{employerProfileDetails.personName}} !</div>
+         <div class="SampleDesc">Check your Detail Status</div>
+     </div>
+  </div>
+
+    
+     
+<div class="StautsBox">
+  <div class="Box1">
+    <div class="ImgBox">
+        <img src="../../assets/employeeHired.png" class="ImgSizeBox" alt="">
+    </div>
+   <div class="BoxTitle">No : of Applicants Hired</div>
+   <div class="BoxSubTitle">{{numberOfHiredApplicants}}</div>
+  </div>
+    <div class="Box1">
+    <div class="ImgBox">
+      <img src="../../assets/available jobs.png" class="ImgSizeBox" alt="">
+    </div>
+   <div class="BoxTitle">No : of Jobs posted</div>
+    <div class="BoxSubTitle">{{numberOfPostedJobs}}</div>
+  </div>
+    <div class="Box1">
+    <div class="ImgBox">
+      <img src="../../assets/applicantsApplied.png" class="ImgSizeBox" alt="">
+    </div>
+   <div class="BoxTitle">No of Applicants applied</div>
+    <div class="BoxSubTitle">{{numberOfApplicantsApplied}}</div>
+  </div>
+  <div class="Box1">
+    <div class="ImgBox">
+      <img src="../../assets/employeeHired.png" class="ImgSizeBox" alt="">
+    </div>
+   <div class="BoxTitle"> No of workers working today</div>
+    <div class="BoxSubTitle">{{numberOfStaffWorkingToday}}</div>
+  </div>
+</div>
+
+<div class="TodayStaffWork">
+
+    <div class="TodayWorkingStaff">
+         <div class="TitleWorkingStaff">Today Staff Schedules</div>
+         <div class="DetailofSchedules">
+          <ng-container *ngIf="NofApplicantsSchedulesToday.length>0"> 
+            <div class="WorkStaffList" *ngFor="let applicants of NofApplicantsSchedulesToday ">
+                <div class="WorkStaffImg">
+                     <img [src]="applicants.imgProfile ||'../../assets/profile.png'"
+                      class="WorkStaffImgSize" alt="">
+                    
+                </div>
+                <div class="StaffDesc">
+                  <div class="StaffName">{{applicants.applicantName}}</div>
+                  <div class="StaffJobtitle">{{applicants.jobTitle}}</div>
+                </div>
+                <div class="ShiftDetail">
+                
+                    <img src="../../assets/time.png" class="ShiftTimeImg" alt="">
+                   <div class="ShiftTimeDesc">
+                      <div class="ShiftTime">
+                        {{applicants.applicantsShiftStartTime}} -  {{applicants.applicantsShiftEndTime}}</div>
+                      <div class="ShiftHour">4hr</div>
+                   </div>
+                </div>
+            </div>
+           
+         
+             
+       
+         
+            </ng-container>
+            <ng-container *ngIf="NofApplicantsSchedulesToday.length==0">
+              <div class="NoSchdulesToday">
+                  <img src="../../assets/noSchedules.png" class="NoSchdulesTodayImg" alt="">
+                  <div class="NoSchdulesTodayText">No Schedules Today</div>
+              </div>
+            </ng-container> 
+         </div>
+    </div>
+
+</div>
+
+</div>
+
+

@@ -1,0 +1,404 @@
+
+<!-- showing the part of available jobs -->
+<div class="mainBar" >
+  <div class="mainContent" *ngIf="this.showEachJobDetails==false && this.showEditPortion==false">
+  
+
+    <div class="jobListScroll">
+      <ng-container *ngIf="postedJobAvailable.length >0">
+      <div class="postedJobs"> 
+        <!-- above content to be taken to be taken and post it  -->
+        <div (click)="onMoreInfo(job.jobPostId)" class="jobcontent" *ngFor="let job of postedJobAvailable">
+          <div class="jobHeader menu-container" #menuContainer>
+            <div class="leftHead">
+              <img [src]="job.image" alt="job" class="jobImg" />
+              <div class="jobText">
+                <p class="jobTitle">{{ job.jobTitle }}</p>
+                <p class="company">{{ job.businessName }}</p>
+                <p class="company2">
+                  <img src="../../assets/location.png" class="locImg" />
+                  {{ job.location.area }}, {{ job.location.city }}, {{ job.location.state }}
+                </p>
+              </div>
+            </div>
+
+            <div class="rightHead">
+              <p class="postedDate">Posted {{ getDaysAgo(job.postedDay) }}</p>
+                  <!-- $event.stopPropagation() to prevent overlapping of the function present inside parent -->
+             <button class="dotsBtn" (click)="handleMenu(job.jobPostId); $event.stopPropagation()">&#8942;</button>
+            </div>
+
+            <div class="menu-options" *ngIf="menuOpenJobId === job.jobPostId">
+              <!-- $event.stopPropagation() to prevent overlapping of the function present inside parent -->
+              <div class="Opt" (click)="onEdit(job.jobPostId); $event.stopPropagation()">✏️ Edit</div>
+<div class="Opt" (click)="onMoreInfo(job.jobPostId); $event.stopPropagation()">ℹ️ More Info</div>
+
+            </div>
+          </div>
+
+          <div class="jobMetaRow">
+            <span class="jobBadge">{{ job.jobCategory }}</span>
+          </div>
+
+          <p class="jobDesc">{{ job.description }}</p>
+
+          <div class="jobStats">
+            <span class="metaBox">Applicants: {{ job.applicantsRequired }}</span>
+            <span class="metaBox">Hired: {{ job.hired }}</span>
+            <span class="metaBox">Job expires: {{ getDaysLeft(job.lastDay) }}</span>
+            <span class="urgentTag" *ngIf="job.availabilty === 'Immediate Hiring'">Urgent hiring</span>
+            <span class="urgentTag" *ngIf="job.resumeNeed === 'Yes'">Resume Needed</span>
+          </div>
+
+          <div class="borderDiv"></div>
+
+          <div class="jobFooter">
+            <span><img src="../../assets/maxhour.png" class="ImgHr"> {{ job.startTime }} - {{ job.endTime }}</span>
+            <span><img src="../../assets/dollar.png" class="amnt">{{ job.amount }}</span>
+            <span><img src="../../assets/part-time.png" class="partTimeImg">{{ job.jobType }}</span>
+          </div>
+        </div>
+      </div>
+      </ng-container>
+         <div class="ShowLoading" *ngIf="loadingService.loading$ | async">
+  
+              <svg
+    class="container"
+    viewBox="0 0 40 40"
+    height="40"
+    width="40"
+  >
+    <circle 
+      class="track"
+      cx="20" 
+      cy="20" 
+      r="17.5" 
+      pathlength="100" 
+      stroke-width="5px" 
+      fill="none" 
+    />
+    <circle 
+      class="car"
+      cx="20" 
+      cy="20" 
+      r="17.5" 
+      pathlength="100" 
+      stroke-width="5px" 
+      fill="none" 
+    />
+  </svg>
+
+         </div>
+
+      <ng-container *ngIf="postedJobAvailable.length <=0 && !(loadingService.loading$ |async)">
+        <div class="noJobsPosted">
+          <div class="AdjustnoJobsPosted">
+              <img src="../../assets/nojobposted.png" class="nojJobPostedImg" alt="">
+             <div class="noJobsPostedText">No Job Posted</div>
+          </div>
+           
+        </div>
+      </ng-container >
+    </div>
+  </div>
+
+  <!-- this below div shows each job in detail when edit and more info is clicked -->
+<div class="jobDetailsCard" *ngIf="eachJobPostDetail && showEachJobDetails==true  " >
+  
+   <div class="SerachBarDetails" >
+    <input  (input)="filterJobsByTitleCategory()"  
+    [(ngModel)]="titleFilter" class="searchEachJob"
+     type="text" placeholder="Search by tile or category">
+      <div class="searchDivider"></div> 
+    <div class="detailsOfeachjob">
+      <ng-container *ngFor="let job of fitlerJobs">
+<div  (click)="SelectedSearchJob(job.jobPostId)"
+ [ngClass]="{'eachJobItems': menuOpenJobId !== job.jobPostId, 
+'eachJobItems2': menuOpenJobId === job.jobPostId
+  }">  <!-- this div is where *ngFor is applied -->
+             <div class="itemRight">
+     <img [src]="job.image" class="imageSearPar" alt="">
+
+  <div class="jobInfo">
+      <h4 class="jobTitleSmall">{{job.jobTitle}}</h4>
+      <p class="businessName">{{job.businessName}}</p>
+    
+         <p class="LocationCategory"> <img src="../../assets/location.png" class="locImg2" />
+                  {{ job.location.area }}, {{ job.location.city }}, {{ job.location.state }}</p>
+    </div>
+    <div class="metaInfo">
+  <p class="postedDay">Posted {{ getDaysAgo(job.postedDay) }}</p>
+  <p class="jobCategory">{{ job.jobCategory }}</p>
+</div>
+             </div>
+     <div class="belowDetail">
+      <p class="detailsReq">Applicants : {{job.applicantsRequired}}</p>
+        <p class="detailsReq">Hired  : {{job.hired}}</p>
+    <p class="detailsReq2" *ngIf="job.availabilty == 'Immediate hiring'">Urgent hiring</p>
+          <p class="detailsReq2" *ngIf="job.resumeNeed == 'Yes'">Resume Needed</p>
+     </div>        
+      
+    <div  class="borderLine"></div>
+    <div class="borderBelowDetail">
+          <p class="belowDetails"> <img src="../../assets/maxhour.png"
+             class="belowDetailImage" alt=""> {{job.startTime}} - {{job.endTime}}  </p>
+          <p class="belowDetails">
+            <img src="../../assets/dollar.png"
+             class="belowDetailImage" alt=""> <span class="belowDetailContent"> {{job.amount }}</span> </p>
+          <p class="belowDetails"><img src="../../assets/part-time.png"
+             class="belowDetailImage" alt=""> <span class="belowDetailContent"> {{job.jobType}}</span></p>
+    </div>
+        </div>
+      </ng-container>
+   
+ 
+      
+    </div>
+     
+  </div>
+
+<!-- Above is the search bar details -->
+  <!-- Shows full Description about selected Posted job -->
+<div class="SelectedContent">
+  <div class="jobDetailCard">
+    <div class="header">
+      <img [src]="eachJobPostDetail.image" alt="Job Image" class="jobImage" />
+      <div class="headerText">
+        <h2 class="busineTitle">
+          <span *ngIf="!showEditPortion">{{ eachJobPostDetail.jobTitle }}</span>
+          <span>
+              <input class="editChangeInput"  *ngIf="showEditPortion" [(ngModel)]="eachJobPostDetail.jobTitle" />
+           
+          </span>
+         
+        </h2>
+
+        <h4 class="busineName">
+          <span *ngIf="!showEditPortion">{{ eachJobPostDetail.businessName }}</span>
+          <input class="editChangeInput" *ngIf="showEditPortion" [(ngModel)]="eachJobPostDetail.businessName" />
+        </h4>
+
+        <p  *ngIf="!showEditPortion" class="jobCate">
+          <span >{{ eachJobPostDetail.jobCategory }}</span>
+         
+        </p>
+         <select class="editJobCate" *ngIf="showEditPortion" [(ngModel)]="eachJobPostDetail.jobCategory">
+  <option *ngFor="let category of jobCategoryEdit" [value]="category">
+    {{ category }}
+  </option>
+</select>
+      </div>
+     <!-- Button section -->
+<div class="edit-action-buttons">
+  <!-- Edit button (when NOT editing) -->
+  <button *ngIf="!showEditPortion" (click)="toggleEditSave()" class="editBtn">
+    Edit
+  </button>
+
+  <!-- Save + Cancel (when editing) -->
+ <div *ngIf="showEditPortion" class="editBtnGroup">
+  <button (click)="saveChanges()" class="saveBtn">Save</button>
+  <img height="10px"
+   width="10px"
+    src="../../assets/cancel.png"
+    alt="Cancel"
+    class="cancelIcon"
+    (click)="cancelEdit(eachJobPostDetail.jobPostId)"
+  />
+</div>
+</div>
+    </div>
+
+    <div class="jobDescription">
+      <p *ngIf="!showEditPortion">{{ eachJobPostDetail.description }}</p>
+      <textarea class="textAreaEdit" *ngIf="showEditPortion" [(ngModel)]="eachJobPostDetail.description"></textarea>
+    </div>
+
+    <div class="jobMeta">
+<div class="amount-section">
+  <strong>Amount:</strong><br>
+
+  <!-- View Mode -->
+  <span *ngIf="!showEditPortion">{{ eachJobPostDetail.amount }}</span>
+
+  <!-- Edit Mode -->
+  <div *ngIf="showEditPortion" class="amount-edit-row">
+    <!-- Numeric input -->
+    <input
+      type="number"
+      [(ngModel)]="amountEdit"
+      (ngModelChange)="updateAmount()"
+      placeholder="Amount"
+      class="styled-input"
+    />
+
+    <!-- Dropdown for unit -->
+    <select [(ngModel)]="amountUnit" (ngModelChange)="updateAmount()" class="styled-select">
+      <option value="hr">Hourly</option>
+      <option value="wk">Weekly</option>
+    </select>
+  </div>
+</div>
+
+
+<!-- Common Label -->
+<label class="working-days-label"><strong>Working Days:</strong></label>
+
+<!-- View Mode (when NOT editing) -->
+<div *ngIf="!showEditPortion">
+  <p class="working-days-view">{{ eachJobPostDetail.workingDays || 'Not specified' }}</p>
+</div>
+
+<!-- Edit Mode (when editing) -->
+<div *ngIf="showEditPortion">
+  <p class="edit-info">(Employer is editing working days)</p>
+
+  <!-- Read-only input showing current value -->
+  <input
+    type="text"
+    [value]="eachJobPostDetail.workingDays"
+    readonly
+    class="readonly-days-input"
+  />
+
+  <!-- Editable checkboxes for working days -->
+  <div class="working-days-checkboxes">
+    <label *ngFor="let day of allDaysEdit" class="checkbox-label">
+      <input
+        type="checkbox"
+        class="editDaysInput"
+        [checked]="isDaySelected(day)"
+        (change)="toggleDay(day, $event)"
+      />
+      {{ day }}
+    </label>
+  </div>
+</div>
+
+
+
+      <p>
+        <strong >Applicants:</strong>
+        <br>
+
+        <span *ngIf="!showEditPortion">{{ eachJobPostDetail.applicantsRequired }}</span>
+        <input  class="applicantsHiredEdit" *ngIf="showEditPortion" [(ngModel)]="eachJobPostDetail.applicantsRequired" />
+
+        <br>
+        <strong>Hired:</strong>
+         <br>
+        <span *ngIf="!showEditPortion">{{ eachJobPostDetail.hired }}</span>
+        <input  class="applicantsHiredEdit"  *ngIf="showEditPortion" [(ngModel)]="eachJobPostDetail.hired" />
+      </p>
+</div>
+      <p><strong>Location:</strong>
+        
+        <span *ngIf="!showEditPortion">
+          {{ eachJobPostDetail.location.area }},
+          {{ eachJobPostDetail.location.city }},
+          {{ eachJobPostDetail.location.state }}
+        </span>
+        <span *ngIf="showEditPortion">
+          <br>
+       
+           <p> <span> Area</span>
+          <br> 
+        <input class="LocationEdit" [(ngModel)]="eachJobPostDetail.location.area" placeholder="Area" />
+     
+       </p>
+          
+          <p>City
+            <br>
+          <input class="LocationEdit" [(ngModel)]="eachJobPostDetail.location.city" placeholder="City" />
+          </p>
+            <p>State
+              <br>
+
+          <input class="LocationEdit" [(ngModel)]="eachJobPostDetail.location.state" placeholder="State" />
+          </p>
+        </span>
+      </p>
+    
+<div class="expiry-date-section">
+  <strong>Job Expiry Date:</strong><br>
+
+  <!-- View Mode -->
+  <ng-container *ngIf="!showEditPortion">
+    <span>{{ eachJobPostDetail.lastDay | date: 'yyyy-MM-dd' }}</span>
+
+    <!-- Expiry Warning (view mode) -->
+    <span class="expired-warning" *ngIf="getDaysLeft(editExpiryDate) === 'Expired'">
+      ⚠️ Job Expired
+    </span>
+    <span class="days-left" *ngIf="getDaysLeft(editExpiryDate) !== 'Expired'">
+      ⏳ {{ getDaysLeft(editExpiryDate) }}
+    </span>
+  </ng-container>
+
+  <!-- Edit Mode -->
+  <ng-container *ngIf="showEditPortion">
+    <input
+      type="date"
+      [(ngModel)]="editExpiryDate"
+      class="styled-input"
+    />
+
+    <!-- Expiry Warning (edit mode) -->
+    <span class="expired-warning" *ngIf="getDaysLeft(editExpiryDate) === 'Expired'">
+      ⚠️ Job Expired
+    </span>
+    <span class="days-left" *ngIf="getDaysLeft(editExpiryDate) !== 'Expired'">
+      ⏳ {{ getDaysLeft(editExpiryDate) }}
+    </span>
+  </ng-container>
+</div>
+
+<div class="jobSection">
+  <h3>Responsibilities:</h3>
+
+  <!-- View Mode -->
+  <ul *ngIf="!showEditPortion">
+    <li *ngFor="let task of eachJobPostDetail?.responsibilities">{{ task }}</li>
+  </ul>
+
+  <!-- Edit Mode -->
+  <div *ngIf="showEditPortion">
+    <div *ngFor="let task of responsibilitiesEdit; let i = index; trackBy: trackByIndex" class="responsibility-row">
+      <input [(ngModel)]="responsibilitiesEdit[i]" placeholder="Responsibility" class="styled-input2" />
+      <button class="remove-btn" (click)="removeResponsibility(i)">− </button>
+    </div>
+    <button class="buttonEditRes" (click)="addResponsibility()">+ Add</button>
+  </div>
+</div>
+
+<div class="jobSection">
+  <h3>Requirements:</h3>
+
+  <!-- View Mode -->
+  <ul *ngIf="!showEditPortion">
+    <li *ngFor="let req of eachJobPostDetail?.requirements">{{ req }}</li>
+  </ul>
+
+  <!-- Edit Mode -->
+  <div *ngIf="showEditPortion">
+    <div *ngFor="let req of requirementsEdit; let i = index; trackBy: trackByIndex" class="requirement-row">
+      <input [(ngModel)]="requirementsEdit[i]" placeholder="Requirement" class="styled-input2" />
+      <button class="remove-btn" (click)="removeRequirement(i)">−</button>
+    </div>
+    <button class="buttonEditRes" (click)="addRequirement()">+ Add</button>
+  </div>
+</div>
+
+  </div>
+</div>
+
+</div>
+
+
+
+</div>
+
+
+<!-- showing selected Job for editing or checking the info -->
+
+

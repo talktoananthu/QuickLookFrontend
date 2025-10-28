@@ -1,0 +1,2360 @@
+.MainContentApplicants{
+    display: flex;
+}
+.FilterScheduleDates{
+    height: 80px;
+    width: 100%;
+    
+    margin-bottom: 10px;
+  
+    gap: 10px;
+}
+.FilterByDates {
+  height: 91vh;
+  width: 18%;
+  border: 1px solid #c4c4c4;
+  
+ /* stack children vertically */
+  gap: 10px;              /* space between blocks */
+}
+.FilterByDates > div {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+.FilterText{
+  position: relative;
+    font-family: 'League Spartan', sans-serif;
+      font-size: 20px;   
+}
+.ApplicantsDescContent{
+    height: 91vh;
+    width: 78%;
+    
+        position: relative;
+}
+
+.MainHeading{
+       display: flex;
+    margin-left: 23px;
+    margin-top: 21px;
+}
+.ApplicantStyle {
+  font-family: 'League Spartan', sans-serif; /* League Spartan font */
+  font-weight: 600;                           /* Semi-bold */
+  font-size: 20px;                            /* 20px font size */
+}
+.ApplicantTypeBtn{
+    margin-left: 40px;
+    display: flex;
+    gap: 40px;
+}
+.applicantBtn {
+  height: 33px;
+  width: 95px;
+  border: 1px solid #c4c4c4;
+  background-color: transparent;
+  font-family: "League Spartan", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 3px;
+  color: black;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.applicantBtn:hover {
+  
+  border: 2px solid black;
+}
+
+/* Click / Active effect */
+.applicantBtn.active {
+  background-color: black;
+  color: white;
+  border: 2px solid black;
+}
+.SelectedContent{
+height: 570px;
+    width: 97%;
+  
+    margin-top: 30px;
+    margin-left: 16px;
+   
+    
+}
+.showSchduleContent {
+  width: 100%;
+  height: 77vh;      /* limit height */
+  
+   /* disable horizontal scroll */
+}
+.SchedulesTypes{
+     height: 46px;
+    width: 40%;
+    display: flex;
+    gap: 2px;
+    padding: 0 4px;
+    background-color: #dee2e6;
+    margin-left: 10px;
+    border-radius: 5px;
+    margin-top: 4px;
+    margin-bottom: 5px;
+}
+.nonScheTypeBtn{
+  
+     margin-top: 4px;
+    height: 38px;
+    border-radius: 5px;
+    background-color: transparent;
+    border: none;
+    margin-left: 1px;
+    font-size: 14px;
+    font-weight: bold;
+    font-weight: 700;
+    font-family: "League Spartan", sans-serif;
+    flex: 1;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.ScheTypeBtn{
+        margin-top: 2px;
+    height: 42px;
+    border-radius: 5px;
+    background-color: white;
+    border: none;
+    margin-left: 1px;
+    font-size: 14px;
+    font-weight: bold;
+    font-weight: 700;
+    font-family: "League Spartan", sans-serif;
+    flex: 1;
+    text-align: center;
+    white-space: nowrap;
+}
+.inputJobTitleStyle {
+    margin-top: 20px;
+    height: 35px;
+    width: 190px;
+    border: 1px solid #c4c4c4;
+    border-radius: 5px;
+    margin-left: 2px;
+    padding-left: 35px;
+    background: url(https://cdn-icons-png.flaticon.com/512/54/54481.png) no-repeat 10px center;
+    background-size: 18px 18px;
+}
+.EnterShift{
+ 
+  margin-top: 27px;
+  
+}
+.ShiftGroup {
+  display: flex;
+  margin-top: 10px;
+  flex-direction: column;  /* stack label and input vertically */
+}
+.ShiftTimeStyle{
+  height: 35px;
+  width: 110px;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+}
+.ShiftTimeFont{
+  font-size: 10px;
+   font-family: 'League Spartan', sans-serif;
+   color: #757474;
+}
+.FilterContent {
+  width: 16%;
+  height: 40px;
+  border: 1px solid #c4c4c4;
+  margin-left: 297px;
+  margin-top: 13px;
+  border-radius: 4px;
+
+  display: flex;              /* make flexbox */
+  align-items: center;        /* vertical center */
+  justify-content: center;    /* horizontal center */
+  gap: 8px;                   /* spacing between img & text */
+
+}
+.status-dropdown {
+         position: relative;
+    width: 103px;
+    font-family: "League Spartan", sans-serif;
+    -webkit-user-select: none;
+    user-select: none;
+    font-size: 14px;
+    margin-top: 7px;
+}
+
+.status-selected {
+  height: 35px;
+  line-height: 35px;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #fff;
+  text-indent: 10px;
+  position: relative;
+  padding-right: 25px;
+  width: 121px;
+}
+
+.status-selected::after {
+  content: "▾";
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.styleStatus{
+font-size: 11px;
+    color: #696969;
+
+}
+
+.status-list {
+     position: absolute;
+    top: 72%;
+    left: 0;
+    right: 0;
+    border: 1px solid #c4c4c4;
+    border-radius: 5px;
+    background: #fff;
+    list-style: none;
+    margin: 24px 0 0;
+    padding: 0;
+    z-index: 9999; 
+}
+
+.status-list li {
+  height: 35px;
+  line-height: 35px;
+  cursor: pointer;
+  text-indent: 10px;
+}
+
+.status-list li:hover {
+  background: #f0f0f0;
+}
+.DateFilterContainer {
+  border: 1px solid #c4c4c4;
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.DateOptionSelect {
+  border: 2px solid #c4c4c4;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 14px;
+  width: fit-content;
+}
+
+.DateInputs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.DateInputsBlock {
+  display: flex;
+  flex-direction: column;  /* stack vertically */
+  gap: 12px;              /* spacing between inputs */
+  margin-top: 8px;
+}
+
+.DateInputStyle {
+    border: 2px solid #c4c4c4;
+    border-radius: 6px;
+    padding: 9px 10px;
+    font-size: 14px;
+    width: 89%;
+}
+
+
+.to-text {
+  font-weight: bold;
+  color: #333;
+}
+.FilterDates {
+     position: relative;
+    width: 106px;
+    font-family: "League Spartan", sans-serif;
+    font-size: 11px;
+    margin-top: 14px;
+}
+
+.date-dropdown {
+  height: 35px;
+  line-height: 35px;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #fff;
+  padding-left: 10px;
+  padding-right: 25px;
+  position: relative;
+}
+.CalendarDays{
+  margin-top: -9px;
+}
+.CalendarSingleDays{
+  font-size: 10px;
+}
+.inputDays{
+  height: 35px;
+  width: 100px;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+    font-size: 12px;  
+}
+.MultipleDays {
+  display: flex;
+    /* stack groups vertically */
+  gap: 10px;     
+  margin-top: 8px;           /* space between From and To */
+}
+
+.DateGroup {
+  display: flex;
+  flex-direction: column;   /* label above input */
+}
+
+.CalendarSingleDays {
+ font-family: "League Spartan", sans-serif;
+    font-size: 10px;
+    margin-bottom: 1px;       /* space between label and input */
+}
+
+.inputDays {
+  height: 35px;
+  width: 102px;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  font-size: 12px;          /* smaller value text */
+  padding-left: 5px;
+}
+/* arrow on right */
+.date-dropdown::after {
+  content: "▾";
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* when open, rotate arrow */
+.date-dropdown.open::after {
+  content: "▴";
+}
+
+.date-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  background: #fff;
+  list-style: none;
+  margin: 5px 0 0;
+  padding: 0;
+  z-index: 100;
+}
+
+.date-item {
+  height: 35px;
+  line-height: 35px;
+  cursor: pointer;
+  padding-left: 10px;
+}
+
+/* highlight active option */
+.date-item.active {
+  background: #e0e0ff;
+  font-weight: 600;
+}
+
+.date-item:hover {
+  background: #f0f0f0;
+}
+
+.CalendarStyle {
+  height: 20px;
+  width: 20px;
+  opacity: 0.6;
+  margin-left: -23px;
+}
+
+.FilterText {
+      font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 21px;
+    color: #514d4dc4;
+}
+
+.showTableCotent {
+  width: 100%;
+  
+  
+}
+
+.styledTable {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+  font-family: "League Spartan", sans-serif;
+  margin-top: 94px;
+  table-layout: fixed; /* crucial for fixed column widths */
+}
+
+/* THEAD styling stays same */
+/* THEAD fixed */
+.styledTable thead {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  background-color: #f5f9ff;
+  border-bottom: 2px solid #e2e8f0;
+}
+.styledTable td{
+white-space: nowrap;
+    overflow: hidden;
+    padding: 12px 29px;
+    font-size: 14px;
+    color: #333;
+    vertical-align: middle;;
+}
+.styledTable td, 
+.styledTable th {
+white-space: nowrap;
+    overflow: hidden;
+    padding: 12px 29px;
+    font-size: 14px;
+    color: #333;
+    vertical-align: middle;;
+}
+
+/* Make tbody scrollable only */
+.styledTable tbody {
+  display: block;
+  max-height: 460px; /* adjust as needed */
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.styledTable tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+.col-name {
+ 
+  text-align: left;
+  padding-left: 35px !important;
+  padding-right: 8px !important;
+}
+
+.col-appliedOn {
+
+  padding-left: 32px !important;
+  padding-right: 10px !important;
+}
+
+.col-appliedFor {
+
+  font-weight: bold;
+  padding-left: 12px !important;
+}
+
+.col-shift {
+ 
+ 
+  padding-left: 27px !important; 
+} 
+
+.col-jobType {
+  
+  background: #f9f9f9;
+  padding-left: 20px !important;
+}
+
+.col-action {
+ 
+  
+  padding-left: 7px !important;
+}
+
+
+.employeeCellborder{
+  border: 1px solid #c4c4c4;
+}
+.employeeCellEach{
+  border-bottom: 1px solid #c4c4c4 ;
+}
+/* Employee cell with image + name + email */
+.employeeCell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profileImg {
+  height: 38px;
+  width: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid gray;
+}
+
+.employeeInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.employeeName {
+  font-weight: 700;
+  font-size: 12px;
+  color: #000;
+}
+
+.employeeEmail {
+  font-size: 10px;
+  color: #666;
+  margin-top: 2px;
+}
+
+/* Applied On */
+.appliedOn {
+font-weight: 700;
+    padding-left: 35px;
+    font-size: 12px;
+}
+.employeeJobtitle{
+   padding-left: 44px !important;
+}
+.jobType{
+    padding-left: 43px;
+    font-size: 14px;
+}
+
+/* Buttons */
+.hireBtn,
+.rejectBtn {
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: 0.2s ease-in-out;
+}
+
+.hireBtn {
+  background-color: #e6f7f1;
+  color: #0d9b63;
+  border: 1px solid #0d9b63;
+  margin-right: 6px;
+}
+
+.hireBtn:hover {
+  background-color: #0d9b63;
+  color: #fff;
+}
+
+.rejectBtn {
+  background-color: #fde8e8;
+  color: #d9534f;
+  border: 1px solid #d9534f;
+}
+
+.rejectBtn:hover {
+  background-color: #d9534f;
+  color: #fff;
+}
+.hired {
+display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    margin-left: 40px;
+}
+
+
+.rejected {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    margin-right: 6px;
+    margin-left: 29px;
+}
+
+.delete-oval {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;  /* oval pill shape */
+  font-size: 13px;
+  font-weight: 600;
+  background-color: #f5c6cb;  /* lighter red */
+  color: #721c24;
+  border: 1px solid #f1b0b7;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.delete-oval:hover {
+  background-color: #dc3545; /* dark red */
+  color: #fff;
+}
+.Displayheading{
+  display: flex;
+  gap: 40px;
+}
+.CategoriesBtn{
+  height: 55px;
+  width: 348px;
+
+}
+.EachEmployeeStatus {
+  display: flex;
+  gap: 20px;
+  border-bottom: 2px solid #ddd;
+}
+
+.tab {
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  position: relative;
+  color: #555;
+}
+
+.tab:hover {
+  color: #000;
+}
+
+.tab.active {
+  font-weight: bold;
+  color: #007bff;
+}
+
+.tab.active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #007bff;
+}
+.ShowSubTablecontent {
+  margin-top: 5px;
+  width: 100%;
+   font-family: 'Poppins', sans-serif;
+  border-radius: 3px; /* rounded corners */
+  overflow: hidden;
+ /* soft shadow */
+  background: #fff;
+}
+
+.ShowSubTablecontentEmployeeStatus {
+
+  width: 100%;
+  /* max-height: 61vh;           /* scrollable only if needed */
+  
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  background: #fff; 
+}
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed; /* ensures proper column alignment */
+}
+.table thead,
+.table-scrollableTable {
+  display: block; /* separate head & body */
+  width: 100%;
+}
+
+.table thead tr,
+.table-scrollableTable tr {
+  display: table;
+  table-layout: fixed;
+  width: 100%; /* force columns to align */
+}
+.table-container {
+  margin-top: 5px;
+  width: 100%;
+  max-height: 70vh; /* table visible height */
+  border-radius: 3px;
+  background: #fff;
+  overflow: hidden; /* keep container clean */
+}
+.table-scrollableTable tr {
+
+  width: 101%;
+  /* ensures proper column widths */
+}
+table.colorForthead th {
+  background-color: #f5f5f5; /* your desired color */
+  color: #333;               /* text color */
+  border: 1px solid #eaeaea;
+  padding: 10px 15px;
+  text-align: left;          /* optional */
+}
+.tableEachRow{
+ 
+  border: 1px solid #eaeaea;
+   
+}
+
+
+.table-scrollableTable {
+     max-height: 63vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px solid #c4c4c4;
+    border-radius: 5px;
+    width: 99.7%;
+}
+.ShowPayLoading{
+  position: absolute;
+    height: 80%;
+    width: 97%;
+    top: 150px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loader-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.container {
+  --uib-size: 40px;
+  --uib-color: black;
+  --uib-speed: 2s;
+  --uib-bg-opacity: 0;
+  height: var(--uib-size);
+  width: var(--uib-size);
+  transform-origin: center;
+  animation: rotate var(--uib-speed) linear infinite;
+  will-change: transform;
+  overflow: visible;
+}
+
+.car {
+  fill: none;
+  stroke: var(--uib-color);
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  animation: stretch calc(var(--uib-speed) * 0.75) ease-in-out infinite;
+  will-change: stroke-dasharray, stroke-dashoffset;
+  transition: stroke 0.5s ease;
+}
+
+.track {
+  fill: none;
+  stroke: var(--uib-color);
+  opacity: var(--uib-bg-opacity);
+  transition: stroke 0.5s ease;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes stretch {
+  0% {
+    stroke-dasharray: 0, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 75, 150;
+    stroke-dashoffset: -25;
+  }
+  100% {
+    stroke-dashoffset: -100;
+  }
+}
+/* Table base */
+
+
+/* Header */
+.table-header {
+  padding: 12px 20px;
+  font-weight: 600;
+  background: #edf5fd;
+   font-size: 13px;
+  vertical-align: middle;
+  border-bottom: 2px solid #e5e7eb;
+  color: #444;
+}
+.employee-col {
+  text-align: left;
+  padding-left: 25px;
+}
+
+/* Job Role column */
+.jobRole-col {
+  text-align: center;
+  padding: 0 10px;
+}
+
+/* Hire Date column */
+.hireDate-col {
+     text-align: right;
+    padding-right: 74px;
+}
+
+/* Job Days column */
+.jobDays-col {
+     /* text-align: center; */
+    padding-left: 0px
+}
+
+/* Assigned Days column */
+.assignedDays-col {
+  text-align: left;
+  padding-left: 24px;
+}
+
+/* Status column */
+.status-col {
+  text-align: center;
+}
+
+.employee-colbody .employee-info {
+  display: flex;       /* already flex for image + text */
+  align-items: center;
+  gap: 10px;
+  padding-left: 0px;   /* move entire block */
+}
+
+/* Job Role column */
+.jobRole-colbody {
+    padding-left: 32px;
+    padding-top: 7px;  /* move text slightly */
+}
+
+/* Hire Date column */
+.hireDate-colbody {
+padding-left: 23px;
+    padding-top: 8px;
+}
+
+/* Job Days column */
+.jobDays-colbody {
+     padding-left: 41px;
+    padding-top: 9px;
+}
+.status-colbody{
+ padding-top: 8px;
+    padding-left: 11px;
+}
+/* Assigned Days column */
+.assignedDays-colbody > div {
+  padding-left: 10px;  /* move each line block */
+}
+
+.assignedDays-colbody .days-text {
+  padding-left: 23px;   /* move days line separately */
+}
+.days-text {
+  font-size: 11px;
+  color: #6b7280;
+  margin-top: 2px;
+  margin-left: -13px;
+}
+/* Status column */
+.status-colbody > span {
+  padding-left: 5px;
+  display: inline-block; /* needed for padding to take effect */
+}
+
+/* Body cells */
+.table-cell {
+  display: table-cell;  /* force td behavior */
+  padding: 10px 18px;
+  vertical-align: top;
+  line-height: 1.4;
+  text-align: left;
+  font-size: 13px;
+  border-bottom: 1px solid #eaeaea;
+  
+  transition: background 0.2s;
+  white-space: nowrap;  
+}
+.employee-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Status circle */
+.status-circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Example status classes */
+.status-circle.active {
+  background-color: #16a34a; /* green */
+}
+.status-circle.pending {
+  background-color: #facc15; /* yellow */
+}
+.status-circle.rejected {
+  background-color: #dc2626; /* red */
+}
+
+/* Profile image */
+.employee-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #ddd;
+}
+
+/* Text container */
+.employee-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+/* Name bold */
+.employee-name {
+  font-weight: 600;
+  font-size: 13px;
+  color: #111827;
+}
+
+/* Phone smaller + muted */
+.employee-phone {
+  font-size: 10px;
+  color: #6b7280;
+}
+/* Row hover effect */
+.table tbody tr:hover {
+  background: #f6faff;
+}
+.empStatus-employee {
+  padding: 10px 15px;  /* you can tweak */
+}
+
+.empStatus-jobRole {
+  
+}
+
+.empStatus-assignedDays {
+  padding: 8px 12px;
+}
+
+.empStatus-workedDays {
+  padding: 7px 56px;
+ 
+}
+
+.empStatus-absentDays {
+ padding: 8px 56px;
+  
+}
+
+.empStatus-status {
+  padding-left: 0px;
+ 
+}
+
+/* Optional: CSS variables for dynamic adjustment */
+.empStatus-employee {
+  --td-padding-top: 10px;
+  --td-padding-left: 15px;
+  padding: var(--td-padding-top) var(--td-padding-left);
+}
+
+.empStatus-employeebody { 
+  text-align: left; 
+  padding-left: 15px;
+ }
+.empStatus-jobRolebody  {
+   text-align: center; 
+ padding-top: 9px;
+   }
+.empStatus-assignedbody { 
+ text-align: left;
+    padding-left: 27px;
+   }
+.empStatus-workedbody   {
+padding-left: 62px;
+    padding-top: 8px;
+  }
+.empStatus-absentbody   { 
+    padding-top: 8px;
+  padding-left: 70px;
+  }
+.empStatus-statusbody   { 
+text-align: center;
+    padding-right: 10px;
+    padding-top: 9px;
+}
+.days-text2{
+   font-size: 11px;
+  color: #6b7280;
+  margin-top: 2px;
+ 
+}
+
+
+/* Status labels */
+.status-label {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+/* Example status colors */
+.status-label.active {
+  background: #d1fae5;
+  color: #065f46;
+}
+.status-label.pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+.status-label.rejected {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+
+.empStatus-ongoing {
+  background-color: #17a2b8; /* teal blue */
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.empStatus-partialDays {
+  background-color: #fd7e14; /* bright orange */
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.empStatus-pending {
+  background-color: #ffc107;
+  color: black;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.empStatus-completedDays {
+  background-color: #28a745; /* green */
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.empStatus-absentDays {
+  background-color: #dc3545; /* red */
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.empStatus-pending {
+background-color: #ffe5d0;
+    color: #f57c00;
+    padding: 4px 10px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 11px;       /* slightly smaller label size */
+}
+
+.empStatusHired-pending {
+background-color: #ffe5d0;
+    color: #f57c00;
+    padding: 4px 12px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 12px;
+    display: inline-block;
+}
+
+.empStatusHired-assigned {
+  background-color: #0dcaf0; /* blue */
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+/* Days text smaller + muted */
+
+
+/* Specific column alignment */
+.table-header:nth-child(6),  /* 6th header (Assigned Days) */
+.table-cell:nth-child(6) {   /* 6th column cells */
+  text-align: center;
+}
+.belowScheduleContents{
+  height: 200px;
+}
+.table-schedule {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #fff;
+}
+.schedule-table-body {
+    display: block;
+    max-height: 64vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 99.6%;
+    border: 1px solid #c4c4c4;
+    border-radius: 4px;
+}
+
+/* 
+   
+
+Ensure header and body line up */
+.table-schedule thead,
+.schedule-table-body tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;  /* keeps column widths aligned */
+}
+
+/* Table still takes full width */
+.table-schedule {
+  width: 100%;
+  border-collapse: collapse;
+}
+/* Header styling */
+.table-schedule th {
+  padding: 14px 18px;
+  text-align: center;        /* ✅ center header text */
+  font-weight: 600;
+  border-bottom: 1px solid #ccc;
+  background-color: #f5f9ff;
+  font-size: 14px;
+        /* keep header in one line */
+         /* hide overflow */
+     /* show ... if too long */
+       font-family: 'Poppins', sans-serif;
+}
+
+/* Table cells */
+.table-schedule td {
+  padding: 12px 4px;
+  border-bottom: 1px solid #eee;
+  vertical-align: middle;
+  white-space: nowrap;       /* keep content on one line */
+  overflow: hidden;          /* hide overflow if too long */
+    /* show "..." if overflow */
+  text-align: center;
+  font-size: 14px;        /* center horizontally */
+}
+
+/* Row hover effect */
+.table-schedule tbody tr:hover {
+  background-color: #fafafa;
+}
+
+/* Employee info (image + name)
+
+ display: table;
+    width: 100%;
+    table-layout: fixed;
+    background-color: ;
+    border-bottom: 2px solid #e2e8f0;
+*/
+.schedule-employee-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  left: 10px;
+}
+
+/* Circular profile image */
+.schedule-employee-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  background-color: #ddd; /* ensures circle shows if image missing */
+}
+
+/* Employee name */
+.schedule-employee-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Role, Date, Shift columns */
+.role-schedule,
+.date-schedule
+ {
+  font-size: 0.9rem;
+  color: #333;
+}
+.table-schedule th.shift-schedule {
+  padding-left: 36px;   /* moves heading text only */
+  text-align: left;     /* keeps it aligned */
+}
+
+/* Status badges */
+.status-schedule span {
+      padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 400;
+
+    text-transform: capitalize;
+    display: inline-block;
+    margin-left: 34px;
+}
+.label-accepted {
+  background-color: #f0ad4e; /* orange */
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.label-rejected {
+  background-color: #d9534f; /* red */
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 12px;
+}
+.label-assigned {
+  background-color: #0275d8; /* blue */
+  color: white;
+}
+/* Optional: different colors for specific status */
+.assigned { background-color: #e0e0e0; color: #333; }
+.completed { background-color: #d6d6d6; color: #333; }
+.absent { background-color: #dcdcdc; color: #333; }
+.pending {
+    display: inline-block;       /* necessary for padding to work */
+    padding-left: 9px !important;          /* change this value to move it */
+    padding-right: 8px;          /* optional for balance */
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 400;
+    background-color: #ddd;
+    color: #333;
+    text-transform: capitalize;
+    margin-left: 0 !important;              /* remove extra margin if any */
+} 
+
+/* Action buttons */
+.edit-btn-schedule {
+  padding: 5px 12px;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  border: none;
+  background-color: #eee;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: transparent;
+  border: 1px solid #c4c4c4;
+  margin-left: 5px;
+}
+
+.edit-btn-schedule:hover {
+  background-color: #ddd;
+}
+
+.edit-btn-schedule:active {
+  transform: scale(0.98);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .table-schedule th,
+  .table-schedule td {
+    padding: 8px 6px;
+    font-size: 0.85rem;
+  }
+
+  .schedule-employee-img {
+    width: 28px;
+    height: 28px;
+    border: 1px solid #aaa;
+  }
+}
+
+.ScheduleAssign{
+       position: absolute;
+    height: 400px;
+    width: 600px;
+    background-color: gray;
+    top: 19%;
+    left: 180px;
+    border-radius: 6px;
+    background-color: white;
+    border: 1px solid #c4c4c4;
+      font-family: 'Poppins', sans-serif;
+}
+.ApplicatnContent{
+  display: flex;
+  gap: 10px;
+}
+.ApplicantDetails{
+
+    width: 36%;
+    margin-left: 10px;
+    border-radius: 6px;
+    display: flex
+;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: -97px;
+}
+.ApplicantImage {
+height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 2px solid gray;
+    overflow: hidden;
+ 
+    margin-top: 10px;
+}
+
+.ApplicantImageContent {
+  height: 100%;
+  width: 100%;
+  object-fit: cover; /* makes image cover the container without distortion */
+  display: block; /* remove any default inline spacing */
+}
+.ApplicantName{
+
+  margin-top: 10px;
+}
+.ApplicantEmail {
+
+  margin-top: 10px;
+  display: flex; /* aligns icon and text in the same line */
+  align-items: center; /* vertically centers the icon with text */
+}
+
+.MailIcon {
+  height: 20px;
+  width: 20px;
+  margin-right: 5px; /* space between icon and text */
+}
+
+.EmailText {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 600; /* semi-bold */
+  font-size: 12px; /* optional, adjust as needed */
+}
+.ApplicantPhone{
+  margin-left: 30px;
+  margin-top: 10px;
+  display: flex; /* aligns icon and text in the same line */
+  align-items: center;
+}
+.PhoneIcon{
+ 
+   height: 20px;
+  width: 20px;
+  margin-right: 5px;
+}
+.PhoneText{
+ font-family: 'League Spartan', sans-serif;
+  font-weight: 600; /* semi-bold */
+  font-size: 12px;
+}
+.ApplicantSchedule{
+  margin-top: 15px;
+   height: 370px;
+   width: 58%;
+   border: 1px solid #c4c4c4;
+   border-radius: 6px;
+}
+.ApplicantJobTitle{
+  margin-left: 10px;
+  margin-top: 10px;
+}
+.inputJobTitle {
+  display: flex;              /* enable flexbox */
+  align-items: center;        /* vertical center */
+  justify-content: flex-start;/* keep content on left */
+  height: 38px;
+  width: 65%;
+  border-radius: 5px;
+  border: 1px solid #c4c4c4;
+  padding: 0 15px;            /* space from left/right */
+  box-sizing: border-box;
+}
+
+.ApplicantDayFilter{
+  display: flex;
+  margin-top: 10px;
+  margin-left: 10px;
+  gap: 10px;
+}
+
+.ApplicantSingleDay,
+.ApplicantMultipleDay {
+  display: flex;
+  align-items: center; /* vertically center icon and text */
+  gap: 5px; /* space between icon and text */
+  padding: 5px 10px;
+  font-family: 'League Spartan', sans-serif; /* consistent font */
+  font-size: 16px;
+  cursor: pointer;
+    background-color: transparent;
+  border-radius: 5px;
+  border: 1px solid #c4c4c4;
+}
+.activeDateStyle {
+  background-color: #4d708a; /* light blue */
+  color: white; /* text white */
+}
+
+.ButtonIcon {
+  height: 16px; /* adjust size as needed */
+  width: 16px;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 1px solid #c4c4c4;
+}
+.FormultipleDays{
+  display: flex;
+  gap: 20px;
+}
+.InputForDays {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+/* Container for input + icon */
+.InputWithIcon {
+
+  align-items: center;
+  margin-top: 5px;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  height: 38px;
+  width: 140px;
+  background-color: #fff;
+  padding: 0 5px;
+  box-sizing: border-box;
+}
+
+/* Calendar icon on the left */
+.InputIcon {
+  height: 16px;
+  width: 16px;
+  margin-right: 5px;
+  pointer-events: none; /* Allows clicks to pass through to input */
+}
+
+/* Date input */
+.SingleDay {
+  flex: 1;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background-color: transparent;
+  cursor: pointer;
+  padding-left: 0; /* padding handled by container + icon */
+}
+
+/* Placeholder styling */
+.SingleDay::placeholder {
+  color: #888;
+}
+
+/* Multiple days wrapper */
+.FormultipleDays {
+  display: flex;
+  gap: 10px; /* space between From and To inputs */
+}
+.FormultipleDaysWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+
+  /* 🔹 Reserve fixed space for errors so layout doesn't move */
+  position: relative;
+  min-height: 45px; /* enough to cover inputs + possible errors */
+}
+
+.FormultipleDaysWrapper .error {
+  color: red;
+  font-size: 12px;
+  line-height: 16px;
+  position: absolute;   /* keep errors inside reserved area */
+  bottom: 0;            /* stick to bottom of wrapper */
+  left: 0;
+      top: 43px;
+}
+.ShiftSchedule{
+  margin-top: 18px;
+  margin-left: 13px;
+  display: flex;
+  gap: 20px;
+}
+.ShifTimeClass{
+  height: 35px;
+  width: 120px;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  margin-top: 4px;
+}
+.AssignBtn {
+  margin-top: 30px;
+  margin-left: 90px;
+  height: 35px;
+  width: 100px;
+  border-radius: 5px;
+  border: 1px solid #7a7878;
+  background-color: transparent;
+  font-family: 'League Spartan', sans-serif;
+  color: black;
+  transition: all 0.1s ease; /* Smooth transition */
+}
+
+/* Hover state */
+.AssignBtn:hover {
+  border:2px  solid #4d708a;       /* Border turns blue */
+}
+
+/* Active / clicked state */
+.AssignBtn:active {
+  background-color: #4d708a;   /* Background becomes blue */
+  color: white;             /* Text becomes white */
+  border-color: #4d708a;       /* Keep border blue */
+}
+.AssignBtn:disabled {
+  opacity: 0.5;        /* reduce opacity */
+  cursor: not-allowed; /* show disabled cursor */
+}
+.time-field {
+  display: inline-block; /* keeps horizontal layout */
+  vertical-align: top;
+  width: 150px; /* or your input width */
+  min-height: 40px; /* reserve space for error */
+}
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+  white-space: nowrap;   /* ⬅️ Prevent text from breaking into new lines */
+  display: block;        /* Make sure it spans full width below the input */
+}
+.CloseButton{
+  margin-left: 10px;
+  background-color: transparent;
+  height: 35px;
+  width: 100px;
+  border: 1px solid #c4c4c4;
+ border-radius: 5px;
+}
+.ShowLoading{
+     position: relative;
+    height: 100%;
+    width: 101%;
+    display: flex
+;
+    justify-content: center;
+    align-items: center;
+    background-color: #9558584f;
+    top: -388px;
+}
+
+.container {
+  --uib-size: 40px;
+  --uib-color: black;
+  --uib-speed: 2s;
+  --uib-bg-opacity: 0;
+  height: var(--uib-size);
+  width: var(--uib-size);
+  transform-origin: center;
+  animation: rotate var(--uib-speed) linear infinite;
+  will-change: transform;
+  overflow: visible;
+}
+
+.car {
+  fill: none;
+  stroke: var(--uib-color);
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  animation: stretch calc(var(--uib-speed) * 0.75) ease-in-out infinite;
+  will-change: stroke-dasharray, stroke-dashoffset;
+  transition: stroke 0.5s ease;
+}
+
+.track {
+  fill: none;
+  stroke: var(--uib-color);
+  opacity: var(--uib-bg-opacity);
+  transition: stroke 0.5s ease;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes stretch {
+  0% {
+    stroke-dasharray: 0, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 75, 150;
+    stroke-dashoffset: -25;
+  }
+  100% {
+    stroke-dashoffset: -100;
+  }
+}
+
+.CloseButton:hover {
+  border:2px  solid #2a2b2c;       /* Border turns blue */
+}
+.CloseButton:active {
+  background-color: #020202;   /* Background becomes blue */
+  color: white;             /* Text becomes white */
+  border-color: #020202;       /* Keep border blue */
+}
+.errorStarttimepast{
+    color: red;
+  font-size: 12px;
+  margin-top: 4px;
+  white-space: nowrap;   /* ⬅️ Prevent text from breaking into new lines */
+  display: block; 
+}
+
+
+.inputJobTitleStyleinWorkLog{
+   margin-top: 13px;
+  height: 40px;
+  width: 219px;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  margin-left: 10px;
+  padding-left: 35px;   /* space for icon */
+  background: url('https://cdn-icons-png.flaticon.com/512/54/54481.png') no-repeat 10px center;
+  background-size: 18px 18px;  /* size of icon */
+}
+.ShiftGroupWorkLog{
+  margin-left: 10px;
+   display: flex;
+  flex-direction: column;
+  margin-top: 2px;
+  
+}
+.ShiftTimeFontWorkLog{
+
+    font-size: 10px;
+   font-family: 'League Spartan', sans-serif;
+   color: #757474;
+}
+.ShiftTimeStyleWorkLog{
+height: 35px;
+  width: 100px;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+}
+ .status-dropdownWorkLog{
+   position: relative;
+    width: 103px;
+    font-family: "League Spartan", sans-serif;
+    -webkit-user-select: none;
+    user-select: none;
+    font-size: 14px;
+    margin-top: -6px;
+    
+ }
+ .styleStatusWorkLog{
+font-size: 11px;
+    color: #696969;
+ }
+ .status-selectedWorkLog {
+  margin-left: 5px;
+  height: 35px;
+  line-height: 35px;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #fff;
+  text-indent: 10px;
+  position: relative;
+  padding-right: 25px;
+}
+ .status-selectedWorkLog::after{
+ content: "▾";
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+ }
+ .status-listWorkLog{
+   position: absolute;
+    top: 72%;
+    left: 0;
+    right: 0;
+    border: 1px solid #c4c4c4;
+    border-radius: 5px;
+    background: #fff;
+    list-style: none;
+    margin: 5px 0 0;
+    padding: 0;
+ }
+
+ .status-listWorkLog li {
+  height: 35px;
+  line-height: 35px;
+  cursor: pointer;
+  text-indent: 10px;
+}
+
+.status-listWorkLog li:hover {
+  background: #f0f0f0;
+}
+.FilterinWorkLog{
+      height: 60px;
+    width: 100%;
+   display: flex;
+    border: 1px solid gray;
+}
+
+/* ===== Container ===== */
+.table-WorkLog {
+  height: 71vh;
+  width: 99%;
+  border: 1px solid #c4c4c4;
+ 
+  margin-left: 10px;
+  margin-top: 85px;
+  border-radius: 8px;
+  overflow: hidden;          /* keep scrollbars inside */
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* ===== Table Base ===== */
+.worklog-table {
+    font-family: 'Poppins', sans-serif;
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  table-layout: fixed;       /* ensures header/body columns align */
+}
+.worklog-table th
+ {
+padding: 18px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-size: 13px;
+}
+
+
+.worklog-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+/* Sticky header that stays while rows scroll */
+.worklog-table thead {
+  background: #e6f3ff;      /* same as your header bg */
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: table;            /* align widths with tbody rows */
+  width: 100%;
+  table-layout: fixed;
+}
+
+/* ===== Scrollable body (ONLY tbody scrolls) ===== */
+.WorkScheduleTable {
+  display: block;                         /* make tbody scrollable */
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: calc(72vh - 60px);          /* adjust if your thead height differs */
+  width: 100%;                            /* match header width */
+}
+
+/* keep row widths aligned with thead while tbody is block */
+.WorkScheduleTable tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+/* ===== Employee cell content ===== */
+.emp-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.emp-info img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.emp-name {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.emp-email {
+  font-size: 9px;
+  color: gray;
+}
+.Profile{
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  display: block;
+   flex-shrink: 0;
+}
+/* ===== Status badges ===== */
+.status {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-block;
+  margin-right: 4px;
+}
+
+.status.worked {
+  background: #e0f5f2;
+  color: #00796b;
+}
+
+.status.not-worked {
+  background: #fbe9e7;
+  color: #d32f2f;
+  border: 1px solid #fbcaca;
+}
+
+.status.not-marked {
+  background: #fdf5d9;
+  color: #a67c00;
+}
+
+/* ===== Action button ===== */
+.action-btn {
+  padding: 4px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid #c4c4c4;
+  border-radius: 6px;
+  background: #fff;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+  background: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+/* ===== Optional: your existing popup styles kept as-is ===== */
+.ShowWorkLogBtn{
+  position: absolute;
+  height: 229px;
+  width: 325px;
+  background-color: white;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  left: 31%;
+  top: 17%;
+  display: flex;
+}
+.ShowloadingInWorkLog{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: #54a6ed4e;
+}
+.ShowWorkLogEmp{
+    height: 228px;
+    width: 40%;
+    border-right: 1px solid #c4c4c4;
+    /* border-radius: 5px; */
+    margin-top: 1px;
+    margin-left: 10px;
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.ImageWorkLogEmp img {
+ height: 93%;
+    width: 45%;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-left: 28px;
+    margin-top: 10px;  /* match parent div radius */
+}
+.ProfileImgWorkLog{
+    height: 63px !important;
+    width: 62px !important;
+    border-radius: 5px;
+    position: relative;
+    top: -31px;
+    left: -18px;
+    object-fit: cover !important;
+}
+.EmployeeName{
+   position: relative;
+  font-size: 12px;
+    top: -27px;
+    font-weight: 600;
+   font-family: 'Poppins', sans-serif;
+}
+.EmployeeJobTitle{
+      position: relative;
+    top: -23px;
+    font-size: 10px;
+    left: -3px;
+    font-family: "Poppins", sans-serif;
+}
+.statusWorkLog {
+  display: inline-flex;       /* flexbox makes centering easier */
+  align-items: center;        /* vertical center */
+  justify-content: center;    /* horizontal center */
+  white-space: nowrap;
+  padding: 4px 12px;
+  border-radius: 12px;        /* pill shape */
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  text-transform: capitalize;
+  min-width: 80px;            /* optional: gives consistent pill size */
+  text-align: center;
+}
+
+/* Specific status colors */
+.ongoing {
+  background-color: #007bff; /* blue */
+}
+
+.worked {
+  background-color: #28a745; /* green */
+}
+
+.not-worked {
+  background-color: #dc3545; /* red */
+}
+
+.not-marked {
+  background-color: #6c757d; /* grey */
+}
+.WorkLogMarking {
+  margin-top: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  margin-left: 12px;
+}
+.worklog-date {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+.worklog-actions {
+  display: flex;
+  gap: 8px;
+}
+.btn-present {
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid #28a745;
+  background: #e8f9ee;
+  color: #28a745;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-present:hover { background: #28a745; color: #fff; }
+.btn-absent {
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid #dc3545;
+  background: #fdecee;
+  color: #dc3545;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-absent:hover { background: #dc3545; color: #fff; }
+
+
+th.JobRoleworklog,
+td.JobRoleworklog {
+padding-left: 45px !important;
+    padding-bottom: 13px !important;
+     white-space: nowrap; 
+}
+th.JobRoleworklog1,
+td.JobRoleworklog1 {
+    padding-left: 50px !important;
+    padding-bottom: 13px !important;
+      white-space: nowrap;   /* prevents text from breaking into multiple lines */
+       /* hides extra text if too long */
+ 
+}
+
+th.JobRoleworklogTime {
+    padding-left: 45px !important;
+    white-space: nowrap;
+}
+td.JobRoleworklogTime {
+    padding-left: 23px !important;
+    white-space: nowrap;
+}
+.Crossbtn{
+    height: 32px;
+    width: 32px;
+    border-radius: 4px;
+    border: 1px solid #c4c4c4;
+    background-color: transparent;
+    margin-top: -50px;
+    margin-left: 122px;
+    margin-bottom: 29px;
+    cursor: pointer;
+}
+
+.showAnimationLoading {
+  position: absolute; /* This makes it an overlay */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(196, 196, 196, 0.7); /* The gray, semi-transparent background */
+  backdrop-filter: blur(1px); /* This applies the blur effect to the content behind it */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10; /* Ensures the overlay is on top of everything else in the parent container */
+}
+/* loading animation */
+  .container {
+    --uib-size: 40px;
+    --uib-color: black;
+    --uib-speed: .9s;
+    --uib-stroke: 5px;
+    --mask-size: calc(var(--uib-size) / 2 - var(--uib-stroke));
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: var(--uib-size);
+    width: var(--uib-size);
+    -webkit-mask: radial-gradient(
+      circle var(--mask-size),
+      transparent 99%,
+      #000 100%
+    );
+    mask: radial-gradient(circle var(--mask-size), transparent 99%, #000 100%);
+    background-image: conic-gradient(transparent 25%, var(--uib-color));
+    animation: spin calc(var(--uib-speed)) linear infinite;
+    border-radius: 50%;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+.ShowSampleContent{
+ height: 93vh;
+ width: 20%;
+ background-color: #00796b;
+}
+  .table-headerEmpStatus {
+  padding: 12px 20px;
+  font-weight: 600;
+  background: #f9fafb;
+  
+  vertical-align: middle;
+  border-bottom: 2px solid #e5e7eb;
+  color: #444;
+}
+.empStatus-employee-title {
+  position: relative;
+  top: 2px;   /* move down */
+  left: 0px;  /* move right/left */
+}
+
+.empStatus-jobRole-title {
+     position: relative;
+    top: -1px;
+    left: -8px;
+}
+
+.empStatus-assignedDays-title {
+  position: relative;
+  top: 0px;
+  left: -8px;
+}
+
+.empStatus-workedDays-title {
+  position: relative;
+  top: 1px;
+  left: 0px;
+}
+
+.empStatus-absentDays-title {
+  position: relative;
+  top: 0px;
+  left: 1px;
+}
+/* singleDateTable */
+.empStatus-status-title {
+    position: relative;
+    top: 1px;
+    left: 16px;
+}
+.table-headerEmpPayment div {
+  display: inline-block;
+  white-space: nowrap;
+}
+.table-headerEmpPayment{
+  padding: 12px 20px;
+  font-weight: 600;
+  background: #edf5fd;
+   font-size: 13px;
+  vertical-align: middle;
+  border-bottom: 2px solid #e5e7eb;
+  color: #444;
+  
+}
+
+/* Employee header */
+.EmpPayment-employee-title {
+  text-align: left;
+  padding-left: 15px;
+  display: inline-block;
+  /* transform: translateX(5px); */
+}
+
+/* Job Role header */
+.EmpPayment-jobRole-title {
+  text-align: center;
+  display: inline-block;
+   padding-left: 40px;
+  /* transform: translateY(2px); */
+}
+
+/* Work Date header */
+.EmpPayment-workDate-title {
+  text-align: right;
+ padding-left: 23px;
+  display: inline-block;
+}
+
+/* Shift Time header */
+.EmpPayment-shiftTime-title {
+  text-align: center;
+  display: inline-block;
+  padding-left: 46px;
+}
+
+/* Work Status header */
+.EmpPayment-workStatus-title {
+  text-align: center;
+  display: inline-block;
+      padding-left: 46px;
+}
+
+/* Amount header */
+.EmpPayment-amount-title {
+  text-align: right;
+ padding-left: 47px;
+  display: inline-block;
+}
+
+/* Pay Status header */
+.EmpPayment-payStatus-title {
+  text-align: center;
+  display: inline-block;
+      padding-left: 14px;
+}
+
+
+.EmpPayment-employee-img{
+  height: 20px;
+  width: 20px;
+}
+.EmpPayment-status-label {
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-weight: 600;
+  display: flex;              /* use flexbox */
+  justify-content: center;    /* center horizontally */
+  align-items: center;        /* center vertically */
+  text-align: center;
+}
+
+/* When payment is done / ready to pay */
+.EmpPayment-status-label.pay {
+  background-color: #d4edda;
+  color: #155724;
+  height: 27px;
+  width: 66px; /* dark green text */
+}
+
+/* When payment is not done / absent */
+.EmpPayment-status-label.cross {
+  background-color: #f8d7da; /* light red */
+  color: #721c24;    
+   height: 27px;
+  width: 66px;         /* dark red text */
+}
+.EmpPayment-employee {
+  text-align: left;       /* align left */
+  padding-left: 15px;     /* move horizontally */
+  /* transform: translateX(5px); */ /* fine-tune if needed */
+}
+
+/* Job Role */
+.EmpPayment-jobRole {
+ padding-left: 63px;
+    padding-top: 20px;
+  /* transform: translateY(2px); */
+}
+
+/* Work Date */
+.EmpPayment-workDate {
+    text-align: right;
+    padding-top: 25px;
+    padding-right: 31px;
+}
+
+/* Shift Time */
+.EmpPayment-shiftTime {
+
+    /* padding: 0 5px; */
+    padding-top: 14px;
+    padding-left: 35px;
+}
+.EmpPayment-hours-text{
+  padding-top: 4px;
+  font-size: 11px;
+color: #636262;
+}
+
+/* Work Status */
+.EmpPayment-workStatus {
+     text-align: center;
+    padding: 16px 16px;
+    padding-left: 77px;
+}
+
+/* Amount */
+.EmpPayment-amount {
+ text-align: right;
+  
+    padding-left: 73px;
+    padding-top: 19px;
+}
+
+/* Pay Status */
+.EmpPayment-payStatus {
+    text-align: center;
+    padding-top: 19px;
+    padding-left: 35px;
+}
+
+.pay {
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+}
+
+.paid {
+background-color: #007bff;
+    color: white;
+    padding-left: 0px;
+    height: 24px;
+    width: 70px;
+}
+
+
+.cross {
+  background-color: #dc3545;
+  color: white;
+}
+/* loading animation ---------End*/

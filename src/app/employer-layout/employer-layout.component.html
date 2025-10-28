@@ -1,0 +1,64 @@
+<div class="Navheading">
+  <!-- Left: Logo + Title (your original code, untouched) -->
+  <span>
+    <img src="../../assets/sampleforfigma/logo.png" class="logoImg" alt="">
+    <h4 class="headingTitle">QuickLook</h4>
+  </span>
+
+  <!-- Right: Notification + Profile -->
+   <div class="nav-right">
+  <div class="notification-wrapper">
+    <div (click)="GoToEmployerProfile()" class="notification-icon">
+      🔔
+      <div *ngIf="showNotificiationIcon" class="gotMessage"></div>
+    </div>
+  </div>
+
+  <img (click)="thisgotProfile()" [src]="imageProfile" class="profile-photo" alt="Profile">
+   <div (click)="thisgotProfile()"  class="profile-name">{{employerName}}</div>
+</div>
+
+</div>
+
+
+<!-- sideNav bar code below -->
+<div class="sideBar">
+  <div class="sideItem" [ngClass]="{ active: activeTab === 'dashboard' }" (click)="setActive('dashboard')">
+    <img src="../../assets/dashboard.png" class="sideIcon" alt="Dashboard">
+    <span class="sideLabel">Dashboard</span>
+  </div>
+
+  <div class="sideItem" [ngClass]="{ active: activeTab === 'postJob' }" (click)="setActive('postJob')">
+    <img src="../../assets/manageJob.png" class="sideIcon" alt="Post Job">
+    <span class="sideLabel">Post Job</span>
+  </div>
+
+  <div class="sideItem" [ngClass]="{ active: activeTab === 'postedJobs' }" (click)="setActive('postedJobs')">
+    <img src="../../assets/available jobs.png" class="sideIcon" alt="Posted Jobs">
+    <span class="sideLabel">Posted</span>
+  </div>
+  <div class="sideItem" [ngClass]="{ active: activeTab === 'applicants' }" (click)="setActive('applicants')">
+    <img src="../../assets/Applicants.png" class="sideIcon" alt="Posted Jobs">
+    <span class="sideLabel">Applicants</span>
+  </div>
+
+ 
+      <div class="sideItem2" [ngClass]="{ active: activeTab === 'profile' }" (click)="setActive('profile')">
+    <img [src]="imageProfile||'../../assets/profile.png'" class="sideIconImg" >
+    <span class="sideLabel">Profile</span>
+  </div>
+
+   <div class="sideItem3" [ngClass]="{ active: activeTab === 'logOut' }" (click)="goToLoginPage()">
+    <img src="../../assets/log-out.png" class="sideIcon" >
+    <span class="sideLabel2">LogOut</span>
+  </div>
+   
+</div>
+
+
+<div class="RoutePage">
+
+    <router-outlet></router-outlet>
+
+</div>
+

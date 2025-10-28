@@ -1,0 +1,366 @@
+<div class="ContentCenter">
+  <div class="ProfileDiv">
+    <form [formGroup]="updateJobSeekerFrom">
+    <div class="HeadingDetails">
+      <div class="ImageProfile">
+   <img 
+  [src]="JobSeekerDetails.ImageProfile ? JobSeekerDetails.ImageProfile : '../../assets/profile.png'" 
+  class="imageProfilephoto" 
+  alt="Profile Image"
+/>
+      </div>
+
+      <div class="uploadBtn" *ngIf="showEdit">
+        <label class="upload-label" [ngStyle]="{'font-size.px': buttonFontSize}">
+          <input type="file" (change)="onFileSelected($event)" hidden />
+          <i class="fa fa-cloud-upload-alt"></i> Upload File
+        </label>
+
+        <div class="file-name" *ngIf="selectedFileName" [ngStyle]="{'font-size.px': fileNameFontSize}">
+          {{ selectedFileName }}
+        </div>
+      </div>
+
+      <div class="BtnEdit" *ngIf="!showEdit">
+        <button class="BtnStyle" (click)="MakeEdit()">Edit</button>
+      </div>
+      <div class="BtnSave" *ngIf="showEdit">
+        <button class="BtnStyle" (click)="updateData()" [disabled]="updateJobSeekerFrom.invalid">Save</button>
+        <button class="BtnStyle" (click)="closeEdit()">Close</button>
+      </div>
+    </div>
+
+    <div class="DetailsDesc">
+
+      <!-- Row 1: Full Name & Email -->
+      <div class="Rows">
+        <div class="RowDetail1">
+          <div class="Name">Full Name</div>
+          <div *ngIf="!showEdit" class="FullNameAns">{{JobSeekerDetails.Name}}</div>
+          <input *ngIf="showEdit" type="text" formControlName="Name" class="FullNameAns" />
+             <div *ngIf="updateJobSeekerFrom.get('Name')?.invalid && updateJobSeekerFrom.get('Name')?.touched" 
+         class="error">
+      Full Name is required and must be at least 2 characters
+    </div>
+        </div>
+
+        <div class="RowDetail1">
+          <div class="Name">Email</div>
+          <div *ngIf="!showEdit" class="FullNameAns">{{JobSeekerDetails.emailId}}</div>
+          <input *ngIf="showEdit"  type="email" formControlName="emailId" class="FullNameAns" />
+              <div *ngIf="updateJobSeekerFrom.get('emailId')?.invalid && updateJobSeekerFrom.get('emailId')?.touched" 
+         class="error">
+      Enter valid email id
+    </div>
+        </div>
+      </div>
+
+      <!-- Row 2: DOB & Address -->
+      <div class="Rows">
+     <div class="RowDetail1">
+  <div class="Name">Date of Birth</div>
+
+  <div *ngIf="!showEdit" class="FullNameAns">
+    {{ JobSeekerDetails.dateOfBirth | date: 'dd-MMM-yyyy' }}
+  </div>
+
+  <div *ngIf="showEdit">
+    <input
+      type="date"
+      formControlName="dateOfBirth"
+      class="FullNameAns"
+    />
+
+    <!-- Error messages -->
+    <div
+      *ngIf="
+        updateJobSeekerFrom.get('dateOfBirth')?.touched &&
+        updateJobSeekerFrom.get('dateOfBirth')?.invalid
+      "
+      class="errorDob"
+    >
+      <small   class="errorDob"
+        *ngIf="updateJobSeekerFrom.get('dateOfBirth')?.errors?.['required']"
+        >Date of birth is required.</small
+      >
+      <small   class="errorDob"
+        *ngIf="updateJobSeekerFrom.get('dateOfBirth')?.errors?.['underAge']"
+        >Age must be at least 18 years old.</small
+      >
+    </div>
+  </div>
+</div>
+        <div class="RowDetail1">
+  <div class="Name">Address</div>
+
+  <div *ngIf="!showEdit" class="FullNameAns">
+    {{ JobSeekerDetails.Address }}
+  </div>
+
+  <div *ngIf="showEdit">
+    <input type="text" formControlName="Address" class="FullNameAns" />
+
+    <div
+      *ngIf="
+        updateJobSeekerFrom.get('Address')?.touched &&
+        updateJobSeekerFrom.get('Address')?.invalid
+      "
+      class="errorAddress"
+    >
+      <small class="errorAddress"
+        *ngIf="updateJobSeekerFrom.get('Address')?.errors?.['required']"
+        >Address is required.</small
+      >
+      <small class="errorAddress"
+        *ngIf="updateJobSeekerFrom.get('Address')?.errors?.['minlength']"
+        >Address must be at least 6 characters long.</small
+      >
+    </div>
+  </div>
+</div>
+      </div>
+
+      <!-- Row 3: City & State -->
+      <div class="Rows">
+       <div class="RowDetail1">
+  <div class="Name">Area</div>
+
+  <div *ngIf="!showEdit" class="FullNameAns">
+    {{ JobSeekerDetails.area }}
+  </div>
+
+  <div *ngIf="showEdit">
+    <input type="text" formControlName="area" class="FullNameAns" />
+
+    <div
+      *ngIf="
+        updateJobSeekerFrom.get('area')?.touched &&
+        updateJobSeekerFrom.get('area')?.invalid
+      "
+      class="errorAddress"
+    >
+      <small  class="errorAddress"
+      *ngIf="updateJobSeekerFrom.get('area')?.errors?.['required']">
+        Area is required.
+      </small>
+      <small  class="errorAddress"
+      *ngIf="updateJobSeekerFrom.get('area')?.errors?.['minlength']">
+        Area must be at least 3 characters long.
+      </small>
+    </div>
+  </div>
+</div>
+<div class="RowDetail1">
+  <div class="Name">City</div>
+
+  <div *ngIf="!showEdit" class="FullNameAns">
+    {{ JobSeekerDetails.city }}
+  </div>
+
+  <div *ngIf="showEdit">
+    <input type="text" formControlName="city" class="FullNameAns" />
+
+    <div
+      *ngIf="
+        updateJobSeekerFrom.get('city')?.touched &&
+        updateJobSeekerFrom.get('city')?.invalid
+      "
+   class="errorAddress"
+    >
+      <small   class="errorAddress"
+      *ngIf="updateJobSeekerFrom.get('city')?.errors?.['required']">
+        City is required.
+      </small>
+      <small  class="errorAddress"
+       *ngIf="updateJobSeekerFrom.get('city')?.errors?.['minlength']">
+        City must be at least 3 characters long.
+      </small>
+    </div>
+  </div>
+</div>
+
+       
+      </div>
+
+      <!-- Row 4: Contact & Max Hour -->
+      <div class="Rows">
+     
+<div class="RowDetail1">
+  <div class="Name">State</div>
+
+  <div *ngIf="!showEdit" class="FullNameAns">
+    {{ JobSeekerDetails.state }}
+  </div>
+
+  <div *ngIf="showEdit">
+    <input type="text" formControlName="state" class="FullNameAns" />
+
+    <div
+      *ngIf="
+        updateJobSeekerFrom.get('state')?.touched &&
+        updateJobSeekerFrom.get('state')?.invalid
+      "
+    class="error2"
+    >
+      <small  class="error2"
+      *ngIf="updateJobSeekerFrom.get('state')?.errors?.['required']">
+        State is required.
+      </small>
+      <small  class="error2"
+      *ngIf="updateJobSeekerFrom.get('state')?.errors?.['minlength']">
+        State must be at least 3 characters long.
+      </small>
+    </div>
+  </div>
+</div>
+
+    <div class="RowDetail1">
+  <div class="Name">Max Working hour Per Day</div>
+
+  <!-- Display Mode -->
+  <div class="FullNameAnsTime" *ngIf="!showEdit && JobSeekerDetails.MaxHourPerDay! > 0">
+    <img src="../../assets/time.png" class="contentImg2" alt="" />
+    {{ JobSeekerDetails.MaxHourPerDay }}
+  </div>
+ <div class="FullNameAnsTime" *ngIf="!showEdit && (!JobSeekerDetails?.MaxHourPerDay || JobSeekerDetails?.MaxHourPerDay == 0)">
+  <img src="../../assets/time.png" class="contentImg2" alt="" />
+  <div>Not Specified</div> 
+</div>
+
+  <!-- Edit Mode -->
+ <div *ngIf="showEdit">
+  <div class="FullNameAns InputWithIcon">
+    <img src="../../assets/time.png" class="contentImg2" alt="" />
+    <input
+      type="number"
+      formControlName="MaxHourPerDay"
+      class="NoSpinner InputInside"
+      placeholder="Enter Max Hours per Day"
+    />
+  </div>
+
+  <!-- Error message -->
+  <div
+    *ngIf="
+      updateJobSeekerFrom.get('MaxHourPerDay')?.touched &&
+      updateJobSeekerFrom.get('MaxHourPerDay')?.invalid
+    "
+    class="erro2"
+  > 
+    <small class="error2"
+      *ngIf="updateJobSeekerFrom.get('MaxHourPerDay')?.errors?.['required']"
+      >This field is required.</small
+    >
+    <small class="error2" *ngIf="updateJobSeekerFrom.get('MaxHourPerDay')?.errors?.['min']"
+      >Value must be greater than 1.</small
+    >
+  </div>
+</div>
+</div>
+      </div>
+
+      <!-- Row 5: Skills -->
+      <div class="Rows">
+        <div class="RowDetail1">
+          <div class="Name">Skills</div>
+          <div *ngIf="!showEdit" class="FullNameAns">
+            {{ JobSeekerDetails.Skills ? JobSeekerDetails.Skills : 'Not Specified' }}
+          </div>
+          <input *ngIf="showEdit" type="text" formControlName="Skills" class="FullNameAns" />
+        </div>
+          <div class="RowDetail1">
+  <div class="Name">Contact No :</div>
+
+  <div *ngIf="!showEdit" class="FullNameAns">
+    {{ JobSeekerDetails.contactNumber }}
+  </div>
+
+  <div *ngIf="showEdit">
+    <input type="text" formControlName="contactNumber" class="FullNameAns" />
+
+    <div
+      *ngIf="
+        updateJobSeekerFrom.get('contactNumber')?.touched &&
+        updateJobSeekerFrom.get('contactNumber')?.invalid
+      "
+     class="error2"
+    >
+      <small  class="error2"
+      *ngIf="updateJobSeekerFrom.get('contactNumber')?.errors?.['required']">
+        Contact Number is required.
+      </small>
+      <small  class="error2"
+       *ngIf="updateJobSeekerFrom.get('contactNumber')?.errors?.['pattern']">
+        Contact Number must be exactly 10 digits.
+      </small>
+    </div>
+  </div>
+</div>
+      </div>
+
+      <!-- Row 6: Preferred Job -->
+      <div class="Rows">
+         <div class="RowDetail1">
+          <div class="Name">Preferred Job</div>
+          <div *ngIf="!showEdit" class="LongDetail">
+            {{ JobSeekerDetails.PreferJob ? JobSeekerDetails.PreferJob : 'Not Specified' }}
+          </div>
+          <input *ngIf="showEdit" type="text" formControlName="PreferJob" class="LongDetail" />
+        </div>
+      </div>
+
+    </div>
+    </form>
+
+
+
+  </div>
+   
+  <div class="NotificationDiv">
+    <div class="HeadingNotfication">
+ <div class="ImagDivNoti">
+        <img src="../../assets/notification.png" class="NotiSize" alt="" srcset="">
+      </div>
+        <div class="NotificationTitle">Notifications</div>
+    </div>
+    <div class="DescriptionShowingNotification">
+      <ng-container *ngIf="JobSeekerNotifcations.length>0">
+       <div class="NotificationContent" *ngFor="let nots of JobSeekerNotifcations">
+       <div class="notification-message">{{ nots.message }}</div>
+
+        <button (click)="DeleteNoti(nots.jobSeekerId,nots.createdAt)" class="DeleteNotification">x</button>
+       </div>
+       
+       </ng-container>
+    </div>
+ 
+  </div>
+
+</div>
+ <div class="ShowLoading" *ngIf="loadingService.loading$ | async  ">
+    <svg
+    class="container"
+    viewBox="0 0 40 40"
+    height="40"
+    width="40"
+  >
+    <circle 
+      class="track"
+      cx="20" 
+      cy="20" 
+      r="17.5" 
+      pathlength="100" 
+      stroke-width="5px" 
+      fill="none" 
+    />
+    <circle 
+      class="car"
+      cx="20" 
+      cy="20" 
+      r="17.5" 
+      pathlength="100" 
+      stroke-width="5px" 
+      fill="none" 
+    />
+  </svg>
+ </div>

@@ -1,0 +1,98 @@
+<div class="Applied"> 
+  <img src="../../assets/available jobs.png" class="AppliedJobImg" alt="">
+  Applied Job Status</div>
+
+<div class="Filters">
+  <input type="text" class="SearchType"   (input)="ApplyFilter()" [(ngModel)]="SearchByJobTitle" placeholder="Search by job title">
+  <div class="status-container">
+  <ul class="status-list">
+    <li
+      *ngFor="let status of statusArray"
+      (click)="onStatusClick(status)"
+      [class.selected]="selectedStatus === status"
+    >
+      {{ status }}
+    </li>
+  </ul>
+</div>
+</div>
+
+<div class="DescriptionsForJobs" *ngIf="FilteredJobsApplied.length > 0">
+   <div class="DescriptionHeading">
+    <div class="MainTitle1">Jobs</div>
+    <div class="MainTitle2">Applied Date</div>
+     <div class="MainTitle3">Employer Name</div>
+       <div class="MainTitle4">Status</div>
+   </div>
+   <div class="DescriptionDetails">
+    <div class="DescriptionEachDetails" *ngFor="let application of FilteredJobsApplied">
+      <div class="JobsCol1">
+          <img src={{application.jobImage}} 
+          class="ImageCol1" alt="">
+          <div class="JobsCol1Title">
+                <div class="JobsCol1MainTitle">{{application.jobTitle}}</div>
+               <div class="JobsCol1SubTitle">
+             {{application.businessName}}
+          </div>
+          </div>
+                
+      </div>
+          <div class="AppliedDate">
+          {{ application.AppliedDate | date:'dd-MMM-yyyy' }}
+          </div>
+          <div class="EmployerDetails">
+           <div class="ImgSize">
+             <img src={{application.employerImgUrl}} class="ImgProfile" alt="" srcset="">
+           </div>
+           <div class="EmployerCol3">
+               <div class="EmployerCol3MainTitle">{{application.employerName}}</div>
+                <div class="EmployerCol3Subtitle">{{application.employerPhoneNumber}}</div>
+           </div>
+          </div>
+          <div class="StatusCol">
+             <div *ngIf="application.StatusApplied =='accepted'" class="hired">Hired</div>  
+              <div *ngIf="application.StatusApplied =='pending'" class="pending">Pending</div>
+              <div *ngIf="application.StatusApplied =='rejected'" class="rejected">Rejected</div> 
+          </div>
+    
+    </div>
+       
+      </div>
+    
+    
+ 
+</div>
+
+      <div class="loader-container"  *ngIf="loadingService.loading$ | async  " >
+  <svg
+    class="container"
+    viewBox="0 0 40 40"
+    height="40"
+    width="40"
+  >
+    <circle 
+      class="track"
+      cx="20" 
+      cy="20" 
+      r="17.5" 
+      pathlength="100" 
+      stroke-width="5px" 
+      fill="none" 
+    />
+    <circle 
+      class="car"
+      cx="20" 
+      cy="20" 
+      r="17.5" 
+      pathlength="100" 
+      stroke-width="5px" 
+      fill="none" 
+    />
+  </svg>
+</div>
+
+
+<div  class="ShowEmpty" *ngIf="FilteredJobsApplied.length <= 0 &&  !(loadingService.loading$ | async ) ">
+  <img src="../../assets/empty.png" class="EmptyImg" alt="">
+ <div class="NoDataTitle">No Data Present</div>
+</div>

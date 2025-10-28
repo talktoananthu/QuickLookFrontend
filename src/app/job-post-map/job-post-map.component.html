@@ -1,0 +1,219 @@
+<div class="DescContentFlex">
+
+<div class="FilterRow">
+ <div class="FitlerHeading">
+       <img src="../../assets/filter.png" class="fadeFilter" alt="">
+       <span class="filterClass">Filter </span>
+         </div>  
+        <div class="JobCat">
+      <label class="JobCateTitle">Job category </label>
+      <div class="job-options">
+      <label>
+  <input type="checkbox" 
+         [value]="'Food & Beverage'" 
+         (change)="onCategoryChange($event)">
+  Food & Beverage
+</label>
+
+<label>
+  <input type="checkbox" 
+         [value]="'Hospitality'" 
+         (change)="onCategoryChange($event)">
+  Hospitality
+</label>
+
+<label>
+  <input type="checkbox" 
+         [value]="'Housekeeping'" 
+         (change)="onCategoryChange($event)">
+  Housekeeping
+</label>
+
+<label>
+  <input type="checkbox" 
+         [value]="'Manual Labour'" 
+         (change)="onCategoryChange($event)">
+  Manual Labour
+</label>
+
+<label>
+  <input type="checkbox" 
+         [value]="'Retail'" 
+         (change)="onCategoryChange($event)">
+  Retail
+</label>
+        
+      </div>
+ <div class="JobCat1">
+  <label class="JobCateTitle">Amount </label>
+  <div class="inputRow">
+    <input [(ngModel)]="amountVal" (ngModelChange)="applyFilters()"  type="number" class="inputStyle" placeholder="Rs">
+    
+  </div>
+</div>
+<div class="JobCat1">
+  <label class="JobCateTitle">Max Distance </label>
+  <div class="inputRow">
+    <input  [(ngModel)]="showDistVal" (ngModelChange)="applyFilters()" type="number" class="inputStyle" placeholder="Km">
+    
+  </div>
+
+  <div class="JobCat2">
+  <label class="JobCateTitle">Area</label>
+  <div class="inputRow">
+    <input [(ngModel)]="showAreaVal" (ngModelChange)="applyFilters()" type="text" class="inputStyle2">
+   
+  </div>
+</div>
+
+<div class="JobCat2">
+  <label class="JobCateTitle">City</label>
+  <div class="inputRow">
+    <input [(ngModel)]="showCityVal" (ngModelChange)="applyFilters()" type="text" class="inputStyle2">
+ 
+  </div>
+</div>
+
+<div class="JobCat3">
+  <label class="JobCateTitleTime">Start Time <span (click)="clearStartTime()" class="clear2">clear X</span></label>
+  <div class="inputRow">
+    <input type="time"  [(ngModel)]="startTime"  (ngModelChange)="applyFilters()" class="inputStyle2">
+   
+  </div>
+</div>
+
+<div class="JobCa3">
+  <label class="JobCateTitle">End Time <span (click)="clearEndTime()" class="clear2">clear X</span></label>
+  <div class="inputRow">
+    <input [(ngModel)]="endTime" (ngModelChange)="applyFilters()" type="time" class="inputStyle2">
+   
+  </div>
+</div>
+
+<div class="JobCat">
+  <label class="JobCateTitleDates">Posted By</label>
+  <div class="inputRow">
+
+
+  <!-- 1 Week ago chip -->
+<span 
+  class="chip" 
+  [ngClass]="{'active': showWeek}" 
+  (click)="showWeekAgo()" >
+  1 week ago
+  <span class="cross" (click)="showWeekAgo2($event)">✕</span>
+</span>
+
+<!-- 1 Month ago chip -->
+<span 
+  class="chip" 
+  [ngClass]="{'active': showMonth}" 
+  (click)="showMonthAgo()">
+  1 month ago
+  <span class="cross" (click)="showMonthAgo2($event)">✕</span>
+</span>
+
+  </div>
+</div>
+
+</div>
+
+  </div>
+
+</div>
+<div class="SearchPart">
+  <div class="Searchbar">
+  <div class="SearchWrapper">
+    <img src="assets/search.png" alt="search" class="SearchIcon">
+    <input [(ngModel)]="jobTitle" (ngModelChange)="applyFilters()" type="text" placeholder="Search" class="SearchBarInput">
+  </div>
+</div>
+   <div class="BelowJobDetailsitems">
+
+   <!-- belowDivShowsAvailable JobPosts and Selection for particular jobPost -->
+        <ng-container *ngIf="postedJobsAvailable.length > 0 ">
+          <div    class="JobDetails"
+  *ngFor="let job of postedJobsAvailable"
+  (click)="SelectedJobDesc(job.jobPostId)"
+  [ngClass]="{ 'selected-border': job.jobPostId == SelectedJobPostId }">
+  
+  <!-- Header row -->
+  <div class="job-header">
+    <img [src]="job.image" lt="Job image" class="job-image" />
+   <div class="job-info">
+  <h3 class="title">{{job.jobTitle}}</h3>
+  <span class="company3">{{job.businessName}}</span>
+  <div class="tag-distance">
+    <span class="tag">{{job.jobCategory}}</span>
+    <span class="distance">{{job.distance}} Km</span>
+  </div>
+</div>
+    <span class="posted">Posted {{ getDaysAgo(job.postedDay) }}</span>
+    <span class="applied" *ngIf="job.applied">Applied</span>
+  </div>
+
+  <!-- Location -->
+  <div class="job-location">
+   <img height="12px" width="12px" src="../../assets/location.png" alt=""> {{job.location.area}},
+    {{job.location.city}}, {{job.location.state}}
+  </div>
+
+  <!-- Stats row -->
+  <div class="job-stats">
+    <span class="pill">Applicants: {{job.applicantsRequired}}</span>
+
+    <span class="pill urgent" *ngIf="job.availabilty === 'Immediate Hiring'">Urgent hiring</span>
+       <span class="pill urgent" *ngIf="job.resumeNeed === 'Yes'">Resume Needed</span>
+  </div>
+   
+  <!-- Footer row -->
+   <div class="footerBar"></div>
+  <div class="job-footer">
+    <span class="time"><img src="../../assets/maxhour.png" class="ImgHr2">{{job.startTime}} - {{job.endTime}}</span>
+    <span class="rate"><img src="../../assets/dollar.png" class="amnt2">{{job.amount}}</span>
+    <span class="type"><img src="../../assets/part-time.png" class="partTimeImg2">{{job.jobType}}</span>
+  </div>
+</div>
+</ng-container>
+
+<div class="ShowLoading" *ngIf="loadingService.loading$ | async">
+ <svg
+    class="container"
+    viewBox="0 0 40 40"
+    height="40"
+    width="40"
+  >
+    <circle 
+      class="track"
+      cx="20" 
+      cy="20" 
+      r="17.5" 
+      pathlength="100" 
+      stroke-width="5px" 
+      fill="none" 
+    />
+    <circle 
+      class="car"
+      cx="20" 
+      cy="20" 
+      r="17.5" 
+      pathlength="100" 
+      stroke-width="5px" 
+      fill="none" 
+    />
+  </svg>
+</div>
+
+<ng-container *ngIf="postedJobsAvailable.length <=0 && !(loadingService.loading$ | async)">
+  <div class="noJobsNearYou">No part time jobs near your location</div>
+</ng-container>
+</div>
+
+<!-- showing Map Details -->
+
+
+</div>
+<div class="map-wrapper">
+  <div id="map"></div>
+</div>
+</div>

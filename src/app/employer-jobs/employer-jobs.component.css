@@ -1,0 +1,979 @@
+/* Main container for the entire content area */
+.mainBar {
+     display: flex
+;
+    height: 100vh;
+    width: 101.5%;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Left side: content section (search bar + posted jobs) */
+.mainContent {
+   flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+  /* Remove scroll here */
+  overflow: hidden;
+}
+
+/* Search navigation section */
+.SearchNav {
+  margin-bottom: 20px;
+}
+
+/* Search + Filter input wrapper */
+.Search {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+/* Search bar input */
+.SearchBar {
+  border-radius: 5px;
+  border: 1px solid gray;
+  width: 30%;
+  padding: 5px;
+}
+
+/* Filter input */
+.Filter {
+  border-radius: 5px;
+  border: 1px solid gray;
+  width: 15%;
+  padding: 5px;
+}
+
+/* Job posting section (below search) */
+.jobListScroll {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  padding-right: 4px;
+}
+.postedJobs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto; /* make rows auto height */
+  gap: 20px;
+  max-height: 83vh;
+  overflow-y: auto;
+  padding: 20px;
+}
+.ShowLoading{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.container {
+  top: -82px;
+  left: -135px;
+  position: relative;
+  --uib-size: 40px;
+  --uib-color: black;
+  --uib-speed: 2s;
+  --uib-bg-opacity: 0;
+  height: var(--uib-size);
+  width: var(--uib-size);
+  transform-origin: center;
+  animation: rotate var(--uib-speed) linear infinite;
+  will-change: transform;
+  overflow: visible;
+}
+
+.car {
+  fill: none;
+  stroke: var(--uib-color);
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  animation: stretch calc(var(--uib-speed) * 0.75) ease-in-out infinite;
+  will-change: stroke-dasharray, stroke-dashoffset;
+  transition: stroke 0.5s ease;
+}
+
+.track {
+  fill: none;
+  stroke: var(--uib-color);
+  opacity: var(--uib-bg-opacity);
+  transition: stroke 0.5s ease;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes stretch {
+  0% {
+    stroke-dasharray: 0, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 75, 150;
+    stroke-dashoffset: -25;
+  }
+  100% {
+    stroke-dashoffset: -100;
+  }
+}
+.noJobsPosted{
+  position: absolute;
+  height: 90%;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.nojJobPostedImg{
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+}
+.AdjustnoJobsPosted{
+position: relative;
+    top: -50px;
+    left: -95px;
+}
+.noJobsPostedText{
+    position: relative;
+    left: -9px;
+}
+.jobcontent {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  /* height: 100%;  <-- REMOVE THIS */
+  min-height: 220px; /* optional, makes all cards uniform */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.jobcontent:hover {
+   transform: scale(1.03);;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+.jobHeader {
+  display: flex;
+  align-items: center; /* vertically center image with title */
+  gap: 12px; /* spacing between image and text */
+}
+
+.jobImage {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0; /* prevents image from shrinking */
+}
+
+.jobTitleSmall {
+    font-size: 12px;
+    font-weight: 600;
+    margin: 0;
+    word-break: break-word;
+    flex: 1;
+}
+
+
+.leftHead {
+   display: flex;
+  align-items: center;
+  gap: 10px; 
+}
+
+.jobImg {
+    width: 61px;
+    height: 62px;
+    border-radius: 6px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.jobText {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+
+.company {
+  margin: 0;
+  font-size: 10px;
+  color: #555;
+}
+.locImg{
+  height: 15px;
+  width: 15px;
+  margin-right: 11px;
+}
+.company2 {
+  margin: 0;
+ 
+  font-size: 10px;
+  color: #777;
+  display: flex;
+  align-items: center;
+  margin-top: 9px;
+      width: 140px;
+}
+
+.rightHead {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  margin-left: 70px;
+}
+
+.postedDate {
+ position: relative;
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 7px;
+    top: -12px;
+}
+
+.dotsBtn {
+    background: none;
+    border: 1px solid gray;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 2px;
+    height: 35px;
+    width: 20px;
+}
+
+.jobMetaRow {
+  margin: 10px 0;
+  display: flex;
+}
+
+.jobBadge {
+  background-color: #e6f0ff;
+  color: #007bff;
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.jobDesc {
+    font-size: 15px;
+    color: #000000;
+    margin: 13px ;
+    font-family: "Roboto", sans-serif;
+}
+
+.jobStats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.metaBox {
+  background-color: #f3f3f3;
+  padding: 3px 10px;
+  border-radius: 8px;
+}
+
+.urgentTag {
+  background-color: #ffecec;
+  color: #ff4d4d;
+  padding: 3px 10px;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.borderDiv {
+  border-top: 1px solid #e0e0e0;
+  margin: 8px 0 6px 0; /* reduce space above and below */
+}
+
+.jobFooter {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #333;
+  padding: 0 8px; /* match inner padding */
+}
+
+.amnt{
+  height: 20px;
+    width: 20px;
+    object-fit: cover;
+    position: relative;
+    top: 5px;
+    right: 8px; 
+}
+.partTimeImg{
+   height: 20px;
+    width: 20px;
+    object-fit: cover;
+    position: relative;
+    top: 5px;
+    right: 8px;
+}
+.ImgHr{
+        height: 20px;
+    width: 20px;
+    object-fit: cover;
+    position: relative;
+    top: 5.5px;
+    right: 2px;
+}
+
+.menu-options {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  min-width: 120px;
+  z-index: 1000;
+}
+@media (max-width: 1024px) {
+  .postedJobs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .postedJobs {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+.menu-container {
+  position: relative;
+}
+
+.menu-options {
+  position: absolute;
+top: 73px;
+    right: -2px;
+  width: 120px;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  z-index: 999;
+  border-radius: 4px;
+}
+
+.Opt {
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.Opt:hover {
+  background-color: #f2f2f2;
+}
+/* 
+separate div fro showing details */
+
+
+
+.jobDetails{
+  width: 97%;
+ 
+}
+.jobDetailsCard {
+    width: 99%;
+    height: 100vh;
+    display: flex
+;
+    background: #fff;
+    padding: 10px;
+    font-family: "Segoe UI", sans-serif;
+    scroll-behavior: smooth;
+    border-right: 1px solid #bec1c3;
+}
+
+.goBackBtn {
+  margin-bottom: 16px;
+  background: #eee;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.jobCardTop {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.detailImage {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.jobMainInfo {
+  flex: 1;
+}
+
+.detailTitle {
+  font-size: 24px;
+  margin: 0;
+  font-weight: bold;
+}
+
+.detailCompany {
+  font-size: 16px;
+  color: gray;
+  margin-bottom: 8px;
+}
+
+.detailCategory {
+  background: #e2e8f0;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.detailDesc {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #444;
+}
+
+.jobDetailsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+  font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+}
+.eachImgIcon{
+  height: 20px;
+  width: 20px;
+}
+.jobSection {
+  margin-top: 20px;
+}
+
+.jobSection h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.jobSection ul {
+  padding-left: 20px;
+}
+
+.jobSection li {
+  margin-bottom: 6px;
+}
+.SerachBarDetails{
+  width: 305px;
+  height: 91vh;
+  border: 1px solid gray;
+  margin-left: 1px;
+  border-radius: 5px;
+
+  display: flex;           /* ✅ enable vertical layout */
+  flex-direction: column;
+}
+.searchDivider {
+height: 6px;
+  background: linear-gradient(to bottom, rgba(128, 128, 128, 0.15), rgba(128, 128, 128, 0));
+  margin-bottom: 8px;
+}
+
+.searchEachJob{
+    margin-top: 20px;
+  margin-left: 10px;
+  margin-bottom: 23px;
+  width: 81%;
+  height: 33px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  
+
+  padding-left: 30px; /* Make space for the icon */
+  background: url('../../assets/search.png') no-repeat 8px center;
+  background-size: 16px 16px;
+   opacity: 0.7;
+}
+.detailsOfeachjob{
+  flex: 1;                 /*  take up all remaining height */
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-top: 17px;
+  margin-left: 7px;
+  width: 93%;
+  padding-right: 10px;   
+    scroll-behavior: smooth; 
+  /*  Add right padding to push items away from scrollbar */
+}
+.eachJobItems{
+height: auto;
+    min-height: 160px;
+     width: 93%;
+    background-color: white;
+    border: 2px solid #d6d5d5;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.eachJobItems2{
+  height: auto;
+    min-height: 160px;
+    width: 93%;
+    background-color: white;
+    border: 2px solid #b91f1f;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.itemRight{
+ 
+  height: 20%;
+  width: 80%;
+  
+}
+.imageSearPar{
+     height: 60px;
+    width: 59px;
+    border-radius: 4px;
+      object-fit: cover;
+}
+.itemRight {
+    position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 95%;
+  background-color: #f2f8ff; /* light blue background */
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.imageSearPar {
+  height: 60px;
+  width: 60px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.jobInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.jobTitle {
+      font-family: 'Poppins', sans-serif;
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+.businessName {
+  margin: 2px 0;
+  font-size: 8px;
+  color: #555;
+}
+
+.jobCategory {
+display: inline-block;
+    padding: 2px 6px;
+    font-size: 6px;
+    color: #007bff;
+    background-color: #e6f0ff;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    margin-top: 16px;
+}
+.editJobCate{
+     margin-left: 15px;
+    margin-top: 10px;
+}
+.locImg2{
+  height: 12px;
+  width: 12px;
+}
+.LocationCategory{
+  font-size:8px ;
+  padding-top: 2px;
+}
+.metaInfo {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+.postedDay{
+position: absolute;
+    top: -3px;
+    right: -6px;
+    font-size: 6px;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-weight: bold;
+    color: gray;
+}
+.belowDetail {
+  display: flex;
+  gap: 7px; /* adds space between the labels */
+}
+
+.detailsReq {
+    font-size: 7px;
+    background-color: #e0e0e0;
+    padding: 3px 3px;
+    border-radius: 4px;
+    font-weight: 500;
+    color: #333;
+    margin-top: 10px;
+}
+.detailsReq2 {
+   background-color: #ffecec;
+  color: #ff4d4d;
+    font-size: 7px;
+    border: 1px solid #ff4d4d ;
+    padding: 3px 3px;
+    border-radius: 4px;
+    font-weight: 500;
+  
+    margin-top: 10px;
+}
+.borderLine{
+  height: 1px;
+  background-color: #888;
+}
+.borderBelowDetail{
+  display: flex;
+}
+.belowDetails{
+font-size: 9px;
+    margin-left: 10px;
+    margin-top: 12px;
+    display: flex
+;
+    align-items: center;
+    gap: 6px;
+}
+.belowDetailContent{
+  margin-left: 1px;
+}
+.belowDetailImage{
+  height: 20px;
+  width: 20px;
+}
+.SelectedContent {
+ background-color: #fff;
+  width: 80%;
+  padding: 20px;
+  box-sizing: border-box;
+  color: #000;
+  border: none;
+  box-shadow: none;
+  height: 94%;             /* Fill available space */
+  overflow-y: auto; 
+}
+.jobDetailCard {
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.header {
+  display: flex;
+  
+
+}
+.editBtn{
+ height: 34px;
+    width: 91px;
+    margin-left: 122px;
+    border: 1px solid gray;
+    background-color: transparent;
+    border-radius: 6px;
+}
+.jobImage {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+.busineTitle {
+  font-size: 24px;
+  font-weight: 700;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 5px 0;
+}
+
+.busineName {
+    font-size: 16px;
+    font-weight: 500;
+    color: #444;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin: 11px 4px 9px 13px;
+}
+.editIcon{
+  height: 20px;
+  width: 20px;
+  margin-left: 10px;
+}
+.jobCate {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    color: #007bff;
+    background-color: #e6f0ff;
+    border: 1px solid #007bff;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 10px;
+    margin-left: 12px;
+}
+.expired-warning {
+  color: red;
+  margin-left: 10px;
+  font-size: 13px;
+}
+.headerText h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.jobDescription {
+  margin: 20px 0;
+}
+
+.jobMeta p {
+  margin: 5px 0;
+}
+
+.jobSection h3 {
+  margin-top: 20px;
+}
+
+.jobSection ul {
+  padding-left: 20px;
+}
+
+.rightSideBar{
+  width: 250px;
+  transition: width 0.3s ease; /* Smooth transition (optional) */
+  
+  padding: 10px;
+  box-sizing: border-box;
+}
+.expandedSidebar {
+  width: 600px; /* Or whatever increased width you want */
+}
+.showDetailsToEdit{
+     width: 101%;
+    border: 1px solid black;
+    height: 89vh;
+}
+.styled-input {
+     padding: 5px 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 58%;
+    font-size: 13px;
+}
+
+button {
+  margin-top: 5px;
+  font-size: 12px;
+  padding: 3px 6px;
+  cursor: pointer;
+}
+.editChangeInput{
+  display: flex;
+        border: 1px solid gray;
+    border-radius: 4px;
+    width: 102%;
+    height: -1%;
+    height: 42px;
+}
+.textAreaEdit{
+     height: 145px;
+    width: 485px;
+    border: 1px solid gray;
+    border-radius: 4px;
+}
+
+.working-days-label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.working-days-view {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #333;
+}
+
+.edit-info {
+  font-style: italic;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.amount-section {
+  margin-bottom: 16px;
+}
+
+.amount-edit-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.styled-input {
+  padding: 6px;
+  width: 124px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.styled-input2{
+  height: 40px;
+   padding: 6px;
+  width: 374px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 3px;
+}
+.styled-select {
+    padding: 3px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 33px;
+    margin-top: 5px;
+}
+
+.readonly-days-input {
+  margin-bottom: 10px;
+  padding: 4px;
+  width: 30%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.working-days-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.checkbox-label {
+  margin-right: 12px;
+  font-size: 14px;
+}
+
+.editDaysInput {
+  margin-right: 4px;
+  
+}
+.applicantsHiredEdit{
+    margin-top: 4px;
+    height: 35px;
+    margin-bottom: 8px;
+    width: 100px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.LocationEdit{
+    margin-top: 4px;
+   height: 35px;
+    width: 250px;
+        border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.buttonEditRes{
+  height: 30px;
+    width: 57px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 10px;
+    background-color: transparent;
+}
+.remove-btn{
+    height: 23px;
+    width: 28px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 10px;
+    background-color: transparent;
+    margin-left: 10px;
+}
+.editIcon{
+  height: 20px;
+  width: 20px;
+  margin-left: 5px;
+}
+.editBtnGroup {
+  position: absolute;
+  display: flex;
+  margin-left: 111px; /* Don't touch this as per your note */
+  gap: 12px; /* Adjust spacing between Save and Cancel icon */
+  align-items: center;
+}
+
+/* Save button styling (optional enhancement) */
+.saveBtn {
+  padding: 6px 10px;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Cancel icon with black rounded border */
+.cancelIcon {
+    width: 41px;
+    height: 31px;
+    padding: 3px;
+    border: 1px solid black;
+    
+    cursor: pointer;
+    object-fit: contain;
+    margin-top: 6px;
+    border-radius: 3px;
+}

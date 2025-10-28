@@ -1,0 +1,195 @@
+<form [formGroup]="profileForm" (ngSubmit)="saveDetails()" novalidate>
+  <div class="profileContainer">
+    <!-- Left Section: Profile Info -->
+       <div class="profileTitle">
+        <p class="profileTitleText">Profile Info</p>
+      </div>
+    <div class="profileCard">
+    
+
+      <div class="profileContent">
+        <!-- Profile Image -->
+      
+     <div class="leftSide">
+
+            <div class="profileImageWrapper">
+  <img 
+    [src]="employerDetails.profileImg|| 'assets/profile.png'" 
+    alt="profile" 
+    class="profileImage" 
+  />
+</div>
+
+<!-- Hidden file input  -->
+<input 
+  type="file" 
+  id="imageUpload" 
+  #fileInput 
+  (change)="onFileSelected($event)" 
+  style="display: none;" 
+  accept="image/*"
+/>
+
+<!-- Upload Button -->
+<button 
+  class="uploadBtn" 
+  type="button" 
+  *ngIf="isEditing"
+  (click)="triggerFileInput()"
+>
+  Upload Image
+</button>
+<br>
+<div class="imgePre" *ngIf="selectedImage">{{ selectedImage.name }}</div>
+
+     </div>
+  
+        <!-- Name and Info -->
+        <div class="profileInfo">
+            
+            <div class="profileHeader">
+  <p class="profileName" *ngIf="!isEditing">{{ employerDetails.personName }}</p>
+
+  <div *ngIf="isEditing" class="inputContainer">
+    <input
+      placeholder="Name"
+      type="text"
+      class="profileName2"
+      formControlName="personName"
+    />
+
+    <div
+      *ngIf="profileForm.get('personName')?.invalid && profileForm.get('personName')?.touched"
+      class="error"
+    >
+      Name is required (min 4 characters).
+    </div>
+  </div>
+
+  <div *ngIf="isEditing" class="btnGroup">
+    <button class="editbtnSave" [disabled]="profileForm.invalid" type="submit">
+      Save
+    </button>
+    <button class="editbtn" (click)="cancelEditing()" type="button">
+      Cancel
+    </button>
+  </div>
+</div>
+
+
+           <div class="detailItem">
+          
+              <p class="detailValueProfile" *ngIf="!isEditing">{{ employerDetails.jobPosition }}</p>
+              <input class="inputEdit1" *ngIf="isEditing" type="text"
+                    formControlName="jobPosition" />
+              <div *ngIf="isEditing && profileForm.get('jobPosition')?.invalid && profileForm.get('jobPosition')?.touched" class="error2">
+                Role is required (min 4 characters).
+              </div>
+            </div>
+              <div class="lineBorder"></div>
+
+
+                <div class="detailItem2">
+              <p class="detailLabel">Phone No</p>
+              <p class="detailValue" *ngIf="!isEditing">{{ employerDetails.contactNumber }}</p>
+              <input class="inputEdit" *ngIf="isEditing" type="text"
+                    formControlName="contactNumber" />
+              <div *ngIf="isEditing && profileForm.get('contactNumber')?.invalid && profileForm.get('contactNumber')?.touched" class="error">
+                Phone must be exactly 10 digits.
+              </div>
+            </div>
+
+              <div class="detailItem2">
+              <p class="detailLabel">Email Id</p>
+              <p class="detailValue" *ngIf="!isEditing">{{ employerDetails.email }}</p>
+              <input class="inputEdit" *ngIf="isEditing" type="email"
+                    formControlName="email" />
+              <div *ngIf="isEditing && profileForm.get('email')?.invalid && profileForm.get('email')?.touched" class="error">
+                Please enter a valid email.
+              </div>
+            </div>
+
+             <div class="detailItem2">
+              <p class="detailLabel">Business Name</p>
+              <p class="detailValue" *ngIf="!isEditing">{{ employerDetails.jobPlace }}</p>
+              <input class="inputEdit" *ngIf="isEditing" type="text"
+                    formControlName="jobPlace" />
+              <div *ngIf="isEditing && profileForm.get('jobPlace')?.invalid && profileForm.get('jobPlace')?.touched" class="error">
+                Business Name is required (min 4 characters).
+              </div>
+            </div>
+
+              <div class="detailItem2">
+              <p class="detailLabel">Business Address</p>
+              <p class="detailValue" *ngIf="!isEditing">{{ employerDetails.companyAddress }}</p>
+              <input class="addressInput" *ngIf="isEditing" type="text"
+                    formControlName="companyAddress" />
+              <div *ngIf="isEditing && profileForm.get('companyAddress')?.invalid && profileForm.get('companyAddress')?.touched" class="error">
+                Business Address is required (min 4 characters).
+              </div>
+            </div>
+
+           <button class="editbtn" *ngIf="!isEditing" (click)="startEditing()" type="button">
+              Edit Info
+              <img src="../../assets/edit.png" height="10px" width="10px">
+            </button>
+       
+
+          
+        </div>
+      </div>
+        <div class="NotificationDiv">
+    <div class="HeadingNotfication">
+      <div class="ImagDivNoti">
+        <img src="../../assets/notification.png" class="NotiSize" alt="" srcset="">
+      </div>
+        <div class="NotificationTitle">Notifications</div>
+    </div>
+    <div class="DescriptionShowingNotification">
+      <ng-container *ngIf="employersNotifications.length>0">  
+       <div class="NotificationContent" *ngFor="let nots of employersNotifications">
+       <div class="notification-message">{{nots.message}}</div>
+    
+        <button (click)="DeleteNoti(nots.employerId,nots.createdAt)"  class="DeleteNotification">x</button>
+       </div>
+        
+       
+        
+       
+      
+       </ng-container> 
+    </div>
+  </div>
+    </div>
+
+    <!-- Right Section: Connections  -->
+   
+  </div>
+</form>
+<div class="ShowLoading" *ngIf="loadingService.loading$ |async">
+     <svg
+    class="container"
+    viewBox="0 0 40 40"
+    height="40"
+    width="40"
+  >
+    <circle 
+      class="track"
+      cx="20" 
+      cy="20" 
+      r="17.5" 
+      pathlength="100" 
+      stroke-width="5px" 
+      fill="none" 
+    />
+    <circle 
+      class="car"
+      cx="20" 
+      cy="20" 
+      r="17.5" 
+      pathlength="100" 
+      stroke-width="5px" 
+      fill="none" 
+    />
+  </svg>
+</div>

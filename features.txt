@@ -5,4 +5,7 @@
 3.1) partime to post their job
 3.2)users to check partime job
 
-users can write their reviews on their experince in their part time job
+4)users can write their reviews on their experince in their part time job
+5)place where they can search their jobs 
+6)places that available should vreid description about it like owner name a
+7)some jobs have to provide resumes

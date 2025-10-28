@@ -1,0 +1,167 @@
+.MainEmployee {
+  display: flex;      /* makes left and right side by side */
+  gap: 10px;          /* this controls the space between left and right */
+  justify-content: center;  /* optional: center in parent */
+  align-items: flex-start;  /* optional: align top */
+    font-family: 'Poppins', sans-serif;
+}
+.heading{
+    margin-left: 208px;
+    margin-top: 20px;
+    font-family: "Poppins", sans-serif;
+}
+.smallHead{
+    margin-left: 185px;
+    
+}
+.left, .right {
+  flex: 1;            /* they grow equally */
+  max-width: 38%;     /* optional: forces half and half */
+}
+
+.inputStyle {
+  height: 40px;
+    width: 220px;
+  border-radius: 8px;
+  border: 2px solid rgb(197, 195, 195);
+  margin-bottom: 10px;  /* This gives it a gray border */
+}
+.inputStyleLeft{
+    height: 40px;
+     border-radius: 8px;
+      
+     width: 220px;
+     border: 2px solid rgb(197, 195, 195);
+  margin-bottom: 10px;
+}
+.inputStyleLeft::placeholder {
+  color: #888;          /* Example: Grayish placeholder text */
+  font-size: 14px;      /* Example: Adjust font size */
+   font-family: 'Poppins', sans-serif;  /* Example: Make it italic */
+  /* Add any other styles you want */
+  padding-left: 10px;
+}
+.btn{
+margin-top: 39px;
+    margin-left: -91px;
+    height: 39px;
+    width: 104px;
+    border: 1px solid rgb(221, 181, 181);
+    background-color: blue;
+    border-radius: 5px;
+    color: white;
+    margin-bottom: 10px;
+      font-family: 'Poppins', sans-serif;
+}
+.Right{
+    margin-top: 20px;
+    margin-left: 5px;
+    margin-right: 40px;
+}
+.Left{
+       margin-top: 20px;
+    margin-right: 100px;
+    margin-left: 34px;
+}
+.Title {
+  font-size: 16px;              /* Bigger & clear for labels/titles */
+  font-weight: bold;            /* Make it bold */
+  font-family: 'Poppins', sans-serif;
+  color: #333;                  /* Optional: dark grey is nice for labels */
+           /* Optional: spacing below the title */
+}
+.form-group {
+  margin-bottom: 15px; /* Space between form groups */
+}
+
+.inputStyle {
+  display: block;
+
+
+}
+.inputStyleLeft {
+  display: block;
+  width: 110%;
+
+}
+
+
+.error {
+    margin-top: 5px;
+    color: red;
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.warning {
+  display: block; /* Stack messages vertically */
+  margin: -2px ;  /* Tiny gap between multiple warnings */
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.ForShowingLoadingPage{
+  position: absolute;
+    height: 95%;
+    top: 55px;
+    width: 100%;
+    background-color: rgba(41, 41, 40, 0.21);
+    left: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+  --uib-size: 40px;
+  --uib-color: #007bff; /* <-- change color here */
+  --uib-speed: 2s;
+  --uib-bg-opacity: 0;
+  height: var(--uib-size);
+  width: var(--uib-size);
+  transform-origin: center;
+  animation: rotate var(--uib-speed) linear infinite;
+  will-change: transform;
+  overflow: visible;
+}
+
+.car {
+  fill: none;
+  stroke: var(--uib-color);
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  animation: stretch calc(var(--uib-speed) * 0.75) ease-in-out infinite;
+  will-change: stroke-dasharray, stroke-dashoffset;
+  transition: stroke 0.5s ease;
+}
+
+.track {
+  fill: none;
+  stroke: var(--uib-color);
+  opacity: var(--uib-bg-opacity);
+  transition: stroke 0.5s ease;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes stretch {
+  0% {
+    stroke-dasharray: 0, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 75, 150;
+    stroke-dashoffset: -25;
+  }
+  100% {
+    stroke-dashoffset: -100;
+  }
+}

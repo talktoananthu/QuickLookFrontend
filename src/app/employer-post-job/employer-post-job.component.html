@@ -1,0 +1,503 @@
+
+ <div class="child-scrollable" #scrollContainer>
+
+<!-- div for showing details to fill of job post -->
+<div *ngIf="!showDetailsForPostJob" >
+
+<button (click)="addJob()" class="PostJobtn"> + Post Job</button>
+      
+      <div  *ngIf="jobsAvailable" class="availableJobs">
+     <div class="belowStage">
+  <p class="availableText">Posted Jobs</p>
+  <div class="underline"></div>
+</div>
+   <ng-container *ngIf="AvailablePostedJobs.length >0">
+         <div class="postedJobs"> 
+  <div  class="jobsGrid">
+    <div (click)="goToPostedJObs(job.jobPostId)" class="eachJobs" *ngFor="let job of AvailablePostedJobs">
+      <div  class="jobHeader">
+        <div   class="leftHead">
+          <img [src]="job.image" alt="job" class="jobImg" />
+          <div class="jobText">
+            <p class="jobTitle">{{ job.jobTitle }}</p>
+            <p class="company">{{ job.businessName }}</p>
+            <p class="company2">
+              <img src="../../assets/location.png" class="locImg" />
+              {{ job.location.area }}, {{ job.location.city }}, {{ job.location.state }}
+            </p>
+          </div>
+        </div>
+        <div class="rightHead">
+          <p class="postedDate">Posted {{ getDaysAgo(job.postedDay) }}</p>
+        <button class="dotsBtn" (click)="handleMenu(job.jobPostId); $event.stopPropagation()">&#8942;</button>
+        </div>
+       <div class="menu-options" *ngIf="menuOpenJobId === job.jobPostId" (click)="$event.stopPropagation()">
+  <div class="Opt" (click)="onEdit(job.jobPostId); $event.stopPropagation()">✏️ Edit</div>
+  <div class="Opt" (click)="onMoreInfo(job.jobPostId); $event.stopPropagation()">ℹ️ More Info</div>
+</div>
+      </div>
+
+      <div class="jobMetaRow">
+        <span class="jobBadge">{{ job.jobCategory }}</span>
+      </div>
+
+      <p class="jobDesc">{{ job.description }}</p>
+
+      <div class="jobStats">
+        <span class="metaBox">Applicants: {{ job.applicantsRequired }}</span>
+        <span class="metaBox">Hired: {{ job.hired }}</span>
+        <span class="metaBox">Job expires: {{ getDaysLeft(job.lastDay) }}</span>
+        <span class="urgentTag" *ngIf="job.availabilty === 'Immediate Hiring'">Urgent hiring</span>
+        <span class="urgentTag" *ngIf="job.resumeNeed === 'Yes'">Resume Needed</span>
+      </div>
+
+      <div class="borderDiv"></div>
+
+      <div class="jobFooter">
+        <span><img src="../../assets/maxhour.png" class="ImgHr"> {{ job.startTime }} - {{ job.endTime }}</span>
+        <span><img src="../../assets/dollar.png" class="amnt">{{ job.amount }}</span>
+        <span><img src="../../assets/part-time.png" class="partTimeImg">  {{ job.jobType }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+</ng-container>
+<div class="ShowLoading" *ngIf="loadingService.loading$ | async">
+   <svg
+    class="container"
+    viewBox="0 0 40 40"
+    height="40"
+    width="40"
+  >
+    <circle 
+      class="track"
+      cx="20" 
+      cy="20" 
+      r="17.5" 
+      pathlength="100" 
+      stroke-width="5px" 
+      fill="none" 
+    />
+    <circle 
+      class="car"
+      cx="20" 
+      cy="20" 
+      r="17.5" 
+      pathlength="100" 
+      stroke-width="5px" 
+      fill="none" 
+    />
+  </svg>
+</div>
+<ng-container *ngIf="AvailablePostedJobs.length <0 && !(loadingService.loading$ |async)">
+  <div class="NoJObPosted">
+    <img src="../../assets/nojobposted.png" class="ImgNoJObPosted" alt="">
+    <div>No Job Posted</div>
+  </div>
+</ng-container>
+      </div>
+</div>
+
+
+
+<!-- Below div shows the available posted Job-->
+
+<!-- div for showing  available job post -->
+ <div *ngIf="showDetailsForPostJob">
+ <div class="jobHeader">
+  <button class="jobHeaderBtn" (click)="gotoJobPost()">Go Back</button>
+  <h3 class="jobHeaderTitle">Find reliable part-timers without the hassle — post your job now!</h3>
+
+</div>
+ 
+
+
+ <!-----------------Forms validation // End  ----------------->
+
+
+
+   <div  class="desContent">
+     
+     <form class="job-post-form" [formGroup]="jobForm">
+
+
+        <button [disabled]="jobForm.invalid" class="Postbutton" (click)="ShowPostedData()">Post </button>
+  <!-- Row 1 -->
+  <div class="row1">
+    <div >
+      <label class="formJobtitle">Job Title <span>*</span></label>
+      <br>
+      <input class="jobtitle" formControlName="jobTitle" type="text" />
+       <div *ngIf="jobForm.get('jobTitle')?.touched && jobForm.get('jobTitle')?.invalid" class="error">
+    <div *ngIf="jobForm.get('jobTitle')?.errors?.['required']">Job Title is required.</div>
+    <div *ngIf="jobForm.get('jobTitle')?.errors?.['minlength']">Minimum 6 characters required.</div>
+  </div>
+    </div>
+
+    <div >
+      <label>Business Name <span>*</span></label>
+      <br>
+      <input  class="businessTitle" formControlName="businessName" type="text" />
+        <div *ngIf="jobForm.get('businessName')?.touched && jobForm.get('businessName')?.invalid" class="error">
+    <div *ngIf="jobForm.get('businessName')?.errors?.['required']">Business Name is required.</div>
+   
+  </div>
+    </div>
+  <!-- Job Category -->
+    <div class="form-group">
+    
+ <label>Job Category <span>*</span></label>
+ <br>
+<select class="businessTitle" formControlName="jobCateType">
+  <option class="businessTitle" value="" disabled>Select Job Type</option> <!-- This acts as placeholder -->
+  <option  class="businessTitle" value="Food & Beverage">Food & Beverage</option>
+  <option class="businessTitle" value="Hospitality">Hospitality</option>
+  <option class="businessTitle" value="House Keeping">House Keeping</option>
+  <option class="businessTitle" value="Manual Labour">Manual Labour</option>
+  <option class="businessTitle" value="Retail">Retail</option>
+</select>
+  <div *ngIf="jobForm.get('jobCateType')?.touched && jobForm.get('jobCateType')?.invalid" class="error">
+    <div *ngIf="jobForm.get('jobCateType')?.errors?.['required']">Select a Category</div>
+  </div>
+</div>
+  </div>
+
+   <!--     row2 -->
+
+<div class="row2">
+  <div class="field-section2">
+    <label class="field-label0">Job Type <span>*</span></label>
+    <select class="input-field1" formControlName="jobType">
+      <option value="" disabled selected>Select Job Type</option>
+      <option value="Part-time">Part-time</option>
+      <option value="Full-time">Full-time</option>
+    </select>
+     <div *ngIf="jobForm.get('jobType')?.touched && jobForm.get('jobType')?.invalid" class="error2">
+    <div *ngIf="jobForm.get('jobType')?.errors?.['required']">Select a Job Type</div>
+  </div>
+  </div>
+
+ <!-- Entering the Area -->
+
+  <div class="field-section2">
+    <label class="field-label1">Area <span>*</span></label>
+      <div class="input-with-icon">
+    <img src="../../assets/location.png" alt="Location Icon" class="input-icon" />
+    <input class="input-field2" formControlName="area" type="text" />
+  </div>
+      <div *ngIf="jobForm.get('area')?.touched && jobForm.get('area')?.invalid" class="error2">
+    <div *ngIf="jobForm.get('area')?.errors?.['required']">Enter area</div>
+  </div>
+  </div>
+   <!-- Entering the city-->
+   <div class="field-section2">
+    <label class="field-label1">city <span>*</span></label>
+      <div class="input-with-icon">
+    <img src="../../assets/location.png" alt="Location Icon" class="input-icon" />
+    <input class="input-field2" formControlName="city" type="text" />
+  </div>
+      <div *ngIf="jobForm.get('city')?.touched && jobForm.get('city')?.invalid" class="error2">
+    <div *ngIf="jobForm.get('city')?.errors?.['required']">Enter city</div>
+  </div>
+  </div>
+
+   <!-- Entering the state-->
+   <div class="field-section2">
+    <label class="field-label1">state <span>*</span></label>
+      <div class="input-with-icon">
+    <img src="../../assets/location.png" alt="Location Icon" class="input-icon" />
+    <input class="input-field2" formControlName="state" type="text" />
+  </div>
+      <div *ngIf="jobForm.get('state')?.touched && jobForm.get('state')?.invalid" class="error2">
+    <div *ngIf="jobForm.get('state')?.errors?.['required']">Enter city</div>
+  </div>
+  </div>
+
+  <div class="field-section2">
+    <label class="field-label">Availability</label>
+    <select class="input-field3" formControlName="availableType">
+      <option value="" disabled selected>Availability</option>
+      <option value="Immediate hiring">Immediate hiring</option>
+    </select>
+  
+  </div>
+</div>
+ <!--     row3-->
+<div class="row3">
+    
+ <div class="income-section">
+  <div class="income-item">
+    <label>Income Type</label>
+    <select class="input-field4" formControlName="incomeType">
+      <option value="" disabled selected>Select Income Type</option>
+      <option value="daily">Daily</option>
+      <option value="weekly">Weekly</option>
+    </select>
+    <div *ngIf="jobForm.get('incomeType')?.touched && jobForm.get('incomeType')?.invalid" class="error">
+      <div *ngIf="jobForm.get('incomeType')?.errors?.['required']">Income type is required.</div>
+      
+    </div>
+  </div>
+
+ <div class="income-item">
+  <label>Amount</label>
+  <div class="amount-container">
+    <input type="number" formControlName="amount" class="amount-input" placeholder="Enter amount" />
+    <span class="unit-label" *ngIf="jobForm.get('incomeType')?.value === 'daily'">Hourly</span>
+    <span class="unit-label" *ngIf="jobForm.get('incomeType')?.value === 'weekly'">Weekly</span>
+  </div>
+  <div *ngIf="jobForm.get('amount')?.touched && jobForm.get('amount')?.invalid" class="error">
+    <div *ngIf="jobForm.get('amount')?.errors?.['required']">Amount is required.</div>
+    <div *ngIf="jobForm.get('amount')?.errors?.['min']">Amount must be greater than 0.</div>
+  </div>
+</div>
+</div>
+
+
+<div class="working-days-section">
+  <label>Working Days <span>*</span></label><br />
+  <div class="checkbox-grid">
+    <div class="checkbox-item" *ngFor="let day of daysOfWeek">
+      <input
+        type="checkbox"
+        [value]="day"
+        (change)="onWorkingDayChange($event)"
+        [checked]="jobForm.controls['workingDays'].value.includes(day)"
+      />
+      <label>{{ day }}</label>
+    </div>
+  </div>
+
+  <div class="error" *ngIf="jobForm.controls['workingDays'].touched && jobForm.controls['workingDays'].invalid">
+    Please select at least one working day.
+  </div>
+</div>
+
+
+<div class="selected-days-display">
+  <label>Selected Days</label><br />
+  <input type="text" [value]="jobForm.controls['workingDays'].value.join(', ')" readonly />
+</div>
+
+  <div class="time-selection">
+  <label>Working Time <span>*</span></label><br />
+
+  <div class="time-range">
+    <!-- Start Time Input -->
+    <div class="time-input-wrapper">
+      <input
+        type="time"
+        formControlName="startTime"
+        class="time-input"
+        placeholder="Start Time"
+      />
+      <div class="error" *ngIf="jobForm.controls['startTime'].touched && jobForm.controls['startTime'].invalid">
+        Start time is required.
+      </div>
+      <div class="error" *ngIf="jobForm.controls['startTime'].touched && jobForm.controls['startTime'].errors?.['invalidTime']">
+    Enter a valid time in 24-hour format (HH:mm)
+  </div>
+    </div>
+
+    <span class="to-text">to</span>
+
+    <!-- End Time Input -->
+    <div class="time-input-wrapper">
+      <input
+        type="time"
+        formControlName="endTime"
+        class="time-input"
+        placeholder="End Time"
+      />
+      <div class="error" *ngIf="jobForm.controls['endTime'].touched && jobForm.controls['endTime'].invalid">
+        End time is required.
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+ <!--     row4 -->
+<div class="row4">
+  <div class="descriptContent">
+    <label >Description</label>
+   <br>
+    <textarea
+   
+      placeholder="Description about job title"
+      class="description"
+      rows="4"
+      formControlName="description">
+    </textarea>
+    <br>
+         <span class="error"
+          *ngIf="jobForm.get('description')?.touched && 
+          jobForm.get('description')?.errors?.['required']" >
+    description about job  is required.
+          </span>
+  </div>
+  <div class="ApplicantsField">
+      <label > Applicants </label>
+      <br>
+      <input type="number" class="Applicants" formControlName="noOfApplicants" placeholder="Applicants Required">
+   <br>
+         <span class="error"
+          *ngIf="jobForm.get('noOfApplicants')?.touched && 
+          jobForm.get('noOfApplicants')?.errors?.['required']" >
+    Number of applicants is required.
+          </span>
+
+  <span
+    class="error"
+    *ngIf="jobForm.get('noOfApplicants')?.touched && jobForm.get('noOfApplicants')?.errors?.['min']"
+  >
+    Must be at least 1 applicant.
+  </span>
+  </div>
+    <div class="field-section2">
+    <label class="field-label2">Resume </label>
+    <select class="input-field8" formControlName="resume">
+      <option value="" disabled selected>Resume Needed</option>
+      <option value="Yes">Yes</option>
+    
+    </select>
+  
+  </div>
+   <div class="uploadImageSection">
+  <label for="imageUpload"><strong>Upload an Image of Your Business</strong></label>
+<small class="label-hint">
+  (e.g., Restaurant, Café, Shopfront, or Business Logo)
+</small>
+  <br />
+  <input
+    type="file"
+    id="imageUpload"
+    accept="image/*"
+    (change)="onImageSelected($event)"
+    class="imageUploadInput"
+  />
+ 
+</div>
+
+
+</div>
+
+
+ <!--     row5 -->
+<div class="row5">
+  <!-- Responsibilities -->
+
+<div class="field-box1" formArrayName="responsibilities">
+  <label>Responsibilities</label>
+
+  <div *ngFor="let control of responsibilities.controls; let i = index">
+    <input class="inputRes1" [formControlName]="i" placeholder="Add responsibility" />
+
+    <!-- Side-by-side buttons -->
+    <div class="button-group">
+      <button type="button" *ngIf="responsibilities.length > 1" class="removeBtn" (click)="removeResponsibility(i)">−</button>
+      <button type="button" class="addBtn1" (click)="addResponsibility()">+</button>
+    </div>
+
+    <span class="error" *ngIf="control.touched && control.errors?.['required']">
+      Responsibility is required.
+    </span>
+    <span class="error" *ngIf="control.touched && control.errors?.['minlength']">
+      Must be at least 3 characters.
+    </span>
+  </div>
+</div>
+
+<!-- Requirements -->
+<div class="field-box2" formArrayName="requirements">
+  <label  class="requirementStyle">Requirements
+    
+  </label>
+
+  <div *ngFor="let control of requirements.controls; let i = index">
+    <input  class="inputRes2" [formControlName]="i" placeholder="Add requirement" />
+
+    <!-- Side-by-side buttons -->
+    <div class="button-group2">
+      <button type="button" *ngIf="requirements.length > 1" class="removeBtn2" (click)="removeRequirement(i)">−</button>
+      <button type="button" class="addBtn2" (click)="addRequirement()">+</button>
+    </div>
+
+    <span class="error" *ngIf="control.touched && control.errors?.['required']">
+      Requirement is required.
+    </span>
+    <span class="error" *ngIf="control.touched && control.errors?.['minlength']">
+      Must be at least 3 characters.
+    </span>
+  </div>
+</div>
+<!-- Last Date -->
+  <div class="lastDate">
+        <label class="lastDayLabel">Last Date</label>
+        <br>
+  <input
+    type="date"
+   
+    class="lastDateInput"
+    placeholder="e.g. 23-Jul-25"
+    formControlName="lastDay"
+  />
+  <br>
+  <!-- Error if empty -->
+   <div>
+     <span class="errorlastDay" *ngIf="jobForm.get('lastDay')?.touched && jobForm.get('lastDay')?.hasError('required')">
+    Last date is required.
+  </span>
+ <span class="errorlastDay" *ngIf="jobForm.get('lastDay')?.touched && jobForm.get('lastDay')?.hasError('pastDate')">
+  Last Date must be today or  <br>
+  <span class="errorlastDay"></span> a future date.
+ </span>
+   </div>
+ 
+  </div>
+
+</div>
+
+
+
+
+
+
+
+</form>
+
+
+ <!-----------------Forms validation //End  ----------------->
+      </div>
+<div class="ShowLoadingPageForPostingJOb" *ngIf="loadingService.loading$ | async">
+  <svg
+    class="container"
+    viewBox="0 0 40 40"
+    height="40"
+    width="40"
+  >
+    <circle 
+      class="track"
+      cx="20" 
+      cy="20" 
+      r="17.5" 
+      pathlength="100" 
+      stroke-width="5px" 
+      fill="none" 
+    />
+    <circle 
+      class="car"
+      cx="20" 
+      cy="20" 
+      r="17.5" 
+      pathlength="100" 
+      stroke-width="5px" 
+      fill="none" 
+    />
+  </svg>
+</div>
+
+
+ </div>
+     

@@ -1,0 +1,1016 @@
+.MainHeadList{
+    height: 58px;
+    width: 100%;
+    border-bottom: 1px solid #a4a3a3;
+}
+.DiffCate{
+    width: 100%;
+    display: flex;
+}
+.ThreeCate{
+ height: 49px;
+    width: 308px;
+    background-color: #dee2e6;
+    margin-top: 4px;
+    margin-left: 10px;
+    border-radius: 5px;
+    display: flex;
+    gap: 1px;
+    
+}
+.ThreeCateCls{
+  margin-left: 5px;
+    margin-top: 5px;
+    height: 40px;
+    width: 95px;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    border:transparent;
+    font-size: 14px;              /* fixed, standard text size */
+  font-weight: bold;            /* makes text bold */
+   font-weight: 700;                   /* bold */
+  font-family: 'League Spartan', sans-serif;
+
+  /* Keeps text neat */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    
+}
+.ThreeCateNotSelectedCls{
+  margin-left: 5px;
+    margin-top: 5px;
+    height: 40px;
+    width: 95px;
+    background-color: transparent;
+    color: black;
+    border-radius: 5px;
+    border:transparent;
+    font-size: 14px;              /* fixed, standard text size */
+  font-weight: bold;            /* makes text bold */
+   font-weight: 700;                   /* bold */
+  font-family: 'League Spartan', sans-serif;
+
+  /* Keeps text neat */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    
+}
+.Statistics{
+    height: 126px;
+    width: 100%;
+    display: flex
+;
+    margin-top: 5px;
+}
+.Stat1{
+  position: relative;
+     margin-left: 10px;
+    height: 126px;
+    width: 231px;
+    border: 1px solid #c4c4c4;
+    border-radius: 5px;
+}
+.seeSchedules{
+position: relative;
+    top: -48px;
+    left: 108px;
+    width: 100px;
+    height: 24px;
+    background-color: white;
+    border: 1px solid #c4c4c4;
+    border-radius: 3px;
+      cursor: pointer;
+}
+.seeSchedules:active {
+  background-color: black;
+  color: white;
+}
+
+.StatDate {
+  position: absolute;
+  top: 10px;
+  left: 87px;
+  font-size: 12px;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  display: flex;               /* enable flexbox */
+  align-items: center;         /* vertically center content */
+  padding: 0 8px;              /* some horizontal padding */
+  height: 40px;                /* adjust height to fit nicely */
+  gap: 6px;                    /* space between image and text */
+  background-color: #fff;      /* optional, makes it look cleaner */
+   font-family: 'Poppins', sans-serif;
+}
+.StatDateSelect {
+  height: 20px;
+  width: 20px;
+}
+.StatImg{
+height: 46px;
+    width: 46px;
+    border-left: 1px solid #c4c4c4;
+        border-left: 1px solid #c4c4c4;
+            border-right: 1px solid #c4c4c4;
+               border-top: 1px solid #c4c4c4;
+    border-bottom: 3px solid #080808;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-left: 10px;
+      display: flex;              /* centers the image */
+  align-items: center;
+  justify-content: center;
+
+    
+}
+.StatImgIcon{
+   width: 65%;
+  height: 65%;
+  border-radius: 5px;         /* matches parent’s roundness */
+   object-fit: contain; 
+}
+.MainStat {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 17px;
+  margin-left: 10px;
+  font-weight: 600; /* semi-bold */
+  margin-top: 11px;
+  display: inline-block; 
+}
+.SubStatStat{
+    font-size:10px ;
+    margin-left: 10px;
+     color: #838383;
+  display: inline-block; 
+  font-family: 'League Spartan', sans-serif;
+}
+.BelowTableContent{
+  position: relative;
+}
+.LimitSchedules{
+       position: absolute;
+    height: 460px;
+    width: 367px;
+    border-radius: 5px;
+    background-color: #fdfcfc;
+    border: 1px solid #c4c4c4;
+    margin-top: -82px;
+    margin-left: 514px;
+    z-index: 5;
+}
+.simpleline {
+     position: absolute;
+    top: 2px;
+    left: 25px;
+    height: 5px;
+    width: 85%;
+    background-color: #8e4646;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.LimitSchedulesTopContent{
+height: 62px;
+    width: 100%;
+   
+    position: absolute;
+    top: 19px;
+}
+.ImageLimitSchedules{
+height: 60px;
+    width: 61px;
+    
+    position: absolute;
+    left: 10px;
+}
+.ImageLimitSchedulesShiftTime {
+       width: 100%;
+    height: 66%;
+    object-fit: contain;
+    border-radius: 0;
+    top: 5p;
+    margin-top: 9px;
+    margin-left: 5px;
+}
+.TitleLimitSchedules {
+  display: inline-block;   /* keep title+subtitle grouped */
+  position: relative;
+  left: 78px;
+  top: 10px;
+  margin-right: 20px;      /* spacing between groups if multiple */
+    font-family: 'Poppins', sans-serif;
+}
+
+.SubTitleLimitSchedules {
+  font-size: 10px;
+  color: #5a5959;
+  margin-top: 2px;         /* small controlled gap */
+  white-space: nowrap;     /* 👈 keeps subtitle in ONE line */
+}
+.clsBtnLimitSchedules{
+     position: absolute;
+    left: 318px;
+    top: 10px;
+    background-color: #ffffff;
+    border-radius: 3px;
+    border: 1px solid #c4c4c4;
+    cursor: pointer;
+}
+.clsBtnLimitSchedules:active {
+  background-color: black;
+  color: white;
+}
+.CalendarDetails{
+  display: flex;
+}
+.CalenderSchedules {
+  width: 93%;
+  
+  position: absolute;
+  top: 95px;
+
+  display: flex;
+  gap: 10px;
+  margin-left: 8px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding: 5px;
+  -webkit-overflow-scrolling: touch;
+
+  /* Firefox thin scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: #2196f3 #e6f0ff; /* thumb | track */
+}
+
+.CalenderSchedules::-webkit-scrollbar {
+  height: 6px; /* thin horizontal scrollbar */
+}
+
+.CalenderSchedules::-webkit-scrollbar-track {
+  background: #e6f0ff; 
+  border-radius: 10px;
+}
+
+.CalenderSchedules::-webkit-scrollbar-thumb {
+  background: #2196f3;
+  border-radius: 10px;
+}
+
+
+.CalenderSchedules::-webkit-scrollbar-corner {
+  background: transparent; /* removes corner square */
+}
+
+/* Firefox */
+.CalenderSchedules {
+  scrollbar-width: thin;                  /* thin scrollbar */
+  scrollbar-color: #2196f3 #e6f0ff;      /* thumb | track */
+}
+.rightArrow{
+ position: absolute;
+    top: 115px;
+    left: 341px;
+}
+.CalenderDate {
+  flex: 0 0 auto;                /* 👈 don’t shrink or grow */
+  height: 56px;
+  width: 49px;
+  border: 1px solid #c4c4c4;
+  box-sizing: border-box;
+  border-radius: 5px;
+ 
+    display: flex;
+    flex-direction: column;   /* stack month on top, number below */
+    justify-content: center;  /* vertically center content */
+    align-items: center;      /* horizontally center content */
+    
+}
+
+.CalenderDateMonth {
+    font-size: 10px;          /* small month text */
+    color: #555;
+    font-weight: 500;
+}
+
+.CalenderDateNumber {
+       font-size: 19px;
+    font-weight: 600;
+    color: #000;
+     font-family: 'Poppins', sans-serif;
+}
+.SchedulesCategories{
+margin-top: 8px;
+    height: 57px;
+    width: 100%;
+    border-bottom: 1px solid #c4c4c4;
+    display: flex
+;
+}
+.selected-date {
+  background-color: black;
+  color: white;
+  border: 1px solid black; /* optional to match background */
+}
+.selected-date .CalenderDateMonth,
+.selected-date .CalenderDateNumber {
+  color: white;
+}
+.UpcomingSchedules {
+   height: 230px;
+    width: 91%;
+    background-color: #dee2e6;
+    top: 182px;
+    position: absolute;
+    left: 11px;
+    border-radius: 5px;
+    gap: 10px;
+    overflow-y: auto;
+    padding: 5px;       /* optional: space inside */
+}
+
+/* Optional: style scrollbar (thin, blue) like before */
+.UpcomingSchedules::-webkit-scrollbar {
+    width: 6px;            /* thin vertical scrollbar */
+}
+
+.UpcomingSchedules::-webkit-scrollbar-track {
+    background: #e6f0ff; 
+    border-radius: 10px;
+}
+
+.UpcomingSchedules::-webkit-scrollbar-thumb {
+    background: #2196f3;
+    border-radius: 10px;
+}
+
+/* Firefox scrollbar */
+.UpcomingSchedules {
+    scrollbar-width: thin;
+    scrollbar-color: #2196f3 #e6f0ff;
+}
+.RemainingHours{
+    position: relative;
+    top: 430px;
+    left: 19px;
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+}
+.SchedulesList{
+  position: relative;
+    height: 55px;
+    width: 98%;
+    background-color: #ffffff;
+    margin-left: 4px;
+    margin-top: 4px;
+    border-radius: 5px;
+}
+.NoSchedulesToday{
+    margin-left: 119px;
+    margin-top: 57px;
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+   
+}
+.NoScheduleText{
+    font-family: "Poppins", sans-serif;
+    margin-left: -17px;
+}
+.NoSchedulesTodayImg{
+     height: 100px;
+    width: 100px;
+    object-fit: cover;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.SchedulesJobImage{
+  position: relative;
+    height: 45px;
+    width: 49px;
+    border: 1px solid #c4c4c4;
+    box-sizing: border-box;
+    top: 5px;
+    left: 5px;
+    border-radius: 5px;
+}
+.SchedulesJobImageSize{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;      /* cover the container fully */
+    border-radius: 5px;     /* match container border-radius */
+    display: block; 
+}
+.SchedulesListDesc {
+  display: flex
+;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 64px;
+    margin-top: -37px;       /* optional spacing from image */
+      font-family: 'Poppins', sans-serif;
+}
+
+.SchedulesListMainTitle {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.SchedulesListSubTitle {
+    font-size: 9px;
+    color: #555;
+}
+.SchedulesShiftTime{
+    position: absolute;
+    top: 7px;
+    left: 188px;
+
+}
+.SchedulesShiftTimeImg{
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top: 0px;
+    left: -4px;
+}
+.SchedulesShiftTimeDesc{
+      position: absolute;
+    font-size: 11px;
+    display: inline-block;
+    white-space: nowrap;
+    top: 3px;
+    left: 21px;
+    color: #282727;
+    font-family: "Poppins", sans-serif;
+    padding-bottom: -1px;
+} 
+.SchedulesShiftTimeHour{
+position: absolute;
+    font-size: 10px;
+    white-space: nowrap;
+    left: 6px;
+    top: 17px;
+    color: #6c6c6c;
+}
+.SelectSchedules {
+        height: 46px;
+    width: 40%;
+    display: flex;
+    gap: 2px;
+    padding: 0 4px;
+    background-color: #dee2e6;
+    margin-left: 10px;
+    border-radius: 5px;
+    margin-top: 4px;
+}
+
+.SelecSchedulesBTn {
+     margin-top: 3px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: white;
+    border: none;
+    margin-left: 1px;
+    font-size: 14px;
+    font-weight: bold;
+    font-weight: 700;
+    font-family: "League Spartan", sans-serif;
+    flex: 1;
+    text-align: center;
+    white-space: nowrap;
+}
+.NotSelecSchedulesBTn{
+  margin-top: 4px;
+    height: 38px;
+    border-radius: 5px;
+    background-color: transparent;
+    border: none;
+    margin-left: 1px;
+    font-size: 14px;
+    font-weight: bold;
+    font-weight: 700;
+    font-family: "League Spartan", sans-serif;
+    flex: 1;
+    text-align: center;
+    white-space: nowrap;
+}
+.SearchCate {
+  position: relative;
+  display: inline-block;
+}
+
+.SearchTableCate {
+    height: 37px;
+    width: 198px;
+    border-radius: 5px;
+    border: 1px solid #c4c4c4;
+    margin-top: 13px;
+    margin-left: 10px;
+    padding-left: 35px;
+    box-sizing: border-box;
+}
+.SearchTableCate::placeholder {
+  font-size: 12px; /* adjust as needed */
+  color: #888;     /* optional: make it lighter */
+}
+.search-icon {
+  position: absolute;
+  left: 20px;  /* adjust spacing */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+}
+
+.search-icon img {
+ margin-top: 4px;
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+}
+.ShiftScheuldeTime{
+     display: flex;
+    margin-left: 4px;
+    gap: 5px;
+    margin-top: -3px;
+    
+}
+.StartShiftText{
+  font-size: 10px;
+  font-family: "League Spartan", sans-serif;
+  color: #a0a0a0;
+}
+.EnterTime{
+  height: 33px;
+  width: 100px;
+  border-radius: 5px;
+  border: 1px solid #c4c4c4;
+}
+.StartDateText{
+    font-size: 10px;
+  font-family: "League Spartan", sans-serif;
+  color: #a0a0a0;
+}
+.UpcomingDateFilter{
+margin-top: -3px;
+    margin-left: 6px;
+}
+.DateSelect {
+height: 33px;
+    width: 122px;
+    border-radius: 5px;
+    border: 1px solid #c4c4c4;
+    font-size: 19px;
+}
+
+/* Chrome, Edge, Safari */
+.DateSelect::-webkit-datetime-edit {
+  font-size: 15px;
+  color: #888; /* optional lighter look */
+}
+
+/* For actual placeholder (if you set one manually) */
+.DateSelect::placeholder {
+  font-size: 12px;
+  color: #aaa;
+}
+.PayStatusStyle {
+position: relative;
+    width: 112px;
+    font-size: 11px;
+    font-family: Arial, sans-serif;
+    margin-left: 10px;
+}
+
+.PayStatusButton {
+       background: white;
+    color: black;
+    border: 1px solid #c4c4c4;
+    padding: 10px 5px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex
+;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+  
+}
+
+.PayStatusDropdown {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: white;
+  border: 1px solid #c4c4c4;
+  border-radius: 6px;
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+}
+
+.PayStatusDropdown li {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.PayStatusDropdown li:hover {
+  background: #f2f2f2;
+}
+
+.PayStatusDropdown li.selected {
+  background: #e6e6e6;
+  font-weight: bold;
+}
+
+.arrow {
+  font-size: 12px;
+}
+.ContentTable{
+   height: 64vh;
+    width: 81%;
+    background-color: #dee2e6;
+    overflow-x: hidden;
+      overflow-y: hidden;
+    margin-left: 93px;
+    margin-top: 10px;
+    border: 1px solid #c4c4c4;
+    border-radius: 4px;
+}
+.ContentTable2{
+   height: 65vh;
+    width: 86%;
+    background-color: #EFEFEF;
+    overflow-x: hidden;
+      overflow-y: hidden;
+    margin-left: 93px;
+    margin-top: 10px;
+    border: 1px solid #c4c4c4;
+    border-radius: 4px;
+}
+.schedule-item{
+      width: 1156px;
+    margin-left: 6px;
+    background-color: white;
+    height: 60px;
+    margin-bottom: 2px;
+    border-radius: 5px;
+    border: 1px solid #c4c4c4;
+   
+}
+.schedule-item2{
+       width: 1228px;
+    margin-left: 3px;
+    background-color: white;
+    height: 60px;
+    margin-bottom: 3px;
+    border-radius: 5px;
+    border: 1px solid #c4c4c4;
+   
+}
+.schedule-Inside-item {
+  display: grid;
+  grid-template-columns: 120px 250px 150px 220px 80px 100px 120px;
+  align-items: center;
+  padding: 0 15px;
+  column-gap: 10px;
+}
+.schedule-Inside-item2{
+       display: grid
+;
+    grid-template-columns: 115px 211px 153px 228px 134px 136px 142px 38px;
+    align-items: center;
+    padding: 0 6px;
+    column-gap: 10px;
+}
+
+
+.schedule-Content {
+  font-family: "League Spartan", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #000;
+    margin-top: 5px;
+}
+.schedule-Content0{
+ font-family: "League Spartan", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #000;
+    margin-top: 18px;
+    margin-left: 17px;
+}
+.schedule-Content2{
+         font-size: 13px;
+    font-weight: 600;
+    color: #000;
+    margin-top: 17px;
+    margin-left: -32px;
+    font-family: "Poppins", sans-serif;
+}
+.schedule-Content3{
+    position: relative;
+    font-size: 10px;
+    font-weight: 600;
+    color: #000;
+    margin-top: 17px;
+    left: -28px;
+    margin-left: -33px;
+    display: flex;
+     font-family: 'Poppins', sans-serif;
+border-radius: 3px;
+    justify-content: center;
+}
+.schedule-Content3.completed {
+  color: #0f5132;
+  background-color: #d1e7dd;
+  border: 1px solid #0f5132;
+}
+
+/* ✅ Absent - Red */
+.schedule-Content3.absent {
+  color: #842029;
+  background-color: #f8d7da;
+  border: 1px solid #842029;
+}
+
+/* ✅ Not Marked - Orange */
+.schedule-Content3.not-marked {
+  color: #664d03;
+  background-color: #fff3cd;
+  border: 1px solid #664d03;
+}
+
+.schedule-SubContent {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: gray;
+  margin: -6px 0 0 0; /* tiny gap above, remove others */
+}
+.schedule-JobTitle{
+  display: flex;
+  margin-top: 4px;
+  gap: 10px;
+}
+.schedule-Employer{
+ display: flex
+;
+    margin-top: 10px;
+    gap: 10px;
+    margin-left: 14px;
+}
+.scheduleImg{
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.scheduleEmpImg{
+  margin-top: -5px;
+   height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  image-rendering: crisp-edges;   /* try sharp scaling */
+  image-rendering: -webkit-optimize-contrast;
+}
+.HeadingTable {
+     height: 51px;
+    width: 100%;
+    background-color: #dee2e6;
+    border-bottom: 1px solid #c4c4c4;
+  
+}
+.HeadingTable2 {
+ height: 51px;
+    width: 100%;
+    background-color: #dee2e6;
+   
+}
+
+.HeadingNamesTable {
+    display: grid
+;
+    grid-template-columns: 146px 208px 205px 150px 98px 179px 102px;
+    align-items: center;
+    height: 100%;
+    padding: 0 15px;
+    margin-left: 34px;
+}
+.HeadingNamesTable2 {
+      display: grid
+;
+    grid-template-columns: 155px 160px 203px 157px 152px 127px 154px 111px;
+    align-items: center;
+    height: 100%;
+    padding: 0 10px;
+    margin-left: 25px;
+}
+.HeadingNamesTable span {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 14px;
+  font-weight: 550;
+  color: rgba(128, 128, 128, 0.7);
+}
+
+
+
+.HeadingNamesTable2 span {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(128, 128, 128, 0.7);
+}
+.HeadingNamesTable2 span {
+  flex: 0 0 auto; /* prevent automatic shrinking */
+}
+
+.TableContentSchedulue{
+    margin-top: -1px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+    height: 56vh;
+    background-color: #dee2e6;
+}
+/* .schedule-hour{
+  margin-left: 32px;
+} */
+/* .schedule-Payment{
+      margin-left: 79px;
+} */
+.schedule-action {
+    display: flex;
+
+    gap: 4px;
+    
+}
+.showLoading{
+    position: absolute;
+    top: -81px;
+    height: 100%;
+    width: 107%;
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+  position: relative;
+  left: -78px;
+  --uib-size: 40px;
+  --uib-color: black;
+  --uib-speed: 2s;
+  --uib-bg-opacity: 0;
+  height: var(--uib-size);
+  width: var(--uib-size);
+  transform-origin: center;
+  animation: rotate var(--uib-speed) linear infinite;
+  will-change: transform;
+  overflow: visible;
+}
+
+.car {
+  fill: none;
+  stroke: var(--uib-color);
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  animation: stretch calc(var(--uib-speed) * 0.75) ease-in-out infinite;
+  will-change: stroke-dasharray, stroke-dashoffset;
+  transition: stroke 0.5s ease;
+}
+
+.track {
+  fill: none;
+  stroke: var(--uib-color);
+  opacity: var(--uib-bg-opacity);
+  transition: stroke 0.5s ease;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes stretch {
+  0% {
+    stroke-dasharray: 0, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 75, 150;
+    stroke-dashoffset: -25;
+  }
+  100% {
+    stroke-dashoffset: -100;
+  }
+}
+.schedule-Btn:disabled {
+  background-color: #ccc;   /* greyed out */
+  color: #666;              /* dimmed text */
+  cursor: not-allowed;      /* show not-allowed cursor */
+  opacity: 0.7;             /* slightly faded */
+}
+.schedule-Btn {
+ height: 23px;
+    width: 68px;
+    border-radius: 12px;
+    font-family: "League Spartan", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    line-height: 22px;          /* centers text vertically */
+}
+.schedule-BtnStatus{
+      height: 23px;
+    width: 75px;
+    border-radius: 12px;
+    font-family: "League Spartan", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    line-height: 22px;
+    margin-top: 4px;
+    margin-left: 19px;
+}
+
+.schedule-BtnStatus.accept {
+    background-color: #e6f4ea;
+  color: #137333;
+  border: 1px solid #137333;
+}
+.schedule-BtnStatus.reject {
+  background-color: #fdecea;
+  color: #b3261e;
+  border: 1px solid #b3261e;
+}
+/* Accept Button */
+.schedule-Btn.accept {
+  background-color: #e6f4ea;
+  color: #137333;
+  border: 1px solid #137333;
+}
+
+/* Reject Button */
+.schedule-Btn.reject {
+  background-color: #fdecea;
+  color: #b3261e;
+  border: 1px solid #b3261e;
+}
+
+.schedule-ContentPayment{
+    display: inline-block;
+    padding: 2px 1px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 11px;
+    text-transform: capitalize;
+    text-align: center;
+    min-width: 77px;
+    left: -50px;
+    position: relative;
+    font-family: "Poppins", sans-serif;
+  
+    top: 3px;
+}
+/* Status Colors */
+.status-pending {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 2px solid #856404;
+}
+
+.status-paid {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #155724;
+}
+
+.status-partial {
+  background-color: #cce5ff;
+  color: #004085;
+  border: 1px solid #004085;
+}
+
+.status-nopay {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #721c24;
+}

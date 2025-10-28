@@ -1,0 +1,194 @@
+.Navheading {
+  height: 60px;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+
+.Navheading span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logoImg {
+     height: 52px;
+    width: 52px;
+}
+
+.headingTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+   font-family: 'Lemon', serif;
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 30px; /* adjust spacing as you like */
+}
+
+/* A wrapper around the bell to isolate its positioning */
+.notification-wrapper {
+  position: relative; /* creates a reference frame */
+  width: 40px; /* fixed width so layout never moves */
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Bell button */
+.notification-icon {
+  height: 32px;
+  width: 32px;
+  border: 1px solid black;
+  border-radius: 50%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Red dot badge */
+.gotMessage {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: red;
+}
+
+/* Profile image */
+.profile-photo {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #5a5656;
+}
+
+/* Profile name */
+.profile-name {
+     font-size: 15px;
+    color: #2c3e50;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    letter-spacing: 0.3px;
+    margin-left: -12px;
+}
+
+.sideBar {
+  width: 80px;
+  height: 100vh;
+  background-color: #fff;
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  position: fixed;
+ 
+}
+
+.sideItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 25px;
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+
+.sideIcon {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 5px;
+  object-fit: contain;
+}
+.sideIconImg{
+   width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  margin-bottom: 5px;
+  object-fit: contain;
+}
+.sideLabel {
+  font-size: 11px;
+  color: #555;
+  text-align: center;
+   font-family: "League Spartan", sans-serif;
+}
+
+.sideItem:hover .sideIcon,
+.sideItem.active .sideIcon {
+  filter: brightness(0) saturate(100%) invert(41%) sepia(97%) saturate(745%) hue-rotate(172deg) brightness(96%) contrast(92%);
+}
+
+.sideItem:hover .sideLabel,
+.sideItem.active .sideLabel {
+  color: #3c94f1;
+}
+
+.RoutePage {
+  margin-left: 80px;
+  height: calc(100vh - 65px);
+  overflow: hidden;
+}
+.profileIcon{
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 25px;
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+
+.sideItem2 {
+     display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 97px;
+    margin-bottom: 25px;
+    cursor: pointer;
+    transition: filter 0.2s;
+}
+.sideItem2:hover .sideLabel,
+.sideItem2.active .sideLabel {
+  color: #3c94f1;
+}
+.sideItem2:hover .sideIcon,
+.sideItem2.active .sideIcon {
+  filter: brightness(0) saturate(100%) invert(41%) sepia(97%) saturate(745%) hue-rotate(172deg) brightness(96%) contrast(92%);
+}
+
+.sideItem3 {
+display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    cursor: pointer;
+    transition: filter 0.2s;
+    margin-left: 7px;
+}
+.sideLabel2 {
+ font-size: 10px;
+    color: #555;
+    text-align: center;
+    margin-right: 5px;
+}
+.sideItem3:hover .sideLabel2,
+.sideItem3.active .sideLabel2 {
+  color: #3c94f1;
+}
+.sideItem3:hover .sideIcon,
+.sideItem3.active .sideIcon {
+  filter: brightness(0) saturate(100%) invert(41%) sepia(97%) saturate(745%) hue-rotate(172deg) brightness(96%) contrast(92%);
+}

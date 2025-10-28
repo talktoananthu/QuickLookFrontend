@@ -1,0 +1,437 @@
+.ContentCenter{
+  position: relative;
+    display: flex;
+    gap: 188px;
+    left: 94px;
+}
+.ProfileDiv{
+position: relative;
+    height: 637px;
+    width: 583px;
+    border: 1px solid #c4c4c4;
+    left: 113px;
+    top: 8px;
+    border-radius: 5px;
+}
+.ShowLoading{
+ position: absolute;
+    height: 92%;
+    width: 95%;
+   
+    top: 61px;
+    left: 81px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+  --uib-size: 40px;
+  --uib-color: black;
+  --uib-speed: 2s;
+  --uib-bg-opacity: 0;
+  height: var(--uib-size);
+  width: var(--uib-size);
+  transform-origin: center;
+  animation: rotate var(--uib-speed) linear infinite;
+  will-change: transform;
+  overflow: visible;
+}
+
+.car {
+  fill: none;
+  stroke: var(--uib-color);
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  animation: stretch calc(var(--uib-speed) * 0.75) ease-in-out infinite;
+  will-change: stroke-dasharray, stroke-dashoffset;
+  transition: stroke 0.5s ease;
+}
+
+.track {
+  fill: none;
+  stroke: var(--uib-color);
+  opacity: var(--uib-bg-opacity);
+  transition: stroke 0.5s ease;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes stretch {
+  0% {
+    stroke-dasharray: 0, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 75, 150;
+    stroke-dashoffset: -25;
+  }
+  100% {
+    stroke-dashoffset: -100;
+  }
+}
+.HeadingDetails{
+           position: relative;
+           display: flex;
+    width: 100%;
+    height: 100px;
+    border-bottom: 1px solid #c4c4c4;
+}
+.ImageProfile{
+      position: relative;
+    height: 85px;
+    width: 85px;
+    border-radius: 50%;
+    border: 1px solid #c4c4c4;
+    left: 27px;
+    top: 9px;
+}
+.imageProfilephoto{
+height: 100%;
+width: 100%;
+    border-radius: 50%;
+object-fit: cover;
+}
+.uploadBtn {
+  position: relative;
+  left: 79px;
+  top: 35px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.upload-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #4a90e2, #357ae8);
+  color: #fff;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(74, 144, 226, 0.3);
+}
+
+.upload-label:hover {
+  background: linear-gradient(135deg, #5aa0f2, #4688f2);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px rgba(74, 144, 226, 0.4);
+}
+
+.upload-label i {
+  font-size: 12px;
+}
+
+.file-name {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 14px;
+  color: #555;
+}
+.BtnEdit{
+      position: relative;
+    left: 397px;
+    top: 18px;
+    height: 20px;
+    width: 100px;
+}
+.BtnSave{
+       position: absolute;
+    display: flex
+;
+    gap: 10px;
+    left: 468px;
+    top: 18px;
+    height: 20px;
+    width: 100px;
+}
+.BtnStyle{
+           height: 31px;
+    width: 53px;
+    border: 1px solid #c4c4c4;
+    border-radius: 5px;
+}
+.DetailsDesc{
+    position: relative;
+height: 460px;
+width: 100%;
+background-color: white;
+display: flex;
+flex-direction: column;
+gap: 13px;
+}
+.Rows{
+    display: flex;
+    gap: 40px;
+}
+.RowDetail1{
+     display: flex
+;
+    flex-direction: column;
+    position: relative;
+    top: 10px;
+      left: 10px;
+}
+.Name{
+    position: relative;
+    left: 15px;
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+}
+.FullNameAns{
+  position: relative;
+    height: 40px;
+    width: 239px;
+    background-color: #eeeeee;
+    left: 10px;
+    top: 5px;
+    border-radius: 5px;
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    display: flex
+;
+    align-items: center;
+    padding-left: 10px;
+    gap: 10px;
+    border: 1px solid #c4c4c4;
+}
+.FullNameAnsTime{
+      position: relative;
+    height: 43px;
+      width: 210px;
+    background-color: #eeeeee;
+    left: 10px;
+    top: 5px;
+    border-radius: 5px;
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    display: flex
+;
+    align-items: center;
+    padding-left: 42px;
+    gap: 10px;
+    border: 1px solid #c4c4c4;
+}
+.FullNameAnsTime img.contentImg{
+   position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 20px;
+}
+.LongDetail{
+ position: relative;
+    height: 43px;
+    width: 530px;
+    background-color: #eeeeee;
+    left: 10px;
+    top: 5px;
+    border-radius: 2px;
+        font-family: "Poppins", sans-serif;  
+          font-size: 12px;
+          display: flex;
+          align-items: center;
+     padding-left: 10px;
+     border: 1px solid #c4c4c4;
+}
+.InputWithIcon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.InputWithIcon .contentImg {
+ position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 20px;
+}
+.contentImg2{
+   position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 20px;
+}
+.InputInside {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  padding-left: 30px; /* space for the icon */
+  outline: none;
+}
+
+/* Remove number input arrows */
+.NoSpinner::-webkit-inner-spin-button,
+.NoSpinner::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.NoSpinner {
+  -moz-appearance: textfield;
+}
+
+.contentImgInside {
+  position: absolute;
+  left: 8px;      /* distance from left */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  pointer-events: none; /* so icon doesn’t block typing */
+}
+
+.error{
+     position: relative;
+    font-size: 9px;
+    font-family: "Poppins", sans-serif;
+    color: red;
+    top: 10px;
+    left: 10px;
+}
+.error2{
+     position: relative;
+    font-size: 9px;
+    font-family: "Poppins", sans-serif;
+    color: red;
+    top: 6px;
+    left: 10px;
+}
+.errorDob{
+  position: relative;
+    font-size: 9px;
+    font-family: "Poppins", sans-serif;
+    color: red;
+    top: 5px;
+    left: 10px;
+}
+.errorAddress{
+    position: relative;
+    font-size: 9px;
+    font-family: "Poppins", sans-serif;
+    color: red;
+    top: 5px;
+    left: 10px;
+}
+.NotificationDiv{
+     height: 500px;
+    width: 367px;
+    border: 1px solid #c3c3c3;
+    top: 10px;
+    position: relative;
+    border-radius: 5px;
+}
+.HeadingNotfication{
+     height: 53px;
+    position: relative;
+    width: 100%;
+    border-bottom: 1px solid #c4c4c4;
+       display: flex;
+   align-items: center;
+     font-family: 'Poppins', sans-serif;
+}
+
+.ImagDivNoti{
+ position: relative;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+ 
+    display: flex
+;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+.NotiSize{
+  position: relative;
+  height: 80%;
+  width: 80%;
+  object-fit: cover;
+}
+.NotificationTitle{
+     position: relative;
+    left: 10px;
+    font-size: 18px;
+}
+
+.DescriptionShowingNotification{
+position: relative;
+    height: 61.2vh;
+    width: 100%;
+    background-color: white;
+    overflow-y: auto;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    display: flex
+;
+    flex-direction: column;
+    overflow-x: hidden;
+    gap: 2px;
+    box-sizing: border-box;
+    padding-right: 10px;
+    padding-bottom: 5px;
+}
+.NotificationContent{
+     height: 50px;
+  width: 99%; 
+    background-color: white;
+    position: relative;
+    border: 1px solid #c4c4c4;
+    left: 3px;
+    top: 2px;
+    border-radius: 5px;
+     flex-shrink: 0; 
+     display: flex;
+    
+     align-items: center;
+     font-size: 10px;
+     font-family: 'Poppins', sans-serif;
+     padding-left: 5px;
+}
+/* This controls how much of the message is visible */
+.notification-message {
+ width: 303px;
+    height: 33px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    color: #2c3e50;
+    word-wrap: break-word;
+  
+    padding-bottom: 7px;
+}
+
+.DeleteNotification {
+position: absolute;
+    right: 9px;
+    background: transparent;
+    border: none;
+    color: #999;
+    font-size: 18px;
+    cursor: pointer;
+    transition: color 0.2s 
+ease;
+    border: 1px solid #c4c4c4;
+    border-radius: 5px;
+    font-weight: 100;
+}
+
+.DeleteNotification:hover {
+  color: #ff4d4d;
+}

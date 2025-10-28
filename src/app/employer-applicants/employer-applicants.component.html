@@ -1,0 +1,1021 @@
+<div class="MainContentApplicants">
+   <div class="FilterByDates">
+    <div class="FilterText"> Filter By</div>
+    <div class="FilterScheduleDates">
+        <!-- filterBy Job Title -->
+           <input *ngIf="activeTab =='applied'"  type="text" 
+          [(ngModel)]="searchJobTitle"
+            (input)="filterAppliedApplicants()"
+        placeholder="Search by in applied table" 
+        class="inputJobTitleStyle">
+     <input *ngIf="activeTab !== 'employees' && activeTab != 'applied'"  
+       type="text" 
+       [(ngModel)]="searchJobTitle"
+       (input)="filterApplicants()"
+       placeholder="Search by job role" 
+       class="inputJobTitleStyle">
+        <!-- input title for employee tab in the case of hired   -->
+           <input *ngIf="activeTab=='employees' && subActive=='hired'"  type="text" 
+          [(ngModel)]="searchJobTitle"
+            (input)="filterEmpApplicants()"
+        placeholder="Search by job role" 
+        class="inputJobTitleStyle">
+    <!-- input title for employee tab in the case of empStatus  -->
+       <input *ngIf="activeTab=='employees' && subActive == 'employeeStatus'"  type="text" 
+          [(ngModel)]="searchJobTitle"
+            (input)="filterApplicantsEmpStatus()"
+        placeholder="Search by job role" 
+        class="inputJobTitleStyle">
+           <!-- input title for employee tab in the case of payStatus  -->
+       <input *ngIf="activeTab=='employees' && subActive== 'payment'"  type="text" 
+          [(ngModel)]="searchJobTitle"
+            (input)="filterApplicantsPayStatus()"
+        placeholder="Search by job role" 
+        class="inputJobTitleStyle">
+  <!-- filterByShiftTime -->
+       <div class="EnterShift" *ngIf="activeTab!='employees' && activeTab!='applied'">
+   <div class="ShiftGroup">
+      <label class="ShiftTimeFont">Start-Time</label>
+      <input type="time"
+         [(ngModel)]="startTime"
+         (input)="filterApplicants()"
+       class="ShiftTimeStyle">
+   </div>
+
+   <div class="ShiftGroup">
+      <label class="ShiftTimeFont">End-Time</label>
+      <input type="time" 
+       [(ngModel)]="endTime"
+         (input)="filterApplicants()"
+      class="ShiftTimeStyle">
+   </div>
+</div>
+<!-- filterByShiftTime in Applied tab -->
+       <div class="EnterShift" *ngIf="activeTab =='applied'">
+   <div class="ShiftGroup">
+      <label class="ShiftTimeFont">Start-Time</label>
+      <input type="time"
+         [(ngModel)]="startTime"
+         (input)="filterAppliedApplicants()"
+       class="ShiftTimeStyle">
+   </div>
+
+   <div class="ShiftGroup">
+      <label class="ShiftTimeFont">End-Time</label>
+      <input type="time" 
+       [(ngModel)]="endTime"
+         (input)="filterAppliedApplicants()"
+      class="ShiftTimeStyle">
+   </div>
+</div>
+     <!-- Drop Down with Shift -->
+<div class="status-dropdown" *ngIf="activeTab=='schedule'">
+  <label class="styleStatus"> Select Status</label>
+  <div class="status-selected" (click)="toggleDropdown()">
+    {{ selectedStatus }}
+  </div>
+
+  <ul class="status-list" *ngIf="isDropdownOpen">
+    <li *ngFor="let status of statuses" (click)="selectStatus(status)">
+      {{ status }}
+    </li>
+  </ul>
+</div>
+<!-- below div is for employee hired-->
+<div class="status-dropdown" *ngIf="activeTab=='employees' && subActive=='hired' ">
+  <label class="styleStatus"> Select Hired Status</label>
+  <div class="status-selected" (click)="toggleDropdown()">
+    {{ empTabStatusSelected }}
+  </div>
+
+  <ul class="status-list" *ngIf="isDropdownOpen">
+    <li *ngFor="let status of hiredStatus" (click)="selectHiredStatus(status)">
+      {{ status }}
+    </li>
+  </ul>
+</div>
+<!-- below div is for employee status-->
+<div class="status-dropdown" *ngIf="activeTab=='employees' && subActive=='employeeStatus' ">
+  <label class="styleStatus"> Select Emp Status</label>
+  <div class="status-selected" (click)="toggleDropdown()">
+    {{ empTabStatusSelected }}
+  </div>
+
+  <ul class="status-list" *ngIf="isDropdownOpen">
+    <li *ngFor="let status of EmployerStatus" (click)="selectEmpStatus(status)">
+      {{ status }}
+    </li>
+  </ul>
+</div>
+<!-- below div is for employee pay Status-->
+<div class="status-dropdown" *ngIf="activeTab=='employees' && subActive=='payment' ">
+  <label class="styleStatus"> Select Pay Status</label>
+  <div class="status-selected" (click)="toggleDropdown()">
+    {{ empTabStatusSelected }}
+  </div>
+
+  <ul class="status-list" *ngIf="isDropdownOpen">
+    <li *ngFor="let status of payStatus" (click)="selectPayStatus(status)">
+      {{ status }}
+    </li>
+  </ul>
+</div>
+<!-- below div is for employee pay Status of work status-->
+<div class="status-dropdown" *ngIf="activeTab=='employees' && subActive=='payment' ">
+  <label class="styleStatus"> Select Work Status</label>
+  <div class="status-selected" (click)="toggleDropdownForWorkStautsInEmpTab()">
+    {{ selectworkStatusInPaymentEmpTab }}
+  </div>
+
+  <ul class="status-list" *ngIf="isDropDownForEmpTabWorkStatus">
+    <li *ngFor="let status of workStatusInPaymentEmpTab" (click)="selectEmpStatusOfpayWork(status)">
+      {{ status }}
+    </li>
+  </ul>
+</div>
+
+
+<div class="status-dropdown" *ngIf="activeTab=='worklog'">
+  <label class="styleStatus"> Select Work Status</label>
+  <div class="status-selected" (click)="toggleDropdown()">
+    {{ SelectedWorkStatus }}
+  </div>
+
+  <ul class="status-list" *ngIf="isDropdownOpen">
+    <li *ngFor="let status of workStatus" (click)="selectForWorkStatus(status)">
+      {{ status }}
+    </li>
+  </ul>
+</div>
+
+
+
+
+   <!-- Day Filter  for Employee  Status table ------------------------------------------>
+<div class="DateFilterContainer" *ngIf="activeTab=='employees' && subActive=='employeeStatus'">
+  <label class="ShiftTimeFont">Select Assigned Date</label>
+  <select [(ngModel)]="selectedOptionTable" (change)="filterAcceptedApplicantsEmpStatus()" class="DateOptionSelect">
+    <option value="Single">Single Day</option>
+    <option value="Multiple">Multiple Days</option>
+  </select>
+
+ <div *ngIf="selectedOptionTable === 'Single'" class="DateInputsBlock">
+  <label class="ShiftTimeFont">Select  Date</label>
+  <input type="date"
+         [(ngModel)]="singleDateTable"
+         [max]="thirtyDaysAheadString"
+         [min]="fiftentDaysAgoString"
+         (change)="filterAcceptedApplicantsEmpStatus()"
+         class="DateInputStyle">
+</div>
+
+<!-- Multiple Date -->
+<div *ngIf="selectedOptionTable === 'Multiple'" class="DateInputsBlock">
+  <label class="ShiftTimeFont">From Date</label>
+  <input type="date"
+         [(ngModel)]="fromDateTable"
+         [max]="thirtyDaysAheadString"
+         [min]="fiftentDaysAgoString"
+         (change)="filterAcceptedApplicantsEmpStatus()"
+         class="DateInputStyle">
+
+  <label class="ShiftTimeFont">To Date</label>
+  <input type="date"
+         [(ngModel)]="toDateTable"
+         [max]="thirtyDaysAheadString"
+         [min]="fiftentDaysAgoString"
+         (change)="filterAcceptedApplicantsEmpStatus()"
+         class="DateInputStyle">
+</div>
+
+</div>
+
+   <!-- Day Filter  for Employee Pay Status table ------------------------------------------>
+<div class="DateFilterContainer" *ngIf="activeTab=='employees' && subActive=='payment'">
+  <label class="ShiftTimeFont">Select Worked Date</label>
+  <select [(ngModel)]="selectedOptionTable" (change)="filterApplicantsPayStatus()" class="DateOptionSelect">
+    <option value="Single">Single Day</option>
+    <option value="Multiple">Multiple Days</option>
+  </select>
+
+ <div *ngIf="selectedOptionTable === 'Single'" class="DateInputsBlock">
+  <label class="ShiftTimeFont">Select  Date</label>
+  <input type="date"
+         [(ngModel)]="singleDateTable"
+         [max]="thirtyDaysAheadString"
+         [min]="fiftentDaysAgoString"
+         (change)="filterApplicantsPayStatus()"
+         class="DateInputStyle">
+</div>
+
+<!-- Multiple Date -->
+<div *ngIf="selectedOptionTable === 'Multiple'" class="DateInputsBlock">
+  <label class="ShiftTimeFont">From Date</label>
+  <input type="date"
+         [(ngModel)]="fromDateTable"
+         [max]="thirtyDaysAheadString"
+         [min]="fiftentDaysAgoString"
+         (change)="filterApplicantsPayStatus()"
+         class="DateInputStyle">
+
+  <label class="ShiftTimeFont">To Date</label>
+  <input type="date"
+         [(ngModel)]="toDateTable"
+         [max]="thirtyDaysAheadString"
+         [min]="fiftentDaysAgoString"
+         (change)="filterApplicantsPayStatus()"
+         class="DateInputStyle">
+</div>
+
+</div>
+
+   <!-- End day filter  Emp Tab or table---------------------------------------------------------------------->
+  
+<div class="DateFilterContainer" *ngIf="activeTab!='employees'">
+  <label class="ShiftTimeFont">Select Date Option</label>
+  <select [(ngModel)]="selectedOptionTable" (change)="filterApplicants()" class="DateOptionSelect">
+    <option value="Single">Single Day</option>
+    <option value="Multiple">Multiple Days</option>
+  </select>
+
+ <div *ngIf="selectedOptionTable === 'Single'" class="DateInputsBlock">
+  <label class="ShiftTimeFont">Select Date</label>
+  <input type="date"
+         [(ngModel)]="singleDateTable"
+         [max]="thirtyDaysAheadString"
+         [min]="sevenDaysAgoString"
+         (change)="filterApplicants()"
+         class="DateInputStyle">
+</div>
+
+<!-- Multiple Date -->
+<div *ngIf="selectedOptionTable === 'Multiple'" class="DateInputsBlock">
+  <label class="ShiftTimeFont">From Date</label>
+  <input type="date"
+         [(ngModel)]="fromDateTable"
+         [max]="thirtyDaysAheadString"
+         [min]="sevenDaysAgoString"
+         (change)="filterApplicants()"
+         class="DateInputStyle">
+
+  <label class="ShiftTimeFont">To Date</label>
+  <input type="date"
+         [(ngModel)]="toDateTable"
+         [max]="thirtyDaysAheadString"
+         [min]="sevenDaysAgoString"
+         (change)="filterApplicants()"
+         class="DateInputStyle">
+</div>
+
+</div>
+
+    </div>
+</div>
+   <div class="ApplicantsDescContent">
+     <div class="MainHeading">
+       <div class="HeadingContent">
+           <span class="ApplicantStyle">Details Of Applicants</span>
+       </div>
+       <div class="ApplicantTypeBtn">
+       <button 
+  (click)="setActive('employees')" 
+  class="applicantBtn" 
+  [ngClass]="{ 'active': activeTab === 'employees' }">
+  Employees
+</button>
+
+<button 
+  (click)="setActive('applied')" 
+  class="applicantBtn" 
+  [ngClass]="{ 'active': activeTab === 'applied' }">
+  Applied
+</button>
+
+<button 
+  (click)="setActive('worklog')" 
+  class="applicantBtn" 
+  [ngClass]="{ 'active': activeTab === 'worklog' }">
+  Work Log
+</button>
+
+<button 
+  (click)="setActive('schedule')" 
+  class="applicantBtn" 
+  [ngClass]="{ 'active': activeTab === 'schedule' }">
+  Schedule
+</button>
+       </div>
+     </div>
+
+     <div class="SelectedContent">
+
+   <!-- below Table shows the details of Applied applicants -->
+   
+
+<div class="showTableCotent">
+
+  <!-- this table actually shows when applied button is clicked on it main heading  -->
+  <table *ngIf="activeTab == 'applied'" class="styledTable">
+ <thead>
+  <tr>
+    <th class="col-name">Name</th>
+    <th class="col-appliedOn">Applied On</th>
+    <th class="col-appliedFor">Applied For</th>
+    <th class="col-shift">Shift Time</th>
+    <th class="col-jobType">Job Type</th>
+    <th class="col-action">Action</th>
+  </tr>
+</thead>
+    <tbody class="employeeCellborder">
+      <tr class="employeeCellEach" *ngFor="let applicants of  appliedTabApplicantsFilter">
+        <td class="employeeCell" >
+          <img  [src]="applicants.imgProfile || 'assets/profile.png'"  alt="profile" class="profileImg">
+          <div class="employeeInfo">
+            <span class="employeeName">{{applicants.applicantName}}</span>
+            <span class="employeeEmail">{{applicants.contactNumber}}</span>
+          </div>
+        </td>
+        <td><span class="appliedOn">{{applicants.appliedDate  | date:'dd-MMM-yyyy'}}</span></td>
+        <td class="employeeJobtitle">{{applicants.jobTitle}}</td>
+        <td>{{applicants.applicantsShiftStartTime}} - {{applicants.applicantsShiftEndTime}}</td>
+        <td><span class="jobType">{{applicants.applicantJobType}}</span></td>
+        <td>
+          <ng-container *ngIf="applicants.applicationStatus=='pending'">
+          <button (click)="hiredApplicant(applicants.applicantId,applicants.jobId)" class="hireBtn">Hire</button>
+          <button (click)="rejectApplicant(applicants.applicantId,applicants.jobId)" class="rejectBtn">Reject</button>
+          </ng-container>
+           <ng-container *ngIf="applicants.applicationStatus!='pending'">
+             <span *ngIf="applicants.applicationStatus=='accepted'" class="hired">Hired</span>
+  <span *ngIf="applicants.applicationStatus == 'rejected'" class="rejected">
+  Rejected
+</span>
+
+          </ng-container>
+        </td>
+      </tr>
+   
+    </tbody>
+  </table>
+
+  <!-- End Applied details table -->
+   <div class="showSchduleContent" *ngIf="activeTab == 'schedule'">
+  
+      <div class="SchedulesTypes">
+        
+        <button (click)="ShowScheduleStatus()" 
+        [ngClass]="selectSubScheduleStatus ? 'ScheTypeBtn' : 'nonScheTypeBtn'">
+         Schedules Status</button>
+        <button  (click)="ShowSchedulePending()"
+         [ngClass]="selectSubSchedulePending ? 'ScheTypeBtn' : 'nonScheTypeBtn'"
+        > Schedules Pending</button>
+      </div>
+ 
+ <table class="table-schedule" >
+  <thead class="styledTable2">
+    <tr>
+      <th class="employee-schedule">Employee Name</th>
+      <th class="role-schedule">Job Role</th>
+      <th class="date-schedule">Date</th>
+      <th class="shift-schedule">Shift Time</th>
+      <th class="status-schedule">Status</th>
+       <th *ngIf="selectSubSchedulePending" class="status-schedule">Action</th>
+    </tr>
+  </thead>
+<tbody class="schedule-table-body">
+
+  <ng-container *ngFor="let applicant of filteredAcceptedApplicants">
+    <!-- Case 1: applicant has schedules -->
+    <ng-container *ngIf="selectSubScheduleStatus">
+      <tr *ngFor="let schedule of applicant.schedules; let i = index">
+        <ng-container *ngIf="schedule.Schedulestatus != 'completed' &&schedule.Schedulestatus != 'absent'">
+
+          <td class="employee-schedule">
+            <div class="schedule-employee-info">
+              <img 
+                class="schedule-employee-img" 
+                [src]="applicant.imgProfile && applicant.imgProfile.trim() !== '' ? applicant.imgProfile : 'assets/profile.png'" 
+                alt="{{applicant.applicantName | titlecase}}" 
+              />
+              <span class="schedule-employee-name">{{ applicant.applicantName }}</span>
+            </div>
+          </td>
+          <td class="role-schedule">{{ applicant.jobTitle }}</td>
+          <td class="date-schedule">{{ schedule.date | date:'MMM d, y' }}</td>
+          <td class="shift-schedule">{{ schedule.startTime }} - {{ schedule.endTime }}</td>
+         <td class="status-schedule">
+  <span 
+    [ngClass]="{
+      'label-accepted': schedule.Schedulestatus === 'accepted',
+      'label-rejected': schedule.Schedulestatus === 'rejected',
+           'label-assigned': schedule.Schedulestatus === 'assigned'
+    }">
+    {{ schedule.Schedulestatus | titlecase }}
+  </span>
+</td>
+         
+        </ng-container>
+      </tr>
+
+     
+      <!-- Fallback for NO status schedules -->
+      <!-- <tr *ngIf="!applicant.schedules || applicant.schedules.length === 0">
+        <td colspan="6" class="no-applicants-msg">No schedules available</td>
+      </tr> -->
+    </ng-container>
+
+    <!-- Case 2: applicant has NO schedules -->
+    <ng-container *ngIf="selectSubSchedulePending">
+      <tr *ngIf="!applicant.schedules || applicant.schedules.length === 0 || isPendingSchedule(applicant)">
+        <td class="employee-schedule">
+          <div class="schedule-employee-info">
+            <img 
+              class="schedule-employee-img" 
+              [src]="applicant.imgProfile && applicant.imgProfile.trim() !== '' ? applicant.imgProfile : 'assets/profile.png'" 
+              alt="{{applicant.applicantName}}" 
+            />
+            <span class="schedule-employee-name">{{ applicant.applicantName }}</span>
+          </div>
+        </td>
+        <td class="role-schedule">{{ applicant.jobTitle }}</td>
+        <td class="date-schedule">-</td>
+        <td class="shift-schedule">-</td>
+        <td class="status-schedule">
+          <span class="pending">Pending</span>
+        </td>
+        <td class="action-schedule">
+          <button class="edit-btn-schedule" (click)="editSchedule(applicant, applicant.applicantId, applicant.jobId)">
+            Assign
+          </button>
+        </td>
+      </tr>
+
+     <!-- Case: no pending applicants -->
+
+
+
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf="selectSubSchedulePending">
+  <tr *ngIf="hasNoPendingApplicants()">
+       <td colspan="6" class="no-applicants-msg">No pending applicants</td>
+  </tr>
+  </ng-container>
+</tbody>
+
+</table>  
+
+
+
+<!-- below shows Details for assingign schedule time -->
+  <div *ngIf="showSelectedApplicantDetails?.applicantId && showScheduleAssign" class="ScheduleAssign">
+    <div class="ApplicatnContent" [formGroup]="scheduleForm">
+  <div class="ApplicantDetails">
+    <div class="ApplicantImage">
+      <img [src]="showSelectedApplicantDetails.imgProfile ||'../../assets/profile.png'" 
+           class="ApplicantImageContent" alt="">
+    </div>
+    <div class="ApplicantName">
+      <span>{{showSelectedApplicantDetails.applicantName | titlecase}}</span>
+    </div>
+   
+  </div>
+
+  <div class="ApplicantSchedule">
+    <div class="ApplicantJobTitle">
+      <label>JobTitle</label>
+      <br>
+    
+      <span class="inputJobTitle">{{showSelectedApplicantDetails.jobTitle}}</span>
+    </div>
+
+    <div class="ApplicantDayFilter">
+      <button (click)="activeSingleDay()" 
+              class="ApplicantSingleDay"
+              [ngClass]="{'activeDateStyle': singleDayActive}">
+        <img src="../../assets/calendar.png" alt="Calendar Icon" class="ButtonIcon">
+        Single Day
+      </button>
+      <button (click)="activeMultipleDay()" 
+              class="ApplicantMultipleDay"
+              [ngClass]="{'activeDateStyle': multipleDayActive}">
+        <img src="../../assets/calendar.png" alt="Calendar Icon" class="ButtonIcon">
+        Multiple Day
+      </button>
+    </div>     
+
+<div class="InputForDays">
+  <!-- Single Day Input -->
+  <div *ngIf="singleDayActive" class="InputWithIcon">
+    <input formControlName="singleDate" class="SingleDay" type="date" placeholder="Select Day" [min]="today">
+
+    <!-- Error for missing single date -->
+    <span *ngIf="scheduleForm.hasError('requiredSingleDate') && scheduleForm.touched" class="error">
+     
+      Please select a valid date
+    </span>
+  </div>
+
+  <!-- Multiple Days Input -->
+<div *ngIf="multipleDayActive" class="FormultipleDaysWrapper">
+  <div class="FormultipleDays">
+    <div class="InputWithIcon">
+      <input formControlName="fromDate" class="SingleDay" type="date" placeholder="From" [min]="today">
+    </div>
+    <div class="InputWithIcon">
+      <input formControlName="toDate" class="SingleDay" type="date" placeholder="To" [min]="today">
+    </div>
+  </div>
+
+  <!-- Errors BELOW flex row -->
+  <div *ngIf="scheduleForm.hasError('requiredRange') && scheduleForm.touched" class="error">
+    Please select both dates
+  </div>
+  <div *ngIf="scheduleForm.hasError('invalidRange') && scheduleForm.touched" class="error">
+    End date must be after start date
+  </div>
+</div>
+</div>
+
+
+    <div class="ShiftSchedule">
+      <div class="StartSchedule">
+        <label>Start Time</label>
+        <br>
+        <input formControlName="startTime"  [min]="getMinTime('startTime')" class="ShifTimeClass" type="time">
+
+<!-- Required error -->
+<div *ngIf="scheduleForm.get('startTime')?.hasError('required') && scheduleForm.get('startTime')?.touched" class="error">
+  Start time is required
+</div>
+
+<!-- Custom form-level errors -->
+<div *ngIf="scheduleForm.get('startTime')?.errors?.['startInPast']" class="errorStarttimepast">
+  start time invalid
+</div>
+
+      </div>
+      <div class="EndSchedule">
+        <label>End Time</label>
+        <br>
+       <input formControlName="endTime" class="ShifTimeClass"  [min]="getMinTime('endTime')" type="time">
+
+<!-- Required error -->
+<div *ngIf="scheduleForm.get('endTime')?.hasError('required') && scheduleForm.get('endTime')?.touched" class="error">
+  End time is required
+</div>
+
+<div *ngIf="scheduleForm.get('endTime')?.errors?.['endInPast']" class="error">
+  End time invalid
+</div>
+
+<div *ngIf="scheduleForm.touched && scheduleForm.errors?.['invalidTimeRange']" class="error">
+  End time must be later than start time
+</div>
+      </div>
+    </div>
+
+  <button 
+  (click)="AssignSchedule(
+              showSelectedApplicantDetails.applicantId,
+              showSelectedApplicantDetails.jobId,
+              showSelectedApplicantDetails.payment,
+              scheduleForm.value.singleDate,
+              scheduleForm.value.fromDate,
+              scheduleForm.value.toDate
+           )"
+  class="AssignBtn"
+  [disabled]="scheduleForm.invalid">
+  Assign
+</button>
+    <button class="CloseButton" (click)="closeAssignSchedule()">Close</button>
+  </div>
+</div>
+
+<div class="ShowLoading" *ngIf="loadingService.loading$ | async">
+<svg
+    class="container"
+    viewBox="0 0 40 40"
+    height="40"
+    width="40"
+  >
+    <circle 
+      class="track"
+      cx="20" 
+      cy="20" 
+      r="17.5" 
+      pathlength="100" 
+      stroke-width="5px" 
+      fill="none" 
+    />
+    <circle 
+      class="car"
+      cx="20" 
+      cy="20" 
+      r="17.5" 
+      pathlength="100" 
+      stroke-width="5px" 
+      fill="none" 
+    />
+  </svg>
+
+</div>
+
+ </div>
+
+
+
+
+</div>
+   <!-- ------------------------------------- -->
+<div *ngIf="activeTab == 'employees'" class="ShowContentOFEmploess">
+  <div class="Displayheading">
+    <div class="CategoriesBtn">
+       <div class="EachEmployeeStatus">
+  <button 
+    class="tab" 
+    [ngClass]="{ 'active': subActive === 'hired' }"
+    (click)="setActive2('hired')">
+    Hired
+  </button>
+
+  <button 
+    class="tab" 
+    [ngClass]="{ 'active': subActive === 'employeeStatus' }"
+    (click)="setActive2('employeeStatus')">
+    EmployeeStatus
+  </button>
+
+  <button 
+    class="tab" 
+    [ngClass]="{ 'active': subActive === 'payment' }"
+    (click)="setActive2('payment')">
+    PaymentStatus
+  </button>
+</div>
+     </div>
+     
+  </div>
+  <ng-container *ngIf="subActive=='hired'" >
+<div class="ShowSubTablecontent" *ngIf="acceptedApplicants.length > 0; else noApplicants">
+  <div class="table-container">
+    <table class="table">
+      <thead>
+        <tr class="tableEachRow">
+           <th class="table-header employee-col">Employee Name</th>
+  <th class="table-header jobRole-col">Job Role</th>
+  <th class="table-header hireDate-col">Hire Date</th>
+  <th class="table-header jobDays-col">Job Days</th>
+  <th class="table-header assignedDays-col">Assigned Days</th>
+  <th class="table-header status-col">Status</th>
+        </tr>
+      </thead>
+      <tbody class="table-scrollableTable">
+       <tr class="tableEachRow" *ngFor="let applicant of filteredAcceptedApplicants">
+  <td class="table-cell employee-colbody">
+    <div class="employee-info">
+      <img class="employee-img" [src]="applicant.imgProfile || 'assets/profile.png'" alt="profile">
+      <div class="employee-text">
+        <div class="employee-name">{{ applicant.applicantName }}</div>
+        <div class="employee-phone">{{ applicant.contactNumber }}</div>
+      </div>
+    </div>
+  </td>
+
+  <td class="table-cell ">
+    <div class="jobRole-colbody">  {{ applicant.jobTitle }}</div>
+   </td>
+
+  <td class="table-cell ">
+    <div class="hireDate-colbody"> {{ applicant.appliedDate | date:'MMM d, y' }}</div>
+   
+  </td>
+
+  <td class="table-cell ">
+    <div class="jobDays-colbody">
+       <ng-container *ngIf="getScheduleDays(applicant.schedules) as days">
+      {{ days.start }}
+      <ng-container *ngIf="days.end"> → {{ days.end }}</ng-container>
+    </ng-container>
+    </div>
+   
+  </td>
+
+  <td class="table-cell">
+    <div class="assignedDays-colbody" *ngFor="let item of getAssignedDates(applicant.schedules)">
+      <div>
+        {{ item.start }} <ng-container *ngIf="item.end"> → {{ item.end }}</ng-container>
+      </div>
+      <div class="days-text">
+        {{ item.days }} {{ item.days === 1 ? 'day' : 'days' }}
+      </div>
+    </div>
+  </td>
+
+  <td class="table-cell ">
+    <div class="status-colbody">
+        <span class="status-label" [ngClass]="getStatusClassHired(applicant.schedules)">
+      {{ getApplicantStatus(applicant.schedules) }}
+    </span>
+    </div>
+  
+  </td>
+</tr>
+       
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<ng-template #noApplicants>
+  <p style="text-align:center; padding: 20px;">No applicants found.</p>
+</ng-template>
+
+</ng-container>
+  
+<!-- this is actually shows the content of employeeStatus in Employee Table -->
+<ng-container *ngIf="subActive == 'employeeStatus'">
+<div class="ShowSubTablecontent empStatus" *ngIf="applicantsDetails.length > 0">
+  <div class="table-container">
+    <table class="table">
+      <thead class="colorForthead">
+        <tr  class="tableEachRow">
+          <th class="table-header empStatus-employee">Employee Name</th>
+          <th class="table-header empStatus-jobRole">Job Role</th>
+          <th class="table-header empStatus-assigned">Assigned Days</th>
+          <th class="table-header empStatus-worked">Worked Days</th>
+          <th class="table-header empStatus-absent">Absent Days</th>
+          <th class="table-header empStatus-status">Status</th>
+        </tr>
+      </thead>
+
+      <tbody class="table-scrollableTable">
+        <tr *ngFor="let data of filterAcceptedApplicantsEmpStatus()">
+          <td class="table-cell empStatus-employee">
+            <div class="employee-info">
+              <img class="employee-img" [src]="data.applicant.imgProfile || 'assets/profile.png'" alt="profile">
+              <div class="employee-text">
+                <div class="employee-name">{{ data.applicant.applicantName }}</div>
+                <div class="employee-phone">{{ data.applicant.contactNumber }}</div>
+              </div>
+            </div>
+          </td>
+
+          <td class="table-cell ">
+            <div class="empStatus-jobRolebody"> 
+                {{ data.applicant.jobTitle }}
+              </div>
+         
+          </td>
+
+          <td class="table-cell ">
+            <div class="empStatus-assignedbody">
+            {{ data.start }}
+            <ng-container *ngIf="data.end"> → {{ data.end }}</ng-container>
+            <div class="days-text2">
+              {{ data.days }} {{ data.days === 1 ? 'day' : 'days' }}
+            </div>
+            </div>
+          </td>
+
+          <td class="table-cell">
+            <div class="empStatus-workedbody">
+            {{ getWorkedDaysCountEmpStatus(data.rangeSchedules) }}
+            </div>
+          </td>
+
+          <td class="table-cell ">
+            <div class="empStatus-absentbody">
+            {{ getAbsentDaysCountEmpStatus(data.rangeSchedules) }}
+            </div>
+          </td>
+
+          <td class="table-cell "> 
+            <div class="empStatus-statusbody">
+            <span class="status-label" [ngClass]="getStatusClass(data.rangeSchedules)">
+              {{ getApplicantStatusEmpStatus(data.rangeSchedules) }}
+            </span>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</ng-container>
+<!-- this is actually shows the content of employeeStatus End-->
+
+<!-- this is actually shows the content of employee Payments-->
+  <ng-container *ngIf="subActive== 'payment'">
+ <div class="ShowSubTablecontent" *ngIf="applicantsDetails.length > 0">
+  <div class="table-container" >
+
+  
+<table class="table">
+ <thead>
+  <tr class="tableEachRow">
+    <th class="table-headerEmpPayment"><div class="EmpPayment-employee-title">Employee Name</div></th>
+    <th class="table-headerEmpPayment"><div class="EmpPayment-jobRole-title">Job Role</div></th>
+    <th class="table-headerEmpPayment"><div class="EmpPayment-workDate-title">Work Date</div></th>
+    <th class="table-headerEmpPayment"><div class="EmpPayment-shiftTime-title">Shift Time</div></th>
+    <th class="table-headerEmpPayment"><div class="EmpPayment-workStatus-title">Work Status</div></th>
+    <th class="table-headerEmpPayment"><div class="EmpPayment-amount-title">Amount</div></th>
+    <th class="table-headerEmpPayment"><div class="EmpPayment-payStatus-title">Pay Status</div></th>
+  </tr>
+</thead>
+<tbody class="table-scrollableTable">
+  <tr   *ngFor="let data of filterApplicantsPayStatus()">
+    <!-- Employee Name -->
+    <td class="table-cell EmpPayment-employee">
+      <div class="EmpPayment-employee-info" style="display:flex; align-items:center; gap:10px;">
+        <img class="EmpPayment-employee-img" [src]="data.applicant.imgProfile || 'assets/profile.png'" alt="profile" style="width:40px; height:40px; border-radius:50%;">
+        <div class="EmpPayment-employee-text">
+          <div class="EmpPayment-employee-name">{{ data.applicant.applicantName }}</div>
+          <div class="EmpPayment-employee-phone" style="font-size:0.85em; color:gray;">{{ data.applicant.contactNumber }}</div>
+        </div>
+      </div>
+    </td>
+
+    <!-- Job Role -->
+    <td class="table-cell EmpPayment-jobRole">{{ data.applicant.jobTitle }}</td>
+
+    <!-- Work Date -->
+    <td class="table-cell EmpPayment-workDate">
+      {{ data.date | date:'d MMM, yyyy' }}
+    </td>
+
+    <!-- Shift Time -->
+    <td class="table-cell EmpPayment-shiftTime">
+      {{ data.startTime }} - {{ data.endTime }}
+      <div class="EmpPayment-hours-text">
+        {{ data.hoursWorked }} hr{{ data.hoursWorked === 1 ? '' : 's' }}
+      </div>
+    </td>
+
+    <!-- Work Status -->
+ <td class="table-cell EmpPayment-workStatus">
+  <span  *ngIf="data.Schedulestatus === 'accepted'">Not Marked</span>
+  <span *ngIf="data.Schedulestatus === 'completed'">Completed</span>
+  <span *ngIf="data.Schedulestatus === 'absent'">Absent</span>
+  <span *ngIf="data.Schedulestatus !== 'accepted' 
+              && data.Schedulestatus !== 'completed' 
+              && data.Schedulestatus !== 'absent'">
+    {{ data.Schedulestatus | titlecase }}
+  </span>
+</td>
+
+    <!-- Amount -->
+    <td class="table-cell EmpPayment-amount">
+      {{ data.paymentForDay }}
+    </td>
+
+    <!-- Pay Status -->
+  <td class="table-cell EmpPayment-payStatus">
+  <!-- Pay (clickable) -->
+  <span class="EmpPayment-status-label pay"
+        *ngIf="data.paymentStatusLabel === 'Pay'"
+        (click)="onPayClick(data.applicant.applicantId, data.applicant.jobId, data.date)">
+    Pay
+  </span>
+
+  <!-- Paid -->
+  <span class="EmpPayment-status-label paid"
+        *ngIf="data.paymentStatusLabel === 'Paid'">
+    Paid
+  </span>
+
+  <!-- No Pay -->
+  <span class="EmpPayment-status-label cross"
+        *ngIf="data.paymentStatusLabel === 'No Pay'">
+    No Pay
+  </span>
+</td>
+  </tr>
+  
+</tbody>
+
+</table>
+</div>
+<div class="ShowPayLoading"   *ngIf="loadingService.loading$ | async">
+  <svg
+    class="container"
+    viewBox="0 0 40 40"
+    height="40"
+    width="40"
+  >
+    <circle 
+      class="track"
+      cx="20" 
+      cy="20" 
+      r="17.5" 
+      pathlength="100" 
+      stroke-width="5px" 
+      fill="none" 
+    />
+    <circle 
+      class="car"
+      cx="20" 
+      cy="20" 
+      r="17.5" 
+      pathlength="100" 
+      stroke-width="5px" 
+      fill="none" 
+    />
+  </svg>
+
+</div>
+  </div>
+
+
+  </ng-container> 
+
+
+
+</div>
+
+   <!-- table for showing work log of employess  -->
+<div *ngIf="activeTab =='worklog'" class="table-WorkLog">
+  <table class="worklog-table">
+    <thead>
+      <tr>
+        <th>Employee Name</th>
+        <th class="JobRoleworklog1">Job Role</th>
+        <th class="JobRoleworklog">Work Date</th>
+        <th class="JobRoleworklogTime">Shift time</th>
+        <th class="JobRoleworklog">Work status</th>
+        <th class="JobRoleworklog">Action</th>
+      </tr>
+    </thead>
+
+<tbody class="WorkScheduleTable">
+  <ng-container *ngFor="let workLogApplicants of filteredAcceptedApplicants">
+    <ng-container *ngFor="let schedule of workLogApplicants.schedules">
+      <tr *ngIf="schedule.Schedulestatus !== 'assigned' && schedule.Schedulestatus !== 'rejected' ">
+        <td>
+          <div class="emp-info">
+            <img [src]="workLogApplicants.imgProfile" class="Profile" >
+            <div>
+              <div class="emp-name">{{ workLogApplicants.applicantName }}</div>
+              <div class="emp-email">{{ workLogApplicants.applicantEmail }}</div>
+            </div>
+          </div>
+        </td>
+        <td class="JobRoleworklog1">{{ workLogApplicants.jobTitle }}</td>
+        <td class="JobRoleworklog">{{ schedule.date | date:'MMM d, y' }}</td>
+        <td class="JobRoleworklogTime">{{ schedule.startTime }} - {{ schedule.endTime }}</td>
+        <td class="JobRoleworklog">
+          <span class="statusWorkLog"
+                [ngClass]="getScheduleStatus(schedule).status.toLowerCase().replace(' ', '-')">
+            {{ getScheduleStatus(schedule).status }}
+          </span>
+        </td>
+        <td class="JobRoleworklog">
+          <button (click)="AttendanceWorkLog(workLogApplicants.applicantId, workLogApplicants.jobId, schedule.date)"
+                  *ngIf="getScheduleStatus(schedule).showEdit"
+                  class="action-btn">Edit</button>
+        </td>
+      </tr>
+      
+    </ng-container>
+  </ng-container>
+</tbody>
+
+  </table>
+   <div class="ShowWorkLogBtn" *ngIf="showAttendanceWOrkLog" >
+
+      <div class="ShowWorkLogEmp">
+    
+         <div class="ImageWorkLogEmp">
+  <img [src]="showWorkLogApplicantImg || 'assets/profile.png'" class="ProfileImgWorkLog" alt="Profile">
+</div>
+            <div class="EmployeeName">{{ showWorkLogApplicantName}}</div>
+            <div class="EmployeeJobTitle">{{showWorkLogApplicantJobTitle}}</div>
+      </div>
+      <div class="markAttendance" >
+  <div class="WorkLogMarking">
+     <button (click)="CloseAttendance()" class="Crossbtn">X</button>
+    <p class="worklog-date">{{showWorkLogApplicantDate  | date:'dd-MMM-yyyy'}}</p>
+    <div class="worklog-actions">
+      <button (click)="GiveWorkLogAttendance()" class="btn-present">Present</button>
+      <button (click)="GiveAbsentAttendance()" class="btn-absent">Not Present</button>
+    </div>
+  </div>
+</div>
+<div class="showAnimationLoading" *ngIf="isLoadingTo | async">
+  <div class="container"></div>
+</div>
+
+</div>
+
+     </div>
+   </div>
+</div>
+
+
+
+
+
+
+
+

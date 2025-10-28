@@ -1,0 +1,74 @@
+<div class="Navheading">
+  <!-- Left: Logo + Title (your original code, untouched)  -->
+  <span>
+    <img   src="../../assets/sampleforfigma/logo.png"
+     class="logoImg" alt="">
+    <h4 class="headingTitle">QuickLook</h4>
+  </span>
+
+  <!-- Right: Notification + Profile   -->
+<div class="nav-right">
+  <div class="notification-wrapper">
+    <div (click)="GotoProfile()" class="notification-icon">
+      🔔
+      <div *ngIf="showNotificationIcon" class="gotMessage"></div>
+    </div>
+  </div>
+
+  <img (click)=" GotoProfile()" [src]="JobSeekerDetails.ImageProfile || '../../assets/profile.png'" class="profile-photo" alt="Profile">
+  <div class="profile-name">{{ JobSeekerDetails.Name }}</div>
+</div>
+</div>
+
+
+<!-- sideNav bar code below -->
+<div class="sideBar">
+  <div class="sideItem" [ngClass]="{ active: activeTab === 'dashboard' }" (click)="setActive('dashboard')">
+    <img src="../../assets/dashboard.png" class="sideIcon" alt="Dashboard">
+    <span class="sideLabel">Dashboard</span>
+  </div>
+ 
+    <div class="sideItem" [ngClass]="{ active: activeTab === 'available-jobs' }" (click)="setActive('available-jobs')">
+     <img src="../../assets/jobSearchIcons.png" class="sideIcon" >
+    <span class="sideLabel">Jobs</span>
+  </div>
+
+  <div class="sideItem"  [ngClass]="{ active: activeTab === 'applied-jobs' }" (click)="setActive('applied-jobs')">
+     <img src="../../assets/appliedIcon.png" class="sideIcon" >
+    <span class="sideLabel">Applied Jobs</span>
+  </div>
+
+  <div class="sideItem" [ngClass]="{ active: activeTab === 'inbox-jobs' }" (click)="setActive('inbox-jobs')" >
+     <img src="../../assets/mail (1).png" class="sideIcon" >
+    <span class="sideLabel">Inbox</span>
+  </div>
+ 
+ <div class="sideItem" [ngClass]="{ active: activeTab === 'calendar' }" (click)="setActive('calendar')" >
+     <img src="../../assets/calendar.png" class="sideIcon" >
+    <span class="sideLabel">Calendar</span>
+  </div>
+   <div class="sideItem" [ngClass]="{ active: activeTab === 'jobpostlocation' }" (click)="setActive('jobpostlocation')" >
+     <img src="../../assets/locationNavBar.png" class="sideIcon" >
+    <span class="sideLabel">Location</span>
+  </div>
+
+      <div class="sideItem2" [ngClass]="{ active: activeTab === 'profile' }" (click)="setActive('profile')">
+ 
+     <img [src]="JobSeekerDetails.ImageProfile ||'../../assets/profile.png'" class="sideIconImg" >
+    <span class="sideLabel">Profile</span>
+  </div>
+
+   <div class="sideItem3" [ngClass]="{ active: activeTab === 'logOut' }" (click)="logOut()">
+    <img src="../../assets/log-out.png" class="sideIcon" >
+    <span class="sideLabel2">LogOut</span>
+  </div>
+   
+</div>
+
+
+<div class="RoutePage">
+  <div class="scroll-container">
+    <router-outlet (activate)="onChildActivate($event)"></router-outlet>
+  </div>
+</div>
+

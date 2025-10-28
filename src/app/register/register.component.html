@@ -1,0 +1,35 @@
+<div class="MainHeader">
+  <div class="container d-flex align-items-center justify-content-between">
+    <!-- LOGO -->
+     <div class="ImgLogoPosition">
+       <img src="../../assets/sampleforfigma/logo.png" class="logoID" alt="">
+      <p class="quickTitle">QuickLook</p>
+     </div>
+   
+    <!-- CENTER BUTTONS -->
+    <div class="btnRegisterType d-flex ">
+      <button 
+        (click)="onJobSeeker()" 
+        class="btn my-font"
+        [ngClass]="{'active-tab': pageJobSeeker}">JobSeeker</button>
+      <button 
+        (click)="onEmployer()" 
+        class="btn my-font"
+        [ngClass]="{'active-tab': !pageJobSeeker}">Employer</button>
+    </div>
+
+    <!-- RIGHT LOGIN -->
+    <div class="RightLogin d-flex align-items-center gap-4">
+      <p class="rightText mb-0">Already a Member?</p>
+      <p (click)="GotoLogin()" class="rightSide mb-0">Login</p>
+    </div>
+  </div>
+</div>
+<div class="ImagePart">
+      <img src="../../assets/sampleforfigma/Brooklyn Illustrations Set - 1779 customizable PNGs, SVGs, PDFs.jpeg"  class="imgLogo" alt="Logo" />
+      <div class="registerContent">
+        <router-outlet></router-outlet>
+      </div>
+      
+</div>
+

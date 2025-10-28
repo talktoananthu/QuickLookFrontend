@@ -1,0 +1,323 @@
+
+
+<div class="FilterDetails">
+   
+    <div class="TodayDateDetails">
+        <div class="TodayDateScheduleDetails">
+            <div class="ImageIconDiv">
+                 <img src="../../assets/calendarIcon2.png" height="25px"
+                 width="25px"
+                 
+                 alt="">
+            </div>
+            <div class="DateContents">
+             <div class="MainText">{{ todayDate | date: 'MMMM dd, yyyy' }}</div>
+                     <div class="SubText">You have {{NoOfSchedulestoday}} schedules and {{NoOfJobTypesToday}} jobs today</div>
+            </div>
+        </div>
+    </div>
+    <div class="showContentFlex">
+     <div class="SelectSchedules">
+       
+         <button 
+          (click)="showWeekTrue()"
+       [ngClass]="showWeek ? 'SelecSchedulesBTn' : 'NotSelecSchedulesBTn'"
+         >Week</button>
+          <button class="SelecSchedulesBTn"
+           (click)="showDayTrue()"
+             [ngClass]="showDay ? 'SelecSchedulesBTn' : 'NotSelecSchedulesBTn'"
+             >Day</button>
+           
+    </div>
+    <div class="CalenderValues">
+      <ng-container *ngIf="showWeek ">
+           <ng-container *ngIf="activeButton != 'upcoming'">
+              <button (click)="CalculatePrevWeek()"  
+               [class.active]="activeButton === 'prev'"
+               class="CalendarBtn">  
+               <img src="../../assets/left-arrow.png" class="arrowImg" alt="">
+              </button>
+              <button (click)="CalculateNextWeek()" 
+                [class.active]="activeButton === 'next'"
+              class="CalendarBtnRight">
+               <img src="../../assets/right-arrow.png" class="arrowImg" alt="">
+            </button>
+              </ng-container>
+                <div class="calendarDataPresent">
+                  <div class="CalendarSpan">
+  <label class="CalendarSpanText">From</label>
+  <!-- visible formatted text -->
+  <input type="text" class="InputStyle" 
+     
+  [value]="formatDateDisplay(fromDate)" readonly />
+
+  <!-- keep raw value for forms / ngModel -->
+  <input type="hidden" 
+   
+   name="fromDate" [(ngModel)]="fromDate" />
+     <img src="../../assets/calendarIcon2.png" 
+     
+       class="calendarIcon" 
+        />
+</div>
+
+<div class="CalendarSpan2">
+  <label class="CalendarSpanText">To</label><br />
+  <input type="text" class="InputStyle2" [value]="formatDateDisplay(toDate)" readonly />
+
+  <input type="hidden" name="toDate" [(ngModel)]="toDate" />
+   <img src="../../assets/calendarIcon2.png" 
+     
+       class="calendarIcon2" 
+        />
+</div>
+         </div>
+     
+</ng-container>
+
+<ng-container *ngIf="showDay">
+  <div class="dateInputWrapper">
+    <!-- Single visible input -->
+    <input type="date" class="InputStyleSingleDay" 
+           [(ngModel)]="todayDate" 
+           (change)="onDateChange()" 
+           #dateInput />
+
+    <!-- Calendar icon triggers input click -->
+  
+  </div>
+</ng-container>
+
+ <button class="UpcomingBtn" (click)="DatesofUpcomingSchedules()" 
+   [class.active]="activeButton === 'upcoming'">
+  <img  src="../../assets/shcedulenewicon.png" height="20"  width="20" 
+   alt="schedule icon"> 
+  Upcoming Schedules
+  <div *ngIf="activeButton=='upcoming'" (click)="closeUpcoming($event)" class="closeScheduling">x</div>
+</button>
+    </div>
+    
+    </div>
+</div>
+
+<div class="BackgroundTable">
+ <div class="TableT1">
+    <div class="TableTHeadDetailsJObTitle">
+       Jobs
+    </div>
+     <div class="DateColumn">
+      
+        <div class="TableTDateDetails"  *ngFor="let date of upComingDates">
+         <div class="TabelData">
+            <!--  -->
+             <div class="DateNo">{{ date | date: 'd' }}</div>
+             <div class="DayAndMonth">
+               
+                <div>{{ date | date: 'EEE' }}</div>
+                <div>{{ date | date: 'MMM' }}</div>
+             </div>
+         </div>
+      </div>
+      
+      
+      
+      
+      
+         
+         
+     
+     </div>
+    
+   <ng-container *ngIf="activeButton=='AllSchedules'">
+   <div class="TableBodyDetails"> 
+     <!-- 1 row  -->
+   <div class="TableDatasInEachRow" *ngFor="let jobsTitle of SchedulesData">
+  <!-- Job title section -->
+  <div class="TableBodyDatasRow">
+    <div class="TableBodyJobTitle">
+      <div class="ImageProfile">
+            <img 
+    [src]="jobsTitle.jobImage ? jobsTitle.jobImage : 'assets/default-profile.png'" 
+    alt="Profile Image"
+  />
+      </div>
+      <div class="ContentJobTitle">
+        <div class="MainJobTitle">{{ jobsTitle.jobTitle }}</div>
+        <div class="SubJobTitle">{{ jobsTitle.businessName }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Schedule section -->
+    <ng-container *ngFor="let date of upComingDates">
+    <div class="TableBodyDatasSchedules">
+  <div
+    class="ScheduleDetail"
+    *ngIf="
+      hasScheduleForDate(jobsTitle, date) &&
+      getShiftStatus(jobsTitle, date) !== 'No Status' &&
+      getShiftStatus(jobsTitle, date) !== 'No Schedule'
+    "
+  >
+    <div class="MainTitleShift">Shift</div>
+    <div class="ShiftHour">{{ getShiftTime(jobsTitle, date) }}</div>
+
+    <div class="Icon">
+      <img
+        [src]="
+          getShiftStatus(jobsTitle, date) === 'Completed'
+            ? '../../assets/approved.png'
+            : getShiftStatus(jobsTitle, date) === 'Rejected'
+            ? '../../assets/rejected.png'
+            : getShiftStatus(jobsTitle, date) === 'Ongoing'
+            ? '../../assets/upcoming.png'
+                 : getShiftStatus(jobsTitle, date) === 'Absent'
+            ? '../../assets/absent.png'
+            : getShiftStatus(jobsTitle, date) === 'Not Marked'
+            ? '../../assets/pending.png'
+            : '../../assets/inprogress.png'
+        "
+        class="IconStyle"
+        alt=""
+      />
+      {{ getShiftStatus(jobsTitle, date) }}
+    </div>
+  </div>
+</div>
+  </ng-container>
+  
+</div>
+   
+   </div>
+</ng-container> 
+<ng-container *ngIf="activeButton=='upcoming'">
+   <div class="TableBodyDetails"> 
+     <!-- 1 row  -->
+   <div class="TableDatasInEachRow" *ngFor="let jobsTitle of UpcomingShiftSchedulesData">
+  <!-- Job title section -->
+  <div class="TableBodyDatasRow">
+    <div class="TableBodyJobTitle">
+      <div class="ImageProfile">
+            <img 
+    [src]="jobsTitle.jobImage ? jobsTitle.jobImage : 'assets/default-profile.png'" 
+    alt="Profile Image"
+  />
+      </div>
+      <div class="ContentJobTitle">
+        <div class="MainJobTitle">{{ jobsTitle.jobTitle }}</div>
+        <div class="SubJobTitle">{{ jobsTitle.businessName }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Schedule section -->
+       <ng-container *ngFor="let date of upComingDates">
+    <div class="TableBodyDatasSchedules">
+  <div
+    class="ScheduleDetail"
+    *ngIf="
+      hasScheduleForDate(jobsTitle, date) &&
+      getShiftStatus(jobsTitle, date) !== 'No Status' &&
+      getShiftStatus(jobsTitle, date) !== 'No Schedule'
+    "
+  >
+    <div class="MainTitleShift">Shift</div>
+    <div class="ShiftHour">{{ getShiftTime(jobsTitle, date) }}</div>
+
+    <div class="Icon">
+      <img
+        [src]="
+          getShiftStatus(jobsTitle, date) === 'Completed'
+            ? '../../assets/approved.png'
+            : getShiftStatus(jobsTitle, date) === 'Rejected'
+            ? '../../assets/rejected.png'
+            : getShiftStatus(jobsTitle, date) === 'Ongoing'
+            ? '../../assets/upcoming.png'
+                 : getShiftStatus(jobsTitle, date) === 'Absent'
+            ? '../../assets/absent.png'
+            : getShiftStatus(jobsTitle, date) === 'Not Marked'
+            ? '../../assets/pending.png'
+            : '../../assets/inprogress.png'
+        "
+        class="IconStyle"
+        alt=""
+      />
+      {{ getShiftStatus(jobsTitle, date) }}
+    </div>
+  </div>
+</div>
+  </ng-container>
+  
+</div>
+   
+   </div>
+</ng-container>
+ </div>
+</div>
+
+
+
+
+  <!-- 2 row  -->
+        
+        <!-- 3 row  -->
+         <!-- <div class="TableDatasInEachRow">
+         
+          <div class="TableBodyDatasRow">
+             <div class="TableBodyJobTitle"></div>
+          </div> -->
+          <!-- below page is for the content to show  -->
+         
+          <!-- <div class="TableBodyDatasSchedules">
+             <div class="TableBodyJobSchedules"></div>
+          </div>
+          <div class="TableBodyDatasSchedules">
+             <div class="TableBodyJobSchedules"></div>
+          </div>
+          <div class="TableBodyDatasSchedules">
+             <div class="TableBodyJobSchedules"></div>
+          </div>
+           <div class="TableBodyDatasSchedules">
+             <div class="TableBodyJobSchedules"></div>
+          </div>
+           <div class="TableBodyDatasSchedules">
+             <div class="TableBodyJobSchedules"></div>
+          </div>
+           <div class="TableBodyDatasSchedules">
+             <div class="TableBodyJobSchedules"></div>
+          </div>
+           <div class="TableBodyDatasSchedules">
+             <div class="TableBodyJobSchedules"></div>
+          </div>
+        
+        </div> -->
+         <!-- <div class="TableDatasInEachRow">
+         
+          <div class="TableBodyDatasRow">
+             <div class="TableBodyJobTitle"></div>
+          </div>
+          below page is for the content to show  
+         
+          <div class="TableBodyDatasSchedules">
+             <div class="TableBodyJobSchedules"></div>
+          </div>
+          <div class="TableBodyDatasSchedules">
+             <div class="TableBodyJobSchedules"></div>
+          </div>
+          <div class="TableBodyDatasSchedules">
+             <div class="TableBodyJobSchedules"></div>
+          </div>
+           <div class="TableBodyDatasSchedules">
+             <div class="TableBodyJobSchedules"></div>
+          </div>
+           <div class="TableBodyDatasSchedules">
+             <div class="TableBodyJobSchedules"></div>
+          </div>
+           <div class="TableBodyDatasSchedules">
+             <div class="TableBodyJobSchedules"></div>
+          </div>
+           <div class="TableBodyDatasSchedules">
+             <div class="TableBodyJobSchedules"></div>
+          </div>
+        
+        </div> -->

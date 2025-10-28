@@ -1,0 +1,352 @@
+.DescriptionsForJobs{
+       position: relative;
+    height: 74vh;
+    width: 56%;
+    border: 1px solid #c4c4c4;
+    top: 40px;
+    left: 224px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    
+}
+.Applied{
+ position: relative;
+    top: 37px;
+    left: 50px; 
+      font-family: "Poppins", sans-serif;  
+      display: flex;
+      align-items: center;
+      gap: 10px;
+}
+.AppliedJobImg{
+ height: 30px;
+ width: 30px;
+ object-fit: cover;
+}
+.Filters{
+        position: relative;
+    left: 724px;
+    display: flex;
+    gap: 10px;
+}
+.SearchType {
+  background-color: white;
+  border: 1px solid #c4c4c4;
+  border-radius: 6px;
+  padding: 6px 12px 6px 35px; /* extra left padding for icon */
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  background-image: url('https://cdn-icons-png.flaticon.com/512/622/622669.png'); /* 🔍 search icon */
+  background-repeat: no-repeat;
+  background-size: 16px;
+  background-position: 10px center;
+  width: 200px;
+  height: 32px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+.status-container {
+  background-color: white;
+  border: 1px solid #c4c4c4;
+  border-radius: 6px;
+  padding: 10px 12px;
+  width: fit-content;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.status-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 10px;
+}
+
+.status-list li {
+    cursor: pointer;
+    padding: 1px 14px;
+    border-radius: 4px;
+    transition: all 0.2s 
+ease;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    color: #333;
+}
+
+.status-list li:hover {
+  background-color: #f1f1f1;
+}
+
+.status-list li.selected {
+  background-color: #007bff;
+  color: white;
+}
+
+.DescriptionHeading{
+         position: relative;
+    height: 51px;
+    width: 100%;
+    border-bottom: 1px solid #c4c4c4;
+    display: flex
+;
+    gap: 156px;
+    background-color: #e1e1e1;
+}
+.MainTitle1{
+         position: relative;
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+    left: 50px;
+    top: 12px;
+    font-weight: 600;
+    
+}
+.MainTitle2{
+         position: relative;
+    font-size: 15px;
+      font-family: "Poppins", sans-serif;
+    left: 50px;
+    top: 12px;
+        font-weight: 600;
+}
+.MainTitle3{
+       position: relative;
+    font-size: 15px;
+     font-family: "Poppins", sans-serif;
+    left: -3px;
+    top: 12px;
+        font-weight: 600;
+}
+.MainTitle4{
+          position: relative;
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+    left: -29px;
+    top: 12px;
+    font-weight: 600;
+}
+.DescriptionDetails{  
+             position: relative;
+    height: 75vh;
+    border-bottom: 1px solid #c4c4c4;
+  
+    border-radius: 5px;
+    overflow-y: auto;
+    
+}
+.DescriptionEachDetails{
+  position: relative;
+    height: 60px;
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid #c4c4c4;
+   display: flex;
+
+}
+
+.loader-container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  top: 10px;
+  left: 30px;
+}
+
+.container {
+  --uib-size: 40px;
+  --uib-color: black;
+  --uib-speed: 2s;
+  --uib-bg-opacity: 0;
+  height: var(--uib-size);
+  width: var(--uib-size);
+  transform-origin: center;
+  animation: rotate var(--uib-speed) linear infinite;
+  will-change: transform;
+  overflow: visible;
+}
+
+.car {
+  fill: none;
+  stroke: var(--uib-color);
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  animation: stretch calc(var(--uib-speed) * 0.75) ease-in-out infinite;
+  will-change: stroke-dasharray, stroke-dashoffset;
+  transition: stroke 0.5s ease;
+}
+
+.track {
+  fill: none;
+  stroke: var(--uib-color);
+  opacity: var(--uib-bg-opacity);
+  transition: stroke 0.5s ease;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes stretch {
+  0% {
+    stroke-dasharray: 0, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 75, 150;
+    stroke-dashoffset: -25;
+  }
+  100% {
+    stroke-dashoffset: -100;
+  }
+}
+
+
+.JobsCol1{
+display: flex;
+position: relative;
+align-items: center;
+left: 10px;
+}
+.ImageCol1 {
+  height: 45px;
+  width: 45px;
+  object-fit: cover;
+  border-radius: 5px;
+  border: 1px solid #c4c4c4;
+  box-shadow: 0 6px 8px -4px rgba(0, 0, 0, 0.3);
+}
+
+.JobsCol1Title{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    left: 10px;
+}
+.JobsCol1MainTitle{
+      position: relative;
+      top: -2px;
+   font-size: 14px; 
+   font-weight: 700;
+    font-family: "League Spartan", sans-serif;
+}
+.JobsCol1SubTitle{
+       position: relative;
+    font-size: 10px;
+    font-family: "League Spartan", sans-serif;
+    top: 1px;
+}
+.AppliedDate{
+    position: absolute;
+    font-family: "League Spartan", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    top: 22px;
+    left: 246px;
+}
+.EmployerDetails{
+   position: absolute;
+    display: flex
+;
+    left: 448px;
+    top: 8px;
+}
+.ImgSize{
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    border: 1px solid #c4c4c4;
+}
+.ImgProfile{
+    height: 100%;
+    width: 100%;
+    border-radius:50%;
+    object-fit: cover;
+}
+.EmployerCol3{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    top: 10px;
+    left: 10px;
+}
+.EmployerCol3MainTitle{
+        position: relative;
+    font-family: "League Spartan", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    top: -4px;
+}
+.EmployerCol3Subtitle{
+     position: relative;
+     font-family: "League Spartan", sans-serif;
+    font-size: 10px;
+    top: 1px;
+}
+.StatusCol {
+       position: absolute;
+    left: 695px;
+    top: 15px;
+    
+}
+.hired{
+       border-radius: 6px;
+    font-size: 10px;
+    font-weight: 500;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+    padding: 4px 10px;
+    background-color: #e6f9e6;
+    color: #2e7d32;
+    border: 1px solid #2e7d32;
+}
+.pending{
+      display: inline-block;
+  padding: 4px 10px;
+  background-color: #fff4e5; /* light orange background */
+  color: #e69500; /* deep orange text */
+  border: 1px solid #e69500; /* orange border */
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 500;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.rejected {
+  display: inline-block;
+  padding: 4px 10px;
+  background-color: #ffe5e5; /* light red/pink background */
+  color: #e60000; /* deep red text */
+  border: 1px solid #e60000; /* red border */
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 500;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.ShowEmpty{
+        justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 182px;
+    position: relative;
+}
+.EmptyImg{
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+}
+.NoDataTitle{
+    font-size: 13px;
+      font-family: 'Poppins', sans-serif;
+}

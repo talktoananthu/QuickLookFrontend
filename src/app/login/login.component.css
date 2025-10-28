@@ -1,0 +1,421 @@
+@import url('https://fonts.googleapis.com/css2?family=Kreon:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lemon&display=swap');
+
+:host {
+  display: block;
+  height: 100vh;
+  width: 100vw;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.Main {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+.bgVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.leftSide > *:not(.bgVideo) {
+  position: relative;
+  z-index: 1;
+}
+.leftSide {
+  flex: 0 0 60%;
+  height: 100%;
+  position: relative;
+  /* background-image:
+    linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url('../../assets/sampleforfigma/pexels-mizunokozuki-13801786.jpg'); */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.iconLogo {
+  height: 60px;
+}
+
+.QLTitle {
+  font-family: 'Lemon', serif;
+  font-size: 24px;
+  margin-left: 10px;
+  margin-top: 25px;
+  font-weight: normal;
+  color: #fff;
+}
+
+.TitleWelcome {
+font-family: "Lemon", serif;
+    font-size: 50px;
+    font-weight: normal;
+    margin-top: 180px;
+    line-height: 1.2;
+    margin-left: 50px;
+    color: #fff;
+    position: relative !important;
+    top: -84px;
+}
+.DescriptionTitle{
+         position: relative !important;
+  left: 51px;
+  top: -50px;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 25px;
+  font-weight: 800;
+  white-space: normal;         /* allow wrapping */
+  word-wrap: break-word;       /* break long words */
+  max-width: 68%;   
+}
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 40px;
+  padding: 5px 10px;
+  width: fit-content;
+  margin-left: 50px;
+  margin-top: 30px;
+}
+
+.search-item {
+  display: flex;
+  align-items: center;
+  margin: 0 5px;
+}
+
+.search-item input {
+  border: none;
+  outline: none;
+  padding: 8px 12px;
+  font-family: 'Kreon', sans-serif;
+}
+
+.divider {
+  width: 1px;
+  height: 30px;
+  background-color: #ddd;
+}
+
+.search-btn {
+     background: none;
+    border: 3px solid #5b5b5b7d;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    margin-top: -3px;
+
+}
+
+.rightSide {
+  flex: 0 0 40%;
+  height: 100%;
+  display: flex; /* ✅ center the box */
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 2rem;
+  background: #fff;
+}
+.ShowLoginLoading{
+position: absolute;
+    height: 100%;
+    width: 40%;
+    background-color: #f2f2f285;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0px;
+    right: 0px;
+}
+
+.container {
+  --uib-size: 40px;
+  --uib-color: black;
+  --uib-speed: 2s;
+  --uib-bg-opacity: 0;
+  height: var(--uib-size);
+  width: var(--uib-size);
+  transform-origin: center;
+  animation: rotate var(--uib-speed) linear infinite;
+  will-change: transform;
+  overflow: visible;
+}
+
+.car {
+  fill: none;
+  stroke: var(--uib-color);
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  animation: stretch calc(var(--uib-speed) * 0.75) ease-in-out infinite;
+  will-change: stroke-dasharray, stroke-dashoffset;
+  transition: stroke 0.5s ease;
+}
+
+.track {
+  fill: none;
+  stroke: var(--uib-color);
+  opacity: var(--uib-bg-opacity);
+  transition: stroke 0.5s ease;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes stretch {
+  0% {
+    stroke-dasharray: 0, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 75, 150;
+    stroke-dashoffset: -25;
+  }
+  100% {
+    stroke-dashoffset: -100;
+  }
+}
+/* Table base */
+
+
+.loginPage {
+     width: 80%;
+    max-width: 329px;
+    background-color: transparent;
+    border-radius: 8px;
+    border: 3px solid #B9B5B5;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    padding: 30px 20px;
+    margin-left: -218px;
+
+}
+
+.loginTitle {
+     
+
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 23px;
+}
+
+.emailTitle {
+  font-family: 'Kreon', sans-serif;
+  display: block;
+  margin-top: 20px;
+}
+
+.emailDiv {
+  margin-top: 10px;
+}
+
+.enterEmail {
+  height: 40px;
+  width: 88%;
+  border-radius: 6px;
+  border: 2px solid #B9B5B5;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 0 12px;
+  font-family: 'Kreon', sans-serif;
+  margin-top: 5px;
+}
+
+.enterEmail::placeholder {
+  font-family: 'Kreon', sans-serif;
+  font-size: 14px;
+  color: #999;
+}
+
+/* ✅ Updated rows for buttons/text */
+.GotoSign {
+display: flex;
+    align-items: center;
+    gap: 35px;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.forgotPass {
+  font-family: 'Kreon', sans-serif;
+  font-size: 14px;
+  margin: 0;
+  cursor: pointer;
+}
+.forgotPass:hover {
+  font-family: 'Kreon', sans-serif;
+  font-size: 14px;
+  margin: 0;
+  border-bottom: 2px solid #575656;
+  cursor: pointer;
+}
+.signIN {
+  height: 40px;
+  width: 100px;
+  border-radius: 10px;
+  background-color: black;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+ margin-left: 20px;
+}
+.signIN:disabled {
+  opacity: 0.5;           /* Fades the button */
+  cursor: not-allowed;    /* Shows disabled cursor */
+}
+
+.noAccount {
+  font-family: "Kreon", sans-serif;
+    margin: 0;
+    font-size: 15px;
+}
+
+.GotoRegister {
+  background: none;
+  border: none;
+  padding: 0;
+  color: black;
+  text-decoration: underline;
+  font-family: 'Koulen', sans-serif;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 10px; /* Small space if needed */
+}
+
+.searchImage{
+  height: 15px;
+  width: 15px;
+}
+.search-item select {
+  background: transparent;   /* Remove background */
+  border: none;              /* Remove border */
+  outline: none;             /* Remove focus outline */
+  font-family: 'Kreon', sans-serif;  /* Match your font */
+  font-size: 14px;           /* Adjust as needed */
+  padding: 8px 12px;         /* Spacing for comfort */
+  color: #333;               /* Text color */
+  cursor: pointer;           /* Cursor style */
+  appearance: none;          /* Remove default arrow */
+  -webkit-appearance: none;  /* Safari/Chrome */
+  -moz-appearance: none;     /* Firefox */
+}
+
+/* Remove background on options too (optional) */
+
+
+.dropdown {
+border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 12px;
+    background-color: #fff;
+    width: 204px;
+    list-style: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 8px;
+    margin-left:33px;
+}
+
+.dropdown li {
+  padding: 8px 0;                 /* Space between jobs */
+  border-bottom: 1px solid #eee;  /* Divider line */
+}
+
+.dropdown li:last-child {
+  border-bottom: none;            /* No border for last item */
+}
+
+.dropdown li  {
+  padding: 8px 0;                 /* Space between jobs */
+  border-bottom: 1px solid #eee;  /* Divider line */
+}
+
+/*----------------Select Category ---------*/
+/* Wrap to position the arrow */
+/* Container for icon + select + arrow */
+.category-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.category-select {
+  border: none;
+  border-radius: 20px;
+  padding: 8px 40px 8px 12px; /* right padding for arrow */
+  background: #fff;
+  font-family: 'Kreon', sans-serif;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  appearance: none;
+  outline: none;
+  width: 100%; /* ensure select fills container */
+}
+
+/* Position the arrow absolutely inside wrapper */
+.category-wrapper .arrow {
+  position: absolute;
+  right: 15px;
+  pointer-events: none; /* do not block clicks */
+  font-size: 12px;
+  color: #555;
+}
+
+/*Login as Job seeker or Employer*/
+/* Wrapper is flex, so label and select are inline */
+.login-select-wrapper {
+    display: flex
+;
+  font-family: 'Poppins', sans-serif;
+    align-items: center;
+    gap: 8px;
+    /* margin: 20px 0; */
+    /* margin-top: -643px; */
+    position: relative;
+    top: -350px;         /* adjust spacing around if needed */
+}
+
+.login-as {
+  font-size: 16px;         /* your style */
+  font-weight: 600;
+}
+
+.login-select {
+  border: px solid #ccc;  /* add border for clarity */
+  background: #fff;         /* light background */
+  font-size: 16px;
+  padding: 6px 12px;
+  outline: none;
+  cursor: pointer;
+  border-radius: 4px;      /* optional rounded corners */
+}
+.IncorrectField{
+  color: red;
+}
+
+

@@ -1,0 +1,146 @@
+<div class="Main">
+<div class="leftSide">
+  <video
+    #bgVideo
+    autoplay
+    muted
+    loop
+    playsinline
+    class="bgVideo"
+  >
+    <source src="../../assets/videos intro/introvideo.mp4" type="video/mp4" />
+  </video>
+
+  <div class="logo">
+    <img src="../../assets/sampleforfigma/logo.png" class="iconLogo" alt="Logo" />
+    <h3 class="QLTitle">QuickLooK</h3>
+  </div>
+
+  <div class="TitleWelcome">Welcome To QuickLooK</div>
+
+  <div class="DescriptionTitle">
+    Your go-to platform for finding and posting part-time jobs near you.
+  </div>
+
+  <ul *ngIf="nearJobNames.length > 0" class="dropdown">
+    <li *ngFor="let job of nearJobNames" (click)="selectJob(job)">
+      {{ job }}
+    </li>
+  </ul>
+</div>
+
+   
+  <div class="rightSide">
+<div class="login-select-wrapper">
+  <span class="login-as">Login As</span>
+  <select [(ngModel)]="selectedLoginAs" class="login-select">
+    <option *ngFor="let cat of categoryLogin" [value]="cat">{{ cat }}</option>
+  </select>
+</div>
+
+    <div class="loginPage">
+      <form #loginForm="ngForm">
+  <h2 class="loginTitle">Login In</h2>
+
+  <!-- Email input -->  
+  <div class="emailDiv">
+    <label class="emailTitle">Email</label>
+    <!-- Assign the NgModel directive instance on this input to this variable -->
+     <!-- acutally when user types input data ngModel will know it by  [(ngModel)]="userName"
+      but to check validation  factors like min and max length u have to use 
+         #userNameField="ngModel" -->
+    <input 
+   
+      #userLoginField="ngModel"  
+      [(ngModel)]="userEmail" 
+      type="email"
+      name="emailId"   
+      required
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+      [placeholder]="selectedLoginAs === 'Employer' ? 'Enter work email' : 'Enter email'"
+      class="enterEmail" />
+    <!--  Email errors -->
+     <div class="IncorrectField">
+       <span *ngIf="userLoginField.touched 
+       && userLoginField.errors?.['required']">Email is required
+       .</span>
+    <span *ngIf="userLoginField.touched &&
+     userLoginField.errors?.['pattern']">
+      Invalid email format.</span>
+     </div>
+   
+  </div>
+
+  <!-- Password input -->
+  <div class="emailDiv">
+    <label class="emailTitle">Password</label>
+    <input 
+      #userPasswordField="ngModel"
+      [(ngModel)]="userPassword"
+      type="password"
+      name="passId"
+      required
+      minlength="6"
+      placeholder="Enter password"
+      class="enterEmail" />
+    <!--  Password errors -->
+     <div class="IncorrectField">
+         <span *ngIf="userPasswordField.touched && 
+    userPasswordField.errors?.['required']">Password is required.</span>
+    <span *ngIf="userPasswordField.touched && userPasswordField.errors?.['minlength']">
+      Password must be at least 6 characters.
+    </span>
+     </div>
+ 
+  </div>
+
+  <!--  Sign In button -->
+  <div class="GotoSign">
+    <h4 (click)=" gotoForgotPasswordPage()" class="forgotPass">Forgot Password ?</h4>
+    <button 
+      type="button"
+      (click)="showSignIn(loginForm)"
+      [disabled]="!loginForm.valid"
+      class="signIN">
+      Sign In
+    </button>
+  </div>
+
+  <div class="GotoSign">
+    <h4 class="noAccount">Don't have an account</h4>
+    <button (click)="GotoRegister()" type="button" class="GotoRegister">REGISTER</button>
+  </div>
+</form>
+
+    </div>
+
+<div class="ShowLoginLoading" *ngIf="loadingService.loading$ |async">
+    <svg
+    class="container"
+    viewBox="0 0 40 40"
+    height="40"
+    width="40"
+  >
+    <circle 
+      class="track"
+      cx="20" 
+      cy="20" 
+      r="17.5" 
+      pathlength="100" 
+      stroke-width="5px" 
+      fill="none" 
+    />
+    <circle 
+      class="car"
+      cx="20" 
+      cy="20" 
+      r="17.5" 
+      pathlength="100" 
+      stroke-width="5px" 
+      fill="none" 
+    />
+  </svg>
+</div>
+
+  </div>
+</div>

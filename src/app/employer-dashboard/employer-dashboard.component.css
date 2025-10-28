@@ -1,0 +1,227 @@
+.MainDiv{
+   display: flex;
+    flex-direction: column;
+    gap: 39px;
+    position: relative;
+    left: 20px;
+}
+.profileInfo{
+position: relative;
+    display: flex
+;
+    left: 20px;
+    top: 10px;
+}
+.ProfileImgBorder{
+    height: 85px;
+    width: 85px;
+    border-radius: 50%;
+    border: 2px solid #c4c4c4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ProfileImg{
+  height: 95%;
+  width: 95%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.ProfileDesc{
+       position: relative;
+    display: flex;
+    flex-direction: column;
+    top: 15px;
+    left: 20px;
+}
+.ProfileName{
+   font-size: 18px;
+   font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+}
+.SampleDesc{
+   font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+    color: #c4c4c4;
+    position: relative;
+    left: 10px;
+}
+.StautsBox{
+    position: relative;
+    display: flex
+;
+    gap: 20px;
+    top: -11px;
+   
+}
+.Box1{
+      height: 139px;
+    width: 236px;
+    border: 2px solid #c4c4c4;
+    border-radius: 5px;
+    display: flex
+;
+    flex-direction: column;
+}
+.ImgBox{
+     position: relative;
+    top: 9px;
+    left: 13px;
+    height: 48px;
+    width: 50px;
+    border: 1px solid #c4c4c4;
+    border-bottom: 3px solid;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 1px;
+}
+.ImgSizeBox{
+    height: 80%;
+    width: 80%;
+    padding-left: 2px;
+  
+}
+
+.BoxTitle{
+ position: relative;
+    top: 34px;
+    left: 10px;
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+}
+.BoxSubTitle{
+      position: relative;
+    top: 37px;
+    left: 15px;
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+}
+.TodayStaffWork{
+position: relative;
+top: -19px;
+}
+.TodayWorkingStaff{
+height: 360px;
+width: 362px;
+border: 1px solid #c4c4c4;
+border-radius: 5px;
+display: flex;
+flex-direction: column;
+}
+.TitleWorkingStaff{
+font-size: 14px;
+font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  left: 20px;
+  top:10px;
+}
+.DetailofSchedules {
+  height: 309px;
+  width: 338px;
+  background-color: #e8e8e8;
+  position: relative;
+  top: 19px;
+  left: 10px;
+  border-radius: 5px;
+  
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  /* 👇 Add these lines */
+  flex-shrink: 0;
+  box-sizing: border-box;
+  padding-bottom: 10px; /* ensures last .WorkStaffList fully visible */
+}
+.WorkStaffList {
+  position: relative;
+  height: 51px;
+  width: 95%;
+  background-color: white;
+  /* Remove this line ↓ */
+  /* top: 8px; */
+  left: 7px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+
+  /* 👇 Add this */
+  padding: 5px 8px; /* Adds small breathing room top & bottom */
+  box-sizing: border-box;
+  margin-top: 8px; /* replaces old top offset for spacing */
+}
+.WorkStaffImg{
+height: 40px;
+width: 40px;
+border-radius: 50%;
+border: 1px solid #c4c4c4;
+         position: relative;
+        
+}
+.WorkStaffImgSize{
+  height: 100%;
+  width: 100%;
+ border-radius: 50%;
+ object-fit: cover; 
+}
+.StaffDesc{
+           display: flex;
+    flex-direction: column;
+    font-family: "Poppins", sans-serif;
+    position: relative;
+    left: 6px;
+}
+.StaffName{
+  font-size: 12px;
+  font-weight: 600;
+}
+.StaffJobtitle{
+     font-size: 9px;
+     
+}
+.ShiftDetail{
+       display: flex
+;
+    position: absolute;
+    left: 206px;
+    font-size: 10px;
+    top: 7px;
+}
+
+.ShiftTimeImg{
+    height: 20px;
+    width: 20px;
+
+}
+.ShiftTimeDesc{
+     position: relative;
+  font-family: 'Poppins', sans-serif;
+    font-size: 9px;
+    left: 5px;
+}
+.ShiftHour{
+     font-family: 'Poppins', sans-serif;
+    font-size: 9px;
+    color: #737272;
+}
+.NoSchdulesToday{
+display: flex;
+flex-direction: column;
+    position: relative;
+    top: 76px;
+    justify-content: center;
+    align-items: center;
+font-size: 13px;
+font-weight: 500;
+gap: 10px;
+  font-family: 'Poppins', sans-serif;
+}
+.NoSchdulesTodayImg{
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+}

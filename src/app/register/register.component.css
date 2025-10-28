@@ -1,0 +1,92 @@
+.MainHeader {
+    height: 40px;
+    border-bottom: 1px solid #333333;
+ 
+}
+.ImgLogoPosition{
+  position: absolute;
+top: -7px;
+  display: flex;
+  left: 5px;
+}
+.logoID {
+  height: 57px;
+  width: 57px;
+
+  margin-top: 5px;
+}
+
+.btnRegisterType {
+    margin-top: 14px;
+    display: flex
+;
+    gap: 62px;
+    position: relative;
+    justify-content: center;
+    left: -197px;
+}
+
+
+.RightLogin {
+    display: flex;
+    position: absolute;
+    gap: 10px;
+    top: 1px;
+    font-family: "Poppins", sans-serif;
+    right: 65px;
+}
+.quickTitle{
+    font-family: "Lemon", serif;
+    margin-top: 23px;
+}
+
+.btn {
+  height: 40px;
+  width: 100px;
+  padding-left:1px ;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  font-size: 22px;
+  font-family: 'Madimi One', sans-serif;
+}
+
+.active-tab {
+  border-bottom: 3px solid rgb(41, 41, 41);
+}
+
+.my-font {
+  font-family: 'Madimi One', sans-serif;
+}
+.ImagePart{
+  display: flex;
+  height: 100vh;
+   border-right: 1px solid #ada2a25c; 
+ 
+  width: 100%;
+  
+}
+.imgLogo{
+          height: 65%;
+    width: 30%;
+    margin-top: 105px;
+    position: relative;
+    margin-left: 64px;
+    left: 99px;
+  
+}
+.registerContent{
+      margin-left: 300px;
+    background-color: white;
+    height: 93vh;
+    width: 47%;
+    border-radius: 2px;
+    overflow-y: auto;
+   border-left: 2px solid #c4c4c4;
+}
+.rightSide {
+  font-weight: bold;
+  cursor: pointer;
+}

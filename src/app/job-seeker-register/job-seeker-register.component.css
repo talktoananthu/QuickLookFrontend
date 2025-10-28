@@ -1,0 +1,121 @@
+.title{
+  margin-left: 146px;
+    margin-top: 22px;
+  font-family: 'Poppins', sans-serif;
+}
+.Main {
+display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 48px;
+     font-family: 'Poppins', sans-serif;
+}
+
+/* Each column: take up equal width on desktop */
+.Left{
+     width: 500px;
+     
+     margin-left: 30px;
+ 
+     
+}
+.Right {
+   /* Grow, shrink, min width */
+  width: 450px;
+}
+.Labeltitle{
+   font-weight: bold;
+}
+.inputStyle{
+    height: 40px;
+     border-radius: 8px;
+      
+      width: 80%;
+     border: 2px solid rgb(197, 195, 195);
+  margin-bottom: 10px;
+}
+.btn{
+margin-top: 39px;
+    margin-left: -91px;
+    height: 39px;
+    width: 104px;
+    border: 1px solid rgb(221, 181, 181);
+    background-color: blue;
+    border-radius: 5px;
+    color: white;
+    margin-bottom: 10px;
+      font-family: 'Poppins', sans-serif;
+}
+.error{
+      margin-bottom: -23px;
+    color: red;
+    font-size: 12px;
+}
+.required-star{
+      color: red;
+}
+
+.inputStyle {
+  padding-left: 10px; /* or whatever spacing you want */
+}
+.ForShowingLoadingPage{
+position: absolute;
+    height: 95%;
+    top: 55px;
+    width: 100%;
+   
+    left: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+  --uib-size: 40px;
+  --uib-color: #007bff; /* <-- change color here */
+  --uib-speed: 2s;
+  --uib-bg-opacity: 0;
+  height: var(--uib-size);
+  width: var(--uib-size);
+  transform-origin: center;
+  animation: rotate var(--uib-speed) linear infinite;
+  will-change: transform;
+  overflow: visible;
+}
+
+.car {
+  fill: none;
+  stroke: var(--uib-color);
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  animation: stretch calc(var(--uib-speed) * 0.75) ease-in-out infinite;
+  will-change: stroke-dasharray, stroke-dashoffset;
+  transition: stroke 0.5s ease;
+}
+
+.track {
+  fill: none;
+  stroke: var(--uib-color);
+  opacity: var(--uib-bg-opacity);
+  transition: stroke 0.5s ease;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes stretch {
+  0% {
+    stroke-dasharray: 0, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 75, 150;
+    stroke-dashoffset: -25;
+  }
+  100% {
+    stroke-dashoffset: -100;
+  }
+}

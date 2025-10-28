@@ -1,0 +1,702 @@
+
+ <!-- this below data will show when the showSchedules is true -->
+<div class="Statistics"> 
+    <!-- stat1 -->
+    <div class="Stat1">
+        <div class="StatImg">
+  <img src="../../assets/maxhour.png" class="StatImgIcon"  />
+        </div>
+        <div class="StatContent">
+          <span class="MainStat">{{maxHourPerDay}}hr</span>
+          <br>
+          <span class="SubStatStat">Max Hour Working Per Day</span>
+        </div>
+         
+    </div>
+      <!-- stat2 -->
+      <div class="Stat1">
+        <div class="StatImg">
+
+  <img src="../../assets/schedule request.png" class="StatImgIcon"  />
+        </div>
+        <div class="StatContent">
+          <span class="MainStat">{{NoofScheduleRequest}}</span>
+          <br>
+          <span class="SubStatStat">No : of Schedule Requests</span>
+        </div>
+         
+    </div>
+       <!-- stat3 -->
+      <div class="Stat1">
+        <div class="StatImg">
+ <img src="../../assets/approved.png" class="StatImgIcon"  />
+        </div>
+        <div class="StatContent">
+          <span class="MainStat">{{NoofScheduleApproved}}</span>
+          <br>
+          <span class="SubStatStat">No : of Schedule Approved</span>
+        </div>
+         
+    </div>
+      <!-- stat4 -->
+      <div  class="Stat1">
+        <div class="StatImg">
+ <img src="../../assets/hourglass.png" class="StatImgIcon"  />
+   
+  
+        </div>
+        <div class="StatContent">
+          <span class="MainStat">{{numberOfUpcomingSchedulesDate[0].remainingHours |hourMinute}}</span>
+          <br>
+          <span class="SubStatStat">No of hours remaining </span>
+        </div>
+         <div class="StatDate">
+            <img src="../../assets/calendar.png" class="StatDateSelect"  />
+          {{todayFormatted}}
+        </div>
+        <button (click)="showSchedules()" class="seeSchedules">Schedules</button>
+    </div>
+
+ <!-- stat4 -->
+
+ 
+
+</div>
+ 
+<div class="BelowTableContent">
+  <!--  -->
+ <div class="LimitSchedules"  *ngIf="showSchedulesDiv">
+  <span class="simpleline"></span>
+    <div class="LimitSchedulesTopContent">
+      <div class="ImageLimitSchedules">
+           <img src="../../assets/part-time.png" class="ImageLimitSchedulesShiftTime">
+      </div>
+       <span class="TitleLimitSchedules">Schedules
+        
+         <div class="SubTitleLimitSchedules">Max working hour per day  {{maxHourPerDay}}</div>
+            </span>
+      <button (click)="disableshowSchedules()" class="clsBtnLimitSchedules">X</button>
+    </div>
+    <div class="CalendarDetails">
+    <div class="CalenderSchedules">
+          <div 
+  (click)="storeSelectedDate(Upcoming.date)" 
+  class="CalenderDate"
+  [ngClass]="{'selected-date': Upcoming.date === currentDateFromSchedulesDate }"
+  *ngFor="let Upcoming of numberOfUpcomingSchedulesDate">
+  <div class="CalenderDateMonth">{{Upcoming.date | date:'MMM'}}</div>
+  <div class="CalenderDateNumber">{{ Upcoming.date | date:'dd' }}</div>
+ 
+</div>
+           
+
+    </div>
+   
+    </div>
+     
+    <div class="UpcomingSchedules">
+         <!-- 1 -->
+          <ng-container *ngIf="BackUpFilterationForUpcomingShiftSchedules.length>0">
+    <div class="SchedulesList" *ngFor="let job of BackUpFilterationForUpcomingShiftSchedules">
+     <ng-container *ngIf="job.schedules.length>0">
+  <div *ngFor="let sched of job.schedules">
+    <!-- Job Image -->
+    <div class="SchedulesJobImage">
+      <img [src]="job.jobImage" class="SchedulesJobImageSize" />
+    </div>
+
+    <!-- Job Info -->
+    <div class="SchedulesListDesc">
+      <div class="SchedulesListMainTitle">{{ job.jobTitle }}</div>
+      <div class="SchedulesListSubTitle">{{ job.businessName }}</div>
+    </div>
+
+    <!-- Shift Time -->
+    <div class="SchedulesShiftTime">
+      <img class="SchedulesShiftTimeImg" src="../../assets/time.png">
+      <div class="SchedulesShiftTimeDesc">
+        {{ sched.startTime }} - {{ sched.endTime }}
+        <div class="SchedulesShiftTimeHour">
+          {{ sched.hoursWorked ? sched.hoursWorked + ' hr' : calculateHours(sched.startTime, sched.endTime) + ' hr' }}
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+   
+</div>
+</ng-container>
+  <ng-container *ngIf="BackUpFilterationForUpcomingShiftSchedules.length<=0">
+    <div class="NoSchedulesToday">
+      <img src="../../assets/noSchedules.png" class="NoSchedulesTodayImg" alt="">
+      <div class="NoScheduleText">No Schedules Today</div>
+    </div>
+  </ng-container>
+       <!-- 2 -->
+    
+         <!-- 3 -->
+     
+    
+    </div>
+    <ng-container *ngFor="let upcomingDate of numberOfUpcomingSchedulesDate">
+
+ <div  *ngIf="upcomingDate.date == currentDateFromSchedulesDate" class="RemainingHours">
+  Remaining Hours Present : {{upcomingDate.remainingHours | hourMinute}}</div>
+</ng-container>
+  </div>
+<div class="SchedulesCategories">
+    <div class="SelectSchedules">
+        <button (click)="showRequest()"
+         [ngClass]="selectRequests ? 'SelecSchedulesBTn' : 'NotSelecSchedulesBTn'"
+        
+         >Requests</button>
+         <button 
+          (click)="showupcomingShifts()"
+       [ngClass]="upcomingShifts ? 'SelecSchedulesBTn' : 'NotSelecSchedulesBTn'"
+         >Upcoming Shifts</button>
+          <button class="SelecSchedulesBTn"
+           (click)="showdisabledRequests()"
+             [ngClass]="disabledRequests ? 'SelecSchedulesBTn' : 'NotSelecSchedulesBTn'"
+             >Disabled Requests</button>
+           <button
+            (click)="showshiftHistory()"
+             [ngClass]="shiftHistory ? 'SelecSchedulesBTn' : 'NotSelecSchedulesBTn'"
+           >Shift History</button>
+    </div>
+  <!-- below is the filteration for Request tab  -->
+    <div class="SearchCate" *ngIf="selectRequests">
+  <span class="search-icon">
+    <img src="../../assets/search.png" >
+  </span>
+  <input type="text"
+   [(ngModel)]="searchByJobtitle"
+  (input)="onSearchChange()" 
+  class="SearchTableCate"
+   placeholder="Search by JobTitle...">
+</div>
+<div class="ShiftScheuldeTime" *ngIf="selectRequests">
+  <div class="StartShift">
+    <label class="StartShiftText">Start Time</label><br>
+    <input 
+      type="time" 
+      class="EnterTime" 
+      [(ngModel)]="startTimeFilter"
+      (change)="onFilterChange()">
+  </div>
+
+  <div class="StartShift" > 
+    <label class="StartShiftText">End Time</label><br>
+    <input 
+      type="time"  
+      class="EnterTime"
+      [(ngModel)]="endTimeFilter"
+      (change)="onFilterChange()" >
+  </div>
+</div>
+<div class="UpcomingDateFilter" *ngIf="selectRequests">
+  <label class="StartDateText">Select Upcoming Date</label>
+  <br>
+  <input type="date" class="DateSelect" [(ngModel)]="selectFilterDate" (change)="onFilterChange()" />
+</div>
+  <!-- Ended the  filteration for Request tab ------------------------ -->
+
+
+<!--   filteration for Upcoming Shift tab ------------------------ -->
+   <!--   1 Upcoming Shift tab ------------------------ -->
+    <div class="SearchCate" *ngIf="upcomingShifts">
+  <span class="search-icon">
+    <img src="../../assets/search.png" >
+  </span>
+  <input type="text"
+   [(ngModel)]="searchByJobtitle"
+  (input)="onSearchChangeForUpcomingSchedules()" 
+  class="SearchTableCate"
+   placeholder="Search by JobTitle...">
+</div>
+ <!--   2 Upcoming Shift tab ------------------------ -->
+<div class="ShiftScheuldeTime" *ngIf="upcomingShifts">
+  <div class="StartShift">
+    <label class="StartShiftText">Start Time</label><br>
+    <input 
+      type="time" 
+      class="EnterTime" 
+      [(ngModel)]="startTimeFilter"
+      (change)="FilterChangeInUpcomingShift()">
+  </div>
+
+  <div class="StartShift" > 
+    <label class="StartShiftText">End Time</label><br>
+    <input 
+      type="time"  
+      class="EnterTime"
+      [(ngModel)]="endTimeFilter"
+      (change)="FilterChangeInUpcomingShift()" >
+  </div>
+</div>
+
+<div class="UpcomingDateFilter" *ngIf="upcomingShifts">
+  <label class="StartDateText">Select Upcoming Date</label>
+  <br>
+  <input type="date" class="DateSelect" [(ngModel)]="selectFilterDate" (change)="FilterChangeInUpcomingShift()" />
+</div>
+
+
+<!--   filteration for Upcoming Shift tab Ended ------------------------ -->
+
+
+<!--   filteration for  Shift Histroy ------------------------ -->
+
+    <div class="SearchCate" *ngIf="shiftHistory">
+  <span class="search-icon">
+    <img src="../../assets/search.png" >
+  </span>
+  <input type="text"
+   [(ngModel)]="searchByJobtitle"
+  (input)="onSearchChangeForHistorySchedules()" 
+  class="SearchTableCate"
+   placeholder="Search by JobTitle...">
+</div>
+ <!--   2 Upcoming Shift tab ------------------------ -->
+<div class="ShiftScheuldeTime" *ngIf="shiftHistory">
+  <div class="StartShift">
+    <label class="StartShiftText">Start Time</label><br>
+    <input 
+      type="time" 
+      class="EnterTime" 
+      [(ngModel)]="startTimeFilter"
+      (change)="onSearchChangeForHistorySchedules()">
+  </div>
+
+  <div class="StartShift" > 
+    <label class="StartShiftText">End Time</label><br>
+    <input 
+      type="time"  
+      class="EnterTime"
+      [(ngModel)]="endTimeFilter"
+      (change)="onSearchChangeForHistorySchedules()" >
+  </div>
+</div>
+
+<div class="UpcomingDateFilter" *ngIf="shiftHistory">
+  <label class="StartDateText">Select Previous Date</label>
+  <br>
+  <input type="date" class="DateSelect" [(ngModel)]="selectFilterDate"
+   (change)="onSearchChangeForHistorySchedules()" />
+</div>
+   
+<div class="PayStatusStyle" *ngIf="shiftHistory">
+  <!-- Dropdown Button -->
+  <div class="PayStatusButton"  (click)="toggleDropdown()">
+    {{ selectedPayStatus || ' Pay Status' }}
+    <span class="arrow">{{ isDropdownOpen ? '▲' : '▼' }}</span>
+  </div>
+
+  <!-- Dropdown List -->
+  <ul class="PayStatusDropdown"  *ngIf="isDropdownOpen">
+    <li 
+      *ngFor="let status of PayStatusArray" 
+      (click)="selectPayStatus(status)"
+      [class.selected]="status === selectedPayStatus">
+      {{ status }}
+    </li>
+  </ul>
+</div>
+
+<!-- Show Remark Status selected -->
+ <div class="PayStatusStyle">
+  <!-- Dropdown Button -->
+  <div class="PayStatusButton" *ngIf="shiftHistory" (click)="toggleDropDownRemark()">
+    {{ selectRemarkValue || 'Remark Status' }}
+    <span class="arrow">{{ isDropDownForRemark ? '▲' : '▼' }}</span>
+  </div>
+
+  <!-- Dropdown List -->
+  <ul class="PayStatusDropdown" *ngIf="isDropDownForRemark">
+    <li 
+      *ngFor="let status of RemarkStatusArray" 
+      (click)="selectRemarkStatus(status)"
+      [class.selected]="status === selectedPayStatus">
+      {{ status }}
+    </li>
+  </ul>
+</div>
+
+  
+
+</div>
+ <ng-container *ngIf="selectRequests==true || upcomingShifts==true || disabledRequests==true">
+<div class="ContentTable">
+ 
+  <div class="HeadingTable">
+    <div class="HeadingNamesTable">
+    <span class="HeadingNameDate">Date</span>
+    <span class="HeadingNameJobtitle">Job title</span>
+    <span class="HeadingNameStyleShiftTime">Shift Time</span>
+   <span class="HeadingNameStyleEmployer">Employer</span>
+    <span class="HeadingNameStyleHours">Hours</span>
+    <span class="HeadingNameStylePayment">Payment</span>
+    <span class="HeadingNameStyleAction">Action</span>
+    </div>
+  </div>
+
+
+  <div class="TableContentSchedulue">
+<!-- below table content is for the schedules Request -->
+<ng-container *ngIf="selectRequests==true" >
+ <ng-container *ngFor="let job of forFilterSchedulesData">
+  <ng-container *ngFor="let sched of job.schedules">
+     <ng-container *ngIf="sched.Schedulestatus !== 'completed'">
+    <div *ngIf="isUpcoming(sched.date)" class="schedule-item">
+      <div class="schedule-Inside-item">
+
+        <!-- Column1 -->
+        <div class="schedule-Date">
+          <p class="schedule-Content0">{{ sched.date }}</p>
+        </div>
+
+        <!-- Column2 -->
+        <div class="schedule-JobTitle">
+          <img [src]="job.jobImage" class="scheduleImg" />
+          <div>
+            <p class="schedule-Content">{{ job.jobTitle }}</p>
+            <p class="schedule-SubContent">{{ job.businessName }}</p>
+          </div>
+        </div>
+
+        <!-- Column3 -->
+        <div class="schedule-Date">
+          <p class="schedule-Content2">{{ sched.startTime }} - {{ sched.endTime }}</p>
+        </div>
+
+        <!-- Column4 -->
+        <div class="schedule-Employer">
+          <img [src]="job.employerImgUrl" class="scheduleEmpImg" />
+          <div>
+            <p class="schedule-Content">{{ job.employerName }}</p>
+            <p class="schedule-SubContent">{{ job.employerPhoneNumber }}</p>
+          </div>
+        </div>
+
+        <!-- Column5 -->
+        <div class="schedule-hour">
+  <p class="schedule-Content2">
+    {{ sched.hoursWorked ? sched.hoursWorked + ' hr' : calculateHours(sched.startTime, sched.endTime) + ' hr' }}
+  </p>
+</div>
+
+        <!-- Column6 -->
+        <div class="schedule-Payment">
+          <p class="schedule-Content2">{{ sched.paymentForDay }} / day</p>
+        </div>
+
+        <!-- Column7 -->
+        <div class="schedule-action" *ngIf="sched.Schedulestatus === 'assigned'">
+          <button 
+  (click)="AcceptSchedule(sched.date, job.jobId,sched.startTime,sched.endTime, sched.hoursWorked || calculateHours(sched.startTime, sched.endTime))"
+  class="schedule-Btn accept"
+  [disabled]="!canAccept(sched.date, sched.hoursWorked || calculateHours(sched.startTime, sched.endTime))">
+  Accept
+</button>
+          <button (click)="RejectSchedule(sched.date,job.jobId,sched.startTime,sched.endTime)" class="schedule-Btn reject">Reject</button>
+        </div>
+
+        <div class="schedule-action" *ngIf="sched.Schedulestatus === 'accepted'">
+          <label class="schedule-BtnStatus accept">Accepted</label>
+         
+        </div>
+         <div class="schedule-action" *ngIf="sched.Schedulestatus === 'rejected'">
+          <label class="schedule-BtnStatus reject">Rejected</label>
+          
+        </div>
+
+      </div>
+    </div>
+  
+</ng-container>
+  </ng-container>
+</ng-container>
+
+
+
+
+   </ng-container>
+
+<!-- below table content is for the schedules Accepted -->
+<ng-container *ngIf="upcomingShifts" >
+ <ng-container *ngFor="let job of sampleFilterForUpcomingShiftSchedulesData">
+  <ng-container *ngFor="let sched of job.schedules">
+    
+    <div *ngIf="isUpcoming(sched.date)" class="schedule-item">
+      <div class="schedule-Inside-item">
+
+        <!-- Column1 -->
+        <div class="schedule-Date">
+          <p class="schedule-Content0">{{ sched.date }}</p>
+        </div>
+
+        <!-- Column2 -->
+        <div class="schedule-JobTitle">
+          <img [src]="job.jobImage" class="scheduleImg" />
+          <div>
+            <p class="schedule-Content">{{ job.jobTitle }}</p>
+            <p class="schedule-SubContent">{{ job.businessName }}</p>
+          </div>
+        </div>
+
+        <!-- Column3 -->
+        <div class="schedule-Date">
+          <p class="schedule-Content2">{{ sched.startTime }} - {{ sched.endTime }}</p>
+        </div>
+
+        <!-- Column4 -->
+        <div class="schedule-Employer">
+          <img [src]="job.employerImgUrl" class="scheduleEmpImg" />
+          <div>
+            <p class="schedule-Content">{{ job.employerName }}</p>
+            <p class="schedule-SubContent">{{ job.employerPhoneNumber }}</p>
+          </div>
+        </div>
+
+        <!-- Column5 -->
+        <div class="schedule-hour">
+  <p class="schedule-Content2">
+    {{ sched.hoursWorked ? sched.hoursWorked + ' hr' : calculateHours(sched.startTime, sched.endTime) + ' hr' }}
+  </p>
+</div>
+
+        <!-- Column6 -->
+        <div class="schedule-Payment">
+          <p class="schedule-Content2">{{ sched.paymentForDay }} / day</p>
+        </div>
+
+        <!-- Column7 -->
+       
+
+        <div class="schedule-action" *ngIf="sched.Schedulestatus === 'accepted'">
+          <label class="schedule-BtnStatus accept">Accepted</label>
+         
+        </div>
+       
+
+      </div>
+    </div>
+
+  </ng-container>
+</ng-container>
+   </ng-container>
+
+   <!-- below table content is for the schedules rejected -->
+<ng-container *ngIf="disabledRequests==true" >
+ <ng-container *ngFor="let job of UpcomingRejectSchedule">
+  <ng-container *ngFor="let sched of job.schedules">
+    
+    <div  class="schedule-item">
+      <div class="schedule-Inside-item">
+
+        <!-- Column1 -->
+        <div class="schedule-Date">
+          <p class="schedule-Content0">{{ sched.date }}</p>
+        </div>
+
+        <!-- Column2 -->
+        <div class="schedule-JobTitle">
+          <img [src]="job.jobImage" class="scheduleImg" />
+          <div>
+            <p class="schedule-Content">{{ job.jobTitle }}</p>
+            <p class="schedule-SubContent">{{ job.businessName }}</p>
+          </div>
+        </div>
+
+        <!-- Column3 -->
+        <div class="schedule-Date">
+          <p class="schedule-Content2">{{ sched.startTime }} - {{ sched.endTime }}</p>
+        </div>
+
+        <!-- Column4 -->
+        <div class="schedule-Employer">
+          <img [src]="job.employerImgUrl" class="scheduleEmpImg" />
+          <div>
+            <p class="schedule-Content">{{ job.employerName }}</p>
+            <p class="schedule-SubContent">{{ job.employerPhoneNumber }}</p>
+          </div>
+        </div>
+
+        <!-- Column5 -->
+        <div class="schedule-hour">
+<p class="schedule-Content2">
+  {{ sched.hoursWorked 
+      ? (sched.hoursWorked | number:'1.2-2') + ' hr' 
+      : (calculateHours(sched.startTime, sched.endTime) | number:'1.2-2') + ' hr' }}
+</p>
+</div>
+
+        <!-- Column6 -->
+        <div class="schedule-Payment">
+          <p class="schedule-Content2">{{ sched.paymentForDay }} / day</p>
+        </div>
+
+        <!-- Column7 -->
+       
+
+        <div class="schedule-action" *ngIf="sched.Schedulestatus === 'rejected'">
+          <label class="schedule-BtnStatus reject">Rejected</label>
+         
+        </div>
+       
+
+      </div>
+    </div>
+
+  </ng-container>
+</ng-container>
+   </ng-container>
+  </div>
+   
+</div>
+</ng-container>
+<!-- below schedules shows the shift history -->
+<ng-container>
+<div class="ContentTable2" *ngIf="shiftHistory==true">
+  <div class="HeadingTable2">
+    <div class="HeadingNamesTable2">
+    <span class="HeadingNameDate2">Date</span>
+    <span class="HeadingNameJobtitle2">Job title</span>
+    <span class="HeadingNameStyleShiftTime2">Shift Time</span>
+   <span class="HeadingNameStyleEmployer2">Employer</span>
+    <span class="HeadingNameStyleHours2">Hr Worked</span>
+    <span class="HeadingNameStylePayment2">Payment </span>
+    <span class="HeadingNameStylePayment2">Payment Status </span>
+    <span class="HeadingNameStyleAction2">Remarks</span>
+    </div>
+  </div>
+    <div class="TableContentSchedulue">
+      <ng-container *ngIf="shiftHistory" >
+ <ng-container *ngFor="let job of BackupShiftHistoryData">
+  <ng-container *ngFor="let sched of job.schedules">
+   
+    <div  class="schedule-item2" >
+      <div class="schedule-Inside-item2">
+
+        <!-- Column1 -->
+        <div class="schedule-Date">
+          <p class="schedule-Content0">{{ sched.date }}</p>
+        </div>
+
+        <!-- Column2 -->
+        <div class="schedule-JobTitle">
+          <img [src]="job.jobImage" class="scheduleImg" />
+          <div>
+            <p class="schedule-Content">{{ job.jobTitle }}</p>
+            <p class="schedule-SubContent">{{ job.businessName }}</p>
+          </div>
+        </div>
+
+        <!-- Column3 -->
+        <div class="schedule-Date">
+          <p class="schedule-Content2">{{ sched.startTime }} - {{ sched.endTime }}</p>
+        </div>
+
+        <!-- Column4 -->
+        <div class="schedule-Employer">
+          <img [src]="job.employerImgUrl" class="scheduleEmpImg" />
+          <div>
+            <p class="schedule-Content">{{ job.employerName }}</p>
+            <p class="schedule-SubContent">{{ job.employerPhoneNumber }}</p>
+          </div>
+        </div>
+
+        <!-- Column5 -->
+        <div class="schedule-hour">
+  <p class="schedule-Content2">
+    {{ sched.hoursWorked ? sched.hoursWorked + ' hr' : calculateHours(sched.startTime, sched.endTime) + ' hr' }}
+  </p>
+</div>
+
+        <!-- Column6 -->
+        <div class="schedule-Payment">
+          <p class="schedule-Content2">{{ sched.paymentForDay }} / day</p>
+        </div>
+       <div class="schedule-Payment">
+  <p
+    class="schedule-ContentPayment"
+    [ngClass]="{
+      'status-pending': sched.paymentStatus === 'pending',
+      'status-paid': sched.paymentStatus === 'paid',
+      'status-partial': sched.paymentStatus === 'partial',
+      'status-nopay': sched.paymentStatus === 'noPay'
+    }"
+  >
+    {{
+      sched.paymentStatus === 'pending' ? 'Pending' :
+      sched.paymentStatus === 'paid' ? 'Paid' :
+      sched.paymentStatus === 'partial' ? 'Partial' :
+      'No Payment'
+    }}
+  </p>
+</div>
+          <div class="schedule-Payment">
+ <p 
+  class="schedule-Content3"
+  [ngClass]="{
+    'completed': sched.Schedulestatus === 'completed',
+    'absent': sched.Schedulestatus === 'absent',
+    'not-marked': sched.Schedulestatus === 'accepted'
+  }"
+>
+  {{
+    sched.Schedulestatus === 'completed' ? 'Completed' :
+    sched.Schedulestatus === 'absent' ? 'Absent' :
+    sched.Schedulestatus === 'accepted' ? 'Not Marked' :
+    sched.Schedulestatus
+  }}
+</p>
+        </div>
+
+        
+
+
+   
+
+      </div>
+    </div>
+
+  </ng-container>
+</ng-container>
+
+
+
+
+   </ng-container>
+    </div>
+</div>
+
+
+</ng-container>
+
+ <div class="showLoading" *ngIf="loadingService.loading$ |async">
+  <svg
+    class="container"
+    viewBox="0 0 40 40"
+    height="40"
+    width="40"
+  >
+    <circle 
+      class="track"
+      cx="20" 
+      cy="20" 
+      r="17.5" 
+      pathlength="100" 
+      stroke-width="5px" 
+      fill="none" 
+    />
+    <circle 
+      class="car"
+      cx="20" 
+      cy="20" 
+      r="17.5" 
+      pathlength="100" 
+      stroke-width="5px" 
+      fill="none" 
+    />
+  </svg>
+  </div> 

@@ -1,0 +1,1364 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&display=swap');
+.DisplayMakingContentFlex {
+    display: flex;
+}
+
+.FirstDesc {
+    margin-top: 10px;
+    height: 50%;
+    width: 99%;
+   
+    margin-left: 5px;
+    position: relative;
+}
+.Searchdiv{
+  display: flex;
+}
+
+.seachBar {
+    
+    height: 40px;
+    width: 20%;
+    border: 1px solid rgb(166, 166, 166);
+    border-radius: 5px;
+
+    /* Add icon inside with fixed size */
+    background-image: url('../../assets/search.png'); /* Replace with your icon path */
+    background-repeat: no-repeat;
+    background-position: 8px center; /* Position icon */
+    background-size: 18px 18px; /* Fixed icon size */
+    padding-left: 32px; /* Space for icon */
+}
+.AvailableFilter{
+    position: absolute;
+    display: flex
+;
+    top: 32px;
+}
+.seachBar::placeholder {
+    color: gray;         
+    font-size: 14px;     
+    font-family: Arial, sans-serif;
+}
+.showCategoriesFilter{
+       position: absolute;
+    height: 139px;
+    width: 324px;
+    border: 1px solid #c4c4c4;
+    z-index: 2;
+    margin-left: 23%;
+    margin-top: 42px;
+    background-color: white;
+    border-radius: 4px;
+}
+.row1filter{
+    display: flex;
+    margin-left: 9px;
+}
+.belowButtonCate{
+       height: 30px;
+    width: 90px;
+    border: 1px solid gray;
+    margin-top: 10px;
+    margin-left: 3px;
+    border-radius: 3px;
+    background-color: transparent;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.FilterCategory {
+     display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    margin-left: 10px;
+    height: 40px;
+    width: 123px;
+    border: 1px solid #c1bebe;
+    border-radius: 4px;
+    padding: 0 8px;
+    cursor: pointer;
+    position: relative;
+    /* left: 10px; */
+    top: 26px;      /* optional: pointer cursor for click */
+}
+
+.FilterCategory img {
+  display: block; /* removes extra space below image */
+}
+
+.FilterCategory p {
+  margin: 0;  /* remove default paragraph margin */
+  font-family: "Poppins", sans-serif;
+}
+.Filter1{
+margin-top: px;
+    margin-left: 10px;
+    height: 35px;
+    width: 123px;
+    border: 1px solid #c1bebe;
+    border-radius: 4px;
+}
+/* Wrapper */
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Main select box (matches your .jobCateFilter styles) */
+.dropdown-selected {
+margin-top: 26px;
+    margin-left: 10px;
+    height: 28px;
+    width: 128px;
+    border: 1px solid #c1bebe;
+    border-radius: 6px;
+    font-size: 10px;
+    padding: 6px 8px;
+    background-color: white;
+    cursor: pointer;
+    display: flex
+;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Options box */
+.dropdown-options {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 10px;
+  width: 128px;
+  background: white;
+  border: 1px solid #c1bebe;
+  border-radius: 8px; /* curved corners */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+/* Each option */
+.dropdown-options li {
+  padding: 6px 8px;
+  font-size: 12px;
+  color: #a51f1f;
+  cursor: pointer;
+}
+
+/* Hover effect */
+.dropdown-options li:hover {
+  background-color: #f5f5f5;
+}
+
+.arrow {
+  font-size: 10px;
+}
+
+.AmountFilterWrapper {
+      display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 27px;
+    margin-left: 10px;
+    height: 39px;
+    width: 130px;
+    border: 1px solid #c1bebe;
+    border-radius: 5px;
+    padding: 0 6px;
+    box-sizing: border-box;
+}
+
+.AmountFilter {
+  border: none;
+  outline: none;
+  font-size: 11px;
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  background: transparent;
+}
+
+/* Hide arrows in Chrome, Edge, Safari */
+.AmountFilter::-webkit-outer-spin-button,
+.AmountFilter::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide arrows in Firefox */
+.AmountFilter[type=number] {
+  -moz-appearance: textfield;
+}
+.StartTimeFilter,
+.EndTimeFilter{
+               margin-top: 8px;
+    margin-left: 10px;
+    height: 37px;
+    width: 103px;
+    border: 1px solid #c1bebe;
+    border-radius: 6px;
+}
+
+.StartTimeFilter::placeholder,
+.EndTimeFilter::placeholder {
+  color: #a9a9a9;
+  font-size: 10px;
+}
+.timeText {
+      font-size: 10px;
+    margin-left: 15px;
+  
+    position: absolute;
+    color: #877979;
+    top: 10px;
+}
+.daysFilter1,
+.daysFilter1True,
+.distFilter1,
+.locFilter1 {
+  display: flex;
+  align-items: center; /* vertical centering */
+  justify-content: space-between; /* text/input on left, cross on right */
+  padding: 0 6px;
+  box-sizing: border-box;
+  font-size: 9px;
+}
+
+.daysFilter1 {
+  margin-top: 31px;
+  margin-left: 10px;
+  height: 29px;
+   width: 78px;
+  border: 1px solid #c1bebe;
+  border-radius: 11px;
+  cursor: pointer;
+}
+.daysFilter1True{
+    margin-top: 31px;
+    margin-left: 10px;
+    height: 29px;
+    width: 78px;
+    border: 1px solid #c1bebe;
+    border-radius: 11px;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+.distFilter1 {
+margin-top: 27px;
+    margin-left: 10px;
+    height: 38px;
+    width: 110px;
+    border: 1px solid #c1bebe;
+    border-radius: 5px;
+}
+
+.locFilter1 {
+margin-top: 27px;
+    margin-left: 10px;
+    height: 38px;
+    width: 114px;
+    border: 1px solid #c1bebe;
+    border-radius: 4px;
+}
+
+.distFilter1 input,
+.locFilter1 input {
+  border: none;
+  outline: none;
+  font-size: 9px;
+  flex: 1;
+  min-width: 0; /* prevent input from pushing the cross out */
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  background: transparent;
+  box-sizing: border-box;
+}
+.distFilter1 input::-webkit-outer-spin-button,
+.distFilter1 input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+.close-btn {
+  flex-shrink: 0; /* stop it from getting squished */
+  cursor: pointer;
+  font-size: 12px;
+  margin-left: 5px;
+  user-select: none;
+  z-index: 1; /* stay above input */
+ margin-top: 2px;
+ 
+}
+
+
+.availableJobDetails {
+      position: absolute;
+    height: 575px;
+    width: 99%;
+    margin-top: 86px;
+    margin-left: 15px;
+  
+  
+}
+
+.jobListScroll {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  padding-right: 4px;
+}
+
+.postedJobs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto; /* make rows auto height */
+  gap: 20px;
+  max-height: 65vh;
+  overflow-y: auto;
+  padding: 20px;
+}
+.NoJobsNearYou{
+      position: relative;
+    width: 90%;
+    height: 510px;
+  
+
+    left: 63px;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    justify-content: center;
+    align-items: center;
+}
+.NoJobsImg{
+height: 100px;
+    width: 100px;
+    object-fit: cover;
+    position: relative;
+    top: -35px;
+}
+.noJobstext{
+    position: relative;
+    top: -28px;
+}
+.loader-container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  top: -121px;
+}
+
+.container {
+  --uib-size: 40px;
+  --uib-color: black;
+  --uib-speed: 2s;
+  --uib-bg-opacity: 0;
+  height: var(--uib-size);
+  width: var(--uib-size);
+  transform-origin: center;
+  animation: rotate var(--uib-speed) linear infinite;
+  will-change: transform;
+  overflow: visible;
+}
+
+.car {
+  fill: none;
+  stroke: var(--uib-color);
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  animation: stretch calc(var(--uib-speed) * 0.75) ease-in-out infinite;
+  will-change: stroke-dasharray, stroke-dashoffset;
+  transition: stroke 0.5s ease;
+}
+
+.track {
+  fill: none;
+  stroke: var(--uib-color);
+  opacity: var(--uib-bg-opacity);
+  transition: stroke 0.5s ease;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes stretch {
+  0% {
+    stroke-dasharray: 0, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 75, 150;
+    stroke-dashoffset: -25;
+  }
+  100% {
+    stroke-dashoffset: -100;
+  }
+}
+
+.jobcontent {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  /* height: 100%;  <-- REMOVE THIS */
+  min-height: 220px; /* optional, makes all cards uniform */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.jobcontent:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+.jobHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.jobImage {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.jobTitleSmall {
+    font-size: 12px;
+    font-weight: 600;
+    margin: 0;
+    word-break: break-word;
+    flex: 1;
+}
+
+.leftHead {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.jobImg {
+    width: 61px;
+    height: 62px;
+    border-radius: 6px;
+    object-fit: cover;
+    margin-right: 15px;
+    position: absolute;
+}
+.jobText {
+     flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    font-family: "Poppins", sans-serif;
+    position: relative;
+    left: 87px;
+      white-space: nowrap;
+}
+
+.company {
+margin-top: -11px;
+    font-size: 10px;
+    color: #555;
+      white-space: nowrap;
+}
+
+.locImg {
+    height: 15px;
+    width: 15px;
+    margin-right: 11px;
+}
+
+.company2 {
+    margin: 0;
+    font-size: 10px;
+    color: #777;
+    display: flex;
+    align-items: center;
+    margin-top: 9px;
+    width: 140px;
+     white-space: nowrap;
+}
+
+.rightHead {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    margin-left: 70px;
+}
+
+.postedDate {
+     position: absolute;
+    font-size: 10px;
+    color: #908f8f;
+    margin-bottom: 10px;
+    top: 8px;
+    right: 24px;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+}
+.AppliedJobsHere{
+      position: absolute;
+    display: inline-block;
+    background-color: #28a745;
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-align: center;
+    margin-left: 339px;
+    margin-top: -5px;
+    padding-bottom: 3px;
+       font-family: "Poppins", sans-serif;
+}
+.dotsBtn {
+    background: none;
+    border: 1px solid gray;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 2px;
+    height: 35px;
+    width: 20px;
+}
+
+.jobMetaRow {
+    margin: 10px 0;
+    display: flex;
+}
+
+.jobBadge {
+    background-color: #e6f0ff;
+    color: #007bff;
+    padding: 4px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+      font-family: 'Poppins', sans-serif;
+}
+.distance0 {
+  margin-left: 10px;
+  padding: 2px 8px;
+  font-family: "Roboto", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+background: #ffffff; /* light gray */
+color: #333;         /* dark gray text */
+border: 1px solid #ccc;   /* solid black border */
+  border-radius: 12px;       /* rounded pill shape */
+   display: inline-flex;      /* flex for centering */
+  align-items: center;       /* vertical center */
+  justify-content: center; 
+}
+
+
+.jobDesc {
+       font-size: 13px;
+    color: #000000;
+    margin: 16px;
+    font-family: "Roboto", sans-serif;
+}
+
+.jobStats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 11px;
+    color: #555;
+    margin-bottom: 10px; 
+    font-family: 'Poppins', sans-serif;
+}
+
+.metaBox {
+    background-color: #f3f3f3;
+    padding: 3px 10px;
+    border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+}
+
+.urgentTag {
+    background-color: #ffecec;
+    color: #ff4d4d;
+    padding: 3px 10px;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.borderDiv {
+    border-top: 1px solid #e0e0e0;
+    margin: 8px 0 6px 0;
+}
+
+.jobFooter {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #333;
+    padding: 0 8px;
+      font-family: 'Poppins', sans-serif;
+}
+.ImgHr{
+    height: 20px;
+    width: 20px;
+    object-fit: cover;
+    position: relative;
+    top: 6px;
+    right: 2px;
+}
+.amnt{
+  height: 20px;
+    width: 20px;
+    object-fit: cover;
+    position: relative;
+    top: 6px;
+    right: 8px;
+}
+.amnt2{
+  height: 20px;
+    width: 20px;
+    object-fit: cover;
+    position: relative;
+    top: 0px;
+    right: 8px; 
+}
+.partTimeImg{
+   height: 20px;
+    width: 20px;
+    object-fit: cover;
+    position: relative;
+    top: 6px;
+    right: 8px;
+}
+.partTimeImg2{
+   height: 20px;
+    width: 20px;
+    object-fit: cover;
+    position: relative;
+    top: 0px;
+    right: 8px;
+}
+.partTimeImg3{
+     height: 20px;
+    width: 20px;
+    object-fit: cover;
+    position: relative;
+    top: 6px;
+    right: 1px;
+}
+.ImgHr2{
+      height: 20px;
+    width: 20px;
+    object-fit: cover;
+    position: relative;
+    top: -1px;
+    right: 3px;
+}
+/* only activate when a job is clicked on it */
+.content2 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    border: 1px solid red;
+}
+
+.JobDescr {
+    height: 90vh;
+    width: 60%;
+    border: 1px solid rgb(199, 198, 198);
+}
+
+.SearchList {
+    height: 90vh;
+    width: 18%;
+    border: 1px solid rgb(199, 198, 198);
+}
+.FilterRow{
+     height: 91vh;
+    width: 16%;
+    border: 1px solid rgb(199, 198, 198);
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 20px;
+        
+}
+.FitlerHeading {
+  display: flex;
+  align-items: center;  /* ✅ centers image & text vertically */
+  gap: 6px;             /* space between image and text */
+  margin-top: 19px;
+  margin-left: 10px;
+  border-bottom: 1px solid #C4C4C4;
+  width: 209px;
+}
+.fadeFilter {
+  height: 18px;
+  width: 18px;
+  opacity: 0.5; /* 1 = full, 0 = invisible */
+  margin-top: -3px;
+}
+.filterClass {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 24px;
+  font-weight: 600;   /* semi-bold */
+  color: rgba(0, 0, 0, 0.6); /* 60% opacity black */
+}
+
+.JobCat {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 17px;
+}
+.JobCateTitle{
+    font-family: 'League Spartan', sans-serif;
+  font-size: 14px;
+  font-weight: 700;   /* semi-bold */
+  color: rgba(0, 0, 0, 0.6); /* 60% opacity black */
+}
+.JobCateTitleDates{
+   font-family: 'League Spartan', sans-serif;
+  font-size: 12px;
+  font-weight: 700;   /* semi-bold */
+  color: rgba(0, 0, 0, 0.6); /* 60% opacity black */
+  position: relative;
+  left: -4px;
+}
+.job-options label {
+     display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+    font-family: "League Spartan", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.6);
+}
+.clear {
+  font-size: 10px;
+  font-family: "League Spartan", sans-serif;
+  margin-left: 49px;
+
+  border: 1px solid transparent; /* ✅ reserve space */
+  padding: 2px 6px;              /* ✅ consistent spacing */
+  border-radius: 4px;
+}
+
+.clear:hover {
+  border-color: #333; /* only color changes */
+  cursor: pointer;
+}
+
+.clear:active {
+  background: black;
+  color: white;
+}
+
+
+/* style checkboxes */
+.job-options input[type="checkbox"] {
+  accent-color: gray; /* ✅ modern browsers */
+  width: 16px;
+  height: 16px;
+}
+.inputStyle{
+    height: 33px;
+    width: 95px;
+    border-radius: 5px;
+    border: 1px solid #c4c4c4;
+}
+.inputStyle2{
+    height: 33px;
+    width: 120px;
+    border-radius: 5px;
+    border: 1px solid #c4c4c4;
+}
+.inputRow {
+  display: flex;
+  align-items: center; /* ✅ keeps input & Clear aligned */
+  gap: 8px;            /* space between input and Clear */
+}
+
+.clear2 {
+  font-size: 10px;
+  font-family: "League Spartan", sans-serif;
+  font-weight: 700;
+  border: 1px solid transparent;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #9a9a9a;
+  cursor: pointer;
+}
+.clear2:hover {
+  border-color: #333;
+}
+.clear2:active {
+  background: black;
+  color: white;
+}
+.SearchPart{
+  height: 91vh;
+  width: 22%;
+  border: 1px solid gray;
+  
+}
+.DescContentFlex{
+  display: flex;
+  gap: 5px;
+}
+.JobDesc {
+    height: 91vh;
+    width: 63%;
+    border: 1px solid gray;
+    overflow-y: auto; /* enables vertical scrolling */
+    overflow-x: hidden; /* optional: hides horizontal scroll */
+}
+
+
+
+.FilterWrapper {
+  display: flex;
+  flex-direction: column; /* ✅ stack children vertically */
+}
+.FitlerItems{
+    height: 91vh;
+  width: 16%;
+  border: 1px solid gray;
+   display: flex;
+  flex-direction: column;
+}
+.Searchbar{
+  height: 50px;
+  width: 98%;
+ 
+}
+.SearchBarInput{
+ margin-left: 10px;
+    height: 40px;
+    margin-top: 5px;
+    width: 90%;
+    border: 1px solid rgb(173, 171, 171);
+    border-radius: 6px;
+}
+.SearchWrapper {
+  position: relative;
+  width: 93%;
+}
+
+.SearchIcon {
+  position: absolute;
+  top: calc(50% + 2px);   /* moves the icon 2px lower */
+  left: 20px;
+  transform: translateY(-50%);
+  height: 18px;
+  width: 18px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.SearchBarInput {
+  padding-left: 36px;       /* increase padding to match new icon position */
+  line-height: 40px;        /* keep vertical centering */
+  vertical-align: middle;
+}
+
+.FilteredThings{
+  margin-top: 10px;
+  margin-bottom: 10px;
+   background-color: #947a7a;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center; /* center text horizontally */
+  padding: 0px 8px;
+  margin-right: 10px;
+  border: 1px solid gray;
+  border-radius: 16px;
+  background-color: transparent;
+  color: gray;
+  font-size: 8px; /* smaller font */
+  line-height: 1; /* keep text vertically centered */
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  min-width: 50px; /* optional to keep shape consistent */
+  height: 24px;    /* adjust to make it nicely rounded */
+  top: 5px;
+  left: -9px;
+}
+
+/* Cross always visible, small size */
+.chip .cross {
+  display: inline-block;
+  margin-left: 4px;
+  font-size: 8px; /* same as text */
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* Active chip */
+.chip.active {
+  background-color: black;
+  color: white;
+  border-color: black;
+}
+
+
+.BelowJobDetailsitems {
+    height: 82vh;
+    width: 99%;
+   
+    margin-top: 10px;
+    margin-left: 2px;
+    overflow-y: auto;     /* scrollable */
+    padding-top: 10px;    /* for top spacing */
+    padding-bottom: 10px; /* ensures last card is fully visible */
+}
+
+.JobDetails {
+  position: relative;
+  height: 211px;
+  width: 89%;
+  background-color: #fffdfd;
+  border: 1px solid #c4c4c4;
+  margin-left: 4px;
+  margin-top: 10px;
+  border-radius: 6px;
+  padding: 12px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+.selected-border {
+  border: 2px solid lightblue;
+}
+
+/* Header */
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.job-image {
+width: 64px;
+    height: 67px;
+    border-radius: 6px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.job-info {
+  flex: 1;
+}
+
+.title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+}
+
+.company3 {
+  display: block; /* ensures it's on its own line */
+  margin-top: 2px;
+  font-size: 10px;
+  font-weight: 500;
+  color: #444;
+}
+
+.tag-distance {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* spacing between tag and distance */
+  margin-top: 4px;
+}
+
+.tag {
+  background: #f4ecfb;
+  color: #6a3fa4;
+  padding: 3px 8px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.distance {
+  font-size: 9px;
+  font-weight: 500;
+  color: #007b5e; /* greenish accent */
+  display: inline-block;  /* keep it inline */
+  margin: 0;              /* remove extra spacing */
+  padding: 2px 6px;       /* optional: make it look like a label */
+  border-radius: 6px;     /* optional rounded corners */
+  background: #e9f7f3;    /* soft background like tag */
+}
+
+.posted {
+       position: absolute;
+    font-size: 7px;
+    color: #777;
+    margin-left: 206px;
+    font-weight: 500;
+        margin-top: -5px;
+}
+.applied {
+      position: absolute;
+    display: inline-block;
+    background-color: #28a745;
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-align: center;
+    margin-left: 211px;
+    margin-top: 12px;
+    padding-bottom: 3px;
+}
+/* Location */
+.job-location {
+  font-size: 10px;
+  color: #333;
+  margin-top: 1px;   /* reduced from 6px */
+  font-weight: 500;
+}
+
+.job-stats {
+  margin-top: -7px;   /* reduced from 6px */
+}
+
+.pill {
+  display: inline-block;
+  background: #f3f3f3;
+  border-radius: 10px;
+  padding: 2px 6px;  /* slightly smaller padding */
+  margin-right: 4px; /* reduced spacing between pills */
+  font-size: 10px;
+  font-weight: 500;
+  color: #333;
+}
+
+.urgent {
+  background: #fdeaea;
+  color: #d93025;
+  font-weight: 600;
+}
+.footerBar{
+  background-color: #c4c4c4;
+  height: 1px;
+  width: 98%;
+}
+/* Footer */
+.job-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 700;
+  color: #333;
+}
+
+.time, .rate, .type {
+display: flex;
+    align-items: center;
+    font-size: 11px;
+    font-family: "League Spartan", sans-serif;
+        font-weight: 500;
+}
+
+.MainHeading{
+    height: 215px;
+    width: 82%;
+   
+    margin-left: 17px;
+    display: flex;
+}
+.ImageHead{
+  position: relative;
+       height: 198px;
+    width: 186px;
+  
+    margin-top: 10px;
+}
+.imageContent{
+  margin-top: 10px;
+  position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+.MainContent {
+  position: relative;
+  height: 208px;
+  width: 430px;
+ font-family: 'Poppins', sans-serif;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+}
+
+.job-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 5px 0 4px 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.job-subtitle {
+  font-size: 15px;
+  color: #555;
+  margin: 0 0 8px 0;
+}
+.job-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* space between category and distance */
+}
+
+.job-distance {
+    display: inline-block;
+    background: #ffffff;
+    color: #555;
+    border: 1px solid #aaaaaa;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 12px;
+    margin-left: 10px;
+    margin-bottom: 12px;
+}
+
+.job-category {
+  display: inline-block;
+  background: #e6f2ff;   /* light blue background */
+  color: #1a73e8;        /* nice blue text */
+  font-size: 13px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 12px;
+  margin: 0 0 10px 0;
+  width: 32%;
+}
+
+.desContent {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #444;
+  margin: 0;
+}
+.ApplyBtnWrapper{
+position: absolute;
+  margin-left: 270px;
+  margin-top: 20px;
+}
+.ApplyBtn {
+  background-color: transparent;
+  border-radius: 5px;
+  height: 34px;
+  width: 95px;
+  border: 1px solid rgb(52, 52, 52);
+  cursor: pointer;
+  transition: border-bottom-width 0.2s ease;
+}
+
+.ApplyBtn:hover {
+  border-bottom-width: 4px;  /* increase thickness on hover */
+}
+.ApplyBtn:active {
+  background-color: black;
+  color: white;
+}
+.otherDetails{
+    height: 90px;
+    width: 101%;
+    margin-top: 20px;
+    margin-left: 14px;
+    display: flex;
+    gap: 3px;
+}
+.EmployeTypeClass {
+  margin-top: 10px;
+  margin-left: 5px;
+    display: flex;
+    flex-direction: column;  /* stack label and p */
+    align-items: center;     /* center horizontally */
+    text-align: center;      /* make text align center */
+    flex: 1;                 /* optional: equal width for all boxes */
+}
+.heading{
+    font-family: 'League Spartan', sans-serif;
+  font-size: 17px;
+  font-weight: 700; 
+}
+.subHeading{
+ font-family: 'League Spartan', sans-serif;
+  font-size: 13px;        /* bigger than 10px for readability */
+  font-weight: 500;       /* medium weight */
+  color: #555;            /* softer gray for secondary text */
+  letter-spacing: 0.5px;  /* slight spacing for clarity */
+  margin-top: 8px; 
+}
+.subHeading2{
+   font-family: 'League Spartan', sans-serif;
+  font-size: 13px;        /* bigger than 10px for readability */
+  font-weight: 500;       /* medium weight */
+  color: #555;            /* softer gray for secondary text */
+  letter-spacing: 0.5px;  /* slight spacing for clarity */
+  margin-top: -3px; 
+}
+.locationDetails{
+   height: 120px;
+    width: 75%;
+ 
+    margin-top: 20px;
+     margin-left: 25px;
+}
+.locImage {
+   height: 40px;
+   width: 77%;
+ 
+   margin-top: 10px;
+   display: flex;          
+   align-items: center;    
+   padding-left: 8px;
+   gap: 10px;
+   overflow: hidden;
+   margin-left: 15px;
+}
+
+
+
+.locInput {
+  flex: 1;
+  padding: 4px;
+  border: none;               /* remove all borders */
+  border-bottom: 1px solid gray; /* only bottom line */
+  outline: none;              /* remove blue highlight on focus */
+  background: transparent;    /* no background */
+}
+
+.imgLoc {
+  height: 20px;
+  width: 20px;
+  filter: grayscale(100%) opacity(0.6);
+  margin-top: -3px;
+}
+.mapBtn{
+  height: 30px;
+    width: 61px;
+    background-color: transparent;
+    border: 1px solid gray;
+    border-radius: 4px;
+}
+.editBtn{
+height: 30px;
+    width: 61px;
+    background-color: transparent;
+    border: 1px solid gray;
+    border-radius: 4px;
+}
+.editBtn:active {
+   background-color: black;
+   color: white;
+}
+.savBtn{
+height: 30px;
+    width: 61px;
+    background-color: transparent;
+    border: 1px solid gray;
+    border-radius: 4px;
+}
+.savBtn:active{
+     background-color: black;
+   color: white;
+}
+.clsBtn:active{
+     background-color: black;
+   color: white;
+}
+.clsBtn{
+  height: 30px;
+    width: 61px;
+    background-color: transparent;
+    border: 1px solid gray;
+    border-radius: 4px;
+}
+.locDesc2 {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 15px;
+  font-weight: 700;   /* bold */
+  margin-left: 5px;   /* small gap from icon */
+  color: #333;        /* optional: better readability */
+  margin-top: 15px;
+}
+.locDesc {
+    font-family: "League Spartan", sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    margin-left: 5px;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 408px;
+}
+
+.ResAndReqDesc{
+
+ 
+  margin-top: 10px;
+  margin-left: 40px;
+}
+.Respons{
+   height: 60px;
+ width: 65%;
+  border: 1px solid gray;
+}
+.ResLabel,
+.ReqLabel {
+  display: block;            /* put label on its own line */
+  font-weight: bold;         /* bold heading */
+  font-size: 16px;           /* bigger than list text */
+  margin: 8px 0;             /* some spacing */
+  color: #333;               /* dark gray for readability */
+  text-transform: capitalize; /* makes first letter uppercase nicely */
+}
+
+.Respons ul {
+  margin: 0;
+  padding-left: 20px;        /* indentation for list */
+  font-size: 14px;
+  color: #444;               /* softer text color */
+  line-height: 1.6;          /* better spacing between items */
+}
+
+.Respons ul li {
+  margin-bottom: 4px;        /* spacing between bullets */
+}

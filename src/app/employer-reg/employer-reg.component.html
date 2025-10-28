@@ -1,0 +1,170 @@
+
+  <form [formGroup]="employerForm" (ngSubmit)="onSubmit()">
+    <!-- (ngSubmit) IMP Keyword -->
+         <h2 class="heading">Employer Registration</h2>
+        
+          
+      <div class="MainEmployee">
+   
+        
+         <br>
+  <div class="Left">
+            <!--  Person Name -->
+        <div>
+    <label class="Title"  >Full Name:</label>
+    <br>
+    <input class="inputStyleLeft"  placeholder="Full Name" type="text" formControlName="personName">
+    </div>
+    <div *ngIf="(f['personName'].touched || submitted) && f['personName'].errors" class="error">
+      <span class="warning" *ngIf="f['personName'].errors['required']">
+       Full Name is required.
+      </span>
+ </div>
+       <!-- Email -->
+     <div>
+        <label class="Title"  >Email:</label>
+        <br>
+    <input class="inputStyleLeft"  placeholder="WorkEmail" type="email" formControlName="email">
+     </div>
+    
+    <div *ngIf="(f['email'].touched || submitted) && f['email'].errors" class="error">
+      <span class="warning"  *ngIf="f['email'].errors['required']">Email is required.</span>
+      <span class="warning"  *ngIf="f['email'].errors['email']">Invalid email format.</span>
+    </div>
+   
+
+      <!-- Company Name -->
+     <div>
+          <label class="Title"  >Business / Branch Name</label>
+          <br>
+    <input placeholder="eg,Starbucks,McDonalds" class="inputStyleLeft" type="text" formControlName="jobPlace">
+     </div>
+  
+    <div *ngIf="(f['jobPlace'].touched || submitted) && f['jobPlace'].errors" class="error">
+      <span class="warning"  *ngIf="f['jobPlace'].errors['required']">
+        Company Name is required.
+      </span>
+    </div>
+
+    
+    <!-- Company Address -->
+     <div>
+         <label class="Title" >Company Address:</label>
+         <br>
+       
+    <input class="inputStyleLeft"  type="text" formControlName="companyAddress">
+     </div>
+   
+    <div *ngIf="(f['companyAddress'].touched || submitted) && f['companyAddress'].errors" class="error">
+      <span class="warning"  *ngIf="f['companyAddress'].errors['required']">
+        Company Address is required.
+      </span>
+    </div>
+
+    </div>
+ 
+    <!-- Left Part of Input Field -->
+    <div class="Right">
+
+        <!-- Contact infor -->
+       <div>
+          <label class="Title"  >Contact No :</label>
+         <br>
+       
+    <input class="inputStyle" type="number" formControlName="contactNumber">
+       </div> 
+    
+    <div *ngIf="(f['contactNumber'].touched || submitted)&& f['contactNumber'].errors" class="error">
+      <span class="warning"  *ngIf="f['contactNumber'].errors['required']">
+       Contact No : is required.
+      </span>
+      <span class="warning" *ngIf="f['contactNumber'].errors['pattern']">
+  Contact No must be exactly 10 digits.
+</span>
+    </div>
+
+
+         <!-- Job Position -->
+       <div>
+          <label class="Title"  >Job Position:</label>
+         <br>
+       
+    <input class="inputStyle" type="text" formControlName="jobPosition">
+       </div> 
+    
+    <div *ngIf="(f['jobPosition'].touched || submitted)&& f['jobPosition'].errors" class="error">
+      <span class="warning"  *ngIf="f['jobPosition'].errors['required']">
+        Job Position is required.
+      </span>
+    </div>
+    <!-- Password -->
+
+    <div>
+        <label class="Title"  >Password:</label>
+         <br>
+        
+    <input class="inputStyle"  type="password" formControlName="password">
+    </div>
+    
+    <div *ngIf="(f['password'].touched || submitted) && f['password'].errors" class="error">
+      <span class="warning"  *ngIf="f['password'].errors['required']">
+        Password is required.
+      </span>
+      <span class="warning"  *ngIf="f['password'].errors['minlength']">
+        Password must be at least 6 characters.
+      </span>
+    </div> 
+    <!--Confirm Password -->
+    <div>
+            <label class="Title"  > Confirm Password:</label>
+            <br>
+    <input  class="inputStyle" type="password" formControlName="confirmPass">
+    </div>
+
+    <div *ngIf="(f['confirmPass'].touched || submitted) && f['confirmPass'].errors" class="error">
+      <span class="warning"  *ngIf="f['confirmPass'].errors['required']">
+        Password is required.
+      </span>
+      <span class="warning"  *ngIf="f['confirmPass'].errors['minlength']">
+        Password must be at least 6 characters.
+      </span>
+    </div>
+    <div *ngIf="employerForm.hasError('passwordMismatch') && (f['confirmPass'].touched || submitted)" class="error">
+  <span class="warning">
+    Passwords do not match.
+  </span>
+</div>
+        <button [disabled]="employerForm.invalid" class="btn" type="submit">Register</button>
+    </div>
+
+      </div>
+      
+  </form>
+  <div class="ForShowingLoadingPage" *ngIf="loadingService.loading$ |async">
+  <svg
+    class="container"
+    viewBox="0 0 40 40"
+    height="40"
+    width="40"
+  >
+    <circle 
+      class="track"
+      cx="20" 
+      cy="20" 
+      r="17.5" 
+      pathlength="100" 
+      stroke-width="5px" 
+      fill="none" 
+    />
+    <circle 
+      class="car"
+      cx="20" 
+      cy="20" 
+      r="17.5" 
+      pathlength="100" 
+      stroke-width="5px" 
+      fill="none" 
+    />
+  </svg>
+</div>
+

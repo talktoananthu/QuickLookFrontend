@@ -1,0 +1,102 @@
+<div class="Profile">
+  <div class="ContentDetail">
+    <div class="ImageBorder">
+        <div class="Img"> 
+          <img [src]="JobSeekerDetails.ImageProfile?JobSeekerDetails.ImageProfile:'../../assets/profile.png'"
+           class="MainProfileImg" alt=""></div>
+    </div> 
+    <div class="ProfileDetails">
+     
+       <div class="ProfleIntroducing">Hello, {{JobSeekerDetails.Name }}  !</div>
+       <div class="ProfileDetails2">
+         Your Daily Progress at a Glance: Applied, Hired, Scheduled & Hours
+          
+       </div>
+    </div>
+  </div>
+ <div>
+
+ </div>
+
+</div>
+
+<div class="Details"> 
+  <div class="DetailsItems"> 
+     <div class="DetailsItemsContent">
+        <img src="../../assets/jobsapplied.png" class="Images" alt="">
+    
+     </div>
+  
+     <div class="SubText">
+       No of jobs Applied
+     </div>
+       <div class="SubText2">
+ {{NoofJobsApplied}}
+     </div>
+  </div>
+   <div class="DetailsItems"> 
+     <div class="DetailsItemsContent">
+ <img src="../../assets/hired.png" class="Images" alt="">
+     </div>
+      <div class="SubText">
+      No of Jobs Hired
+     </div>
+       <div class="SubText2">
+   {{NoofJobsHired}}
+     </div>
+  </div>
+   <div class="DetailsItems"> 
+     <div class="DetailsItemsContent">
+ <img src="../../assets/schedulesIcon.png" class="Images" alt="">
+     </div>
+     <div class="SubText">
+     No of Schedules Today
+     </div>
+      <div class="SubText2">
+     {{NoofSchedulesToday}}
+     </div>
+  </div>
+    <div class="DetailsItems"> 
+     <div class="DetailsItemsContent">
+ <img src="../../assets/hourglass.png" class="Images" alt="">
+     </div>
+     <div class="SubText">
+    Max Working Hr Per Day
+     </div>
+       <div class="SubText2">
+    {{MaxWorkingHourPerDay}}
+     </div>
+</div>
+</div>
+<div class="SchedulesDetails">
+  
+   <div class="todaySchedules">
+      <div class="TitleSchedules">Today Schedules</div>
+      <div class="SchedulesData">
+        <ng-container *ngIf="todaySchedulingData.length>0">
+        <div class="SchedulesEachData" *ngFor=" let job of todaySchedulingData">
+            <div class="SchedulesImgData">
+              <img [src]="job.jobImage" class="Image" alt="">
+            </div>
+            <div class="ScheduleDetails">
+                <div class="ScheduleMainText">{{job.jobTitle}}</div>
+                  <div class="ScheduleSubText">{{job.businessName}}</div>
+            </div>
+            <div class="ShiftTime" *ngFor="let sche of job.schedules">
+                  <img src="../../assets/time.png" class="ShiftImage" alt="">
+                   <div class="shiftTimeDetails">{{sche.startTime}} - {{sche.endTime}}</div>
+                   <div class="ShiftHours">{{calculateHours(sche.startTime,sche.endTime)}}</div>
+            </div>
+        </div>
+        </ng-container>
+           <ng-container *ngIf="todaySchedulingData.length <=0">
+            <div class="WhenNoSchedules">
+                 <img src="../../assets/noSchedules.png"class="noScheduleData" alt="">
+                 <div class="noSchedulesText">No Schedules Today</div>
+            </div>
+           </ng-container>
+      </div>
+
+   </div>
+
+</div>

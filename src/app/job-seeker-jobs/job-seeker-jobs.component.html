@@ -1,0 +1,479 @@
+<div class="DisplayMakingContentFlex" *ngIf="!showDescriptionJobPost">
+   
+<div class="FirstDesc" >
+    <div class="Searchdiv">
+        <input [(ngModel)]="jobTitle" (ngModelChange)="applyFilters()" type="text"
+         class="seachBar" placeholder="Find jobs near you — enter a job title">
+     <div class="AvailableFilter">
+        <div class="FilterCategory">
+          <img src="../../assets/filter.png" height="20px" width="20px" alt="">
+       <p>Filter</p>
+     </div>
+     <!-- below filter should show based on filter button is clicked -->
+  
+    <div  class="custom-dropdown">
+  <div class="dropdown-selected" (click)="toggleDropdown()">
+    {{ selectedCategory || 'Select a category' }}
+    <span class="arrow">&#9662;</span>
+    <span (click)="showCate()" *ngIf="showCateorgry ==true" class="close-btn">×</span>
+  </div>
+
+  <ul *ngIf="isOpen" class="dropdown-options">
+    <li *ngFor="let category of jobCategories" 
+        (click)="selectCategory(category)">
+      {{ category }}
+    </li>
+  </ul>
+</div>
+         
+<div  class="AmountFilterWrapper">
+  <input [(ngModel)]="amountVal" (ngModelChange)="applyFilters()" type="number" class="AmountFilter" placeholder="amount">
+  <span (click)="showAmount()" *ngIf="showAmountFilter ==true" class="close-btn">×</span>
+</div>
+<div  >
+  <label class="timeText">Start time
+    <span (click)="showstartTime()" *ngIf="showStartTime ==true" class="close-btn">×</span>
+  </label><br>
+  <input [(ngModel)]="startTime"  (ngModelChange)="applyFilters()" class="StartTimeFilter" type="time" [(ngModel)]="startTime" />
+</div>
+
+<div  >
+  <label class="timeText">End time  
+    <span (click)="showendTime()" (ngModelChange)="applyFilters()" *ngIf="showEndTime ==true" class="close-btn">×</span>
+  </label><br>
+  <input [(ngModel)]="endTime" (ngModelChange)="applyFilters()" class="EndTimeFilter" type="time" [(ngModel)]="endTime" />
+</div>
+
+
+ 
+
+<div   class="distFilter1">
+  
+  <input [(ngModel)]="showDistVal" (ngModelChange)="applyFilters()" type="number" placeholder="within km">
+  <span (click)="showDistanceFilter()" *ngIf="showDist ==true" class="close-btn">×</span>
+</div>
+
+<div   class="locFilter1">
+  <input [(ngModel)]="showAreaVal" (ngModelChange)="applyFilters()" type="text" placeholder="Area">
+ <span (click)="showAreaFilter()" *ngIf="showArea ==true" class="close-btn">×</span>
+</div>
+
+<div    class="locFilter1">
+  <input [(ngModel)]="showCityVal" (ngModelChange)="applyFilters()" type="text" placeholder="City">
+  <span (click)="showCityFilter()"  *ngIf="showCity ==true" class="close-btn">×</span>
+</div>
+   <div  [ngClass]="showWeek ? 'daysFilter1True' : 'daysFilter1'">
+       <span (click)="showWeekAgo()">1 week ago</span>
+  <span (click)="showWeekAgo()"  *ngIf="showWeek ==true" class="close-btn">×</span>
+ 
+</div>
+
+<div   [ngClass]="showMonth ? 'daysFilter1True' : 'daysFilter1'">
+  <span (click)="showMonthAgo()">1 month ago</span>
+ <span (click)="showMonthAgo()" *ngIf="showMonth ==true" class="close-btn">×</span>
+</div>
+
+
+ </div>   
+    </div>
+    <div class="availableJobDetails">
+        <div class="jobListScroll">
+    <ng-container *ngIf="postedJobsAvailable.length > 0">
+      <div class="postedJobs"> 
+        <!-- above content to be taken to be taken and post it   -->
+        <div (click)="ShowJobDetails(job.jobPostId)"  class="jobcontent" *ngFor="let job of postedJobsAvailable">
+          <div class="jobHeader menu-container" #menuContainer>
+            <div class="leftHead">
+              <img [src]="job.image" alt="job" class="jobImg" />
+              <div class="jobText">
+                <p class="jobTitle">{{ job.jobTitle }}</p>
+                <p class="company">{{ job.businessName }}</p>
+                <p class="company2">
+                  <img src="../../assets/location.png" class="locImg" />
+                  {{ job.location.area }}, {{ job.location.city }}, {{ job.location.state }}
+                </p>
+
+
+              </div>
+            </div>
+
+            <div class="rightHead">
+              <p class="postedDate">Posted {{ getDaysAgo(job.postedDay) }}</p>
+                  <!-- $event.stopPropagation() to prevent overlapping of the function present inside parent  -->
+           
+            </div>
+
+         <div *ngIf="job.applied" class="AppliedJobsHere">Applied</div>  
+         
+          </div>
+
+          <div class="jobMetaRow">
+            <span class="jobBadge">{{ job.jobCategory }}</span>
+           <span class="distance0">{{job.distance}} Km</span> 
+              
+          </div>
+
+          <p class="jobDesc">{{ job.description }}</p>
+
+          <div class="jobStats">
+            <span class="metaBox">Applicants: {{ job.applicantsRequired }}</span>
+            <span class="metaBox">Hired: {{ job.hired }}</span>
+            <span class="metaBox">Job expires: {{ getDaysLeft(job.lastDay) }}</span>
+            <span class="urgentTag" *ngIf="job.availabilty === 'Immediate Hiring'">Urgent hiring</span>
+            <span class="urgentTag" *ngIf="job.resumeNeed === 'Yes'">Resume Needed</span>
+          </div>
+
+          <div class="borderDiv"></div>
+
+          <div class="jobFooter">
+            <span><img src="../../assets/maxhour.png" class="ImgHr"> {{ job.startTime }} - {{ job.endTime }}</span>
+            <span><img src="../../assets/dollar.png" class="amnt">{{ job.amount }}</span>
+            <span><img src="../../assets/part-time.png" class="partTimeImg"> {{ job.jobType }}</span>
+          </div>
+        </div>
+      </div>
+       </ng-container>
+           <div class="loader-container"  *ngIf="loadingService.loading$ | async  " >
+  <svg
+    class="container"
+    viewBox="0 0 40 40"
+    height="40"
+    width="40"
+  >
+    <circle 
+      class="track"
+      cx="20" 
+      cy="20" 
+      r="17.5" 
+      pathlength="100" 
+      stroke-width="5px" 
+      fill="none" 
+    />
+    <circle 
+      class="car"
+      cx="20" 
+      cy="20" 
+      r="17.5" 
+      pathlength="100" 
+      stroke-width="5px" 
+      fill="none" 
+    />
+  </svg>
+</div>
+     
+    <ng-container *ngIf="postedJobsAvailable.length <= 0">
+      <div class="NoJobsNearYou" *ngIf="!(loadingService.loading$ | async)" >
+      
+             <img  src="../../assets/empty-folder.png" class="NoJobsImg" >
+             <div  class="noJobstext">No Part-Time Jobs near your location</div>
+      </div>
+    </ng-container>
+      
+    </div>
+       </div>
+</div>
+
+<!-- selected JobPost    -->
+
+
+
+</div>
+<div class="DescContentFlex" *ngIf="showDescriptionJobPost">
+
+<div class="FilterRow">
+  <div class="FitlerHeading">
+       <img src="../../assets/filter.png" class="fadeFilter" alt="">
+       <span class="filterClass">Filter </span>
+  </div>  
+
+  <div class="JobCat">
+      <label class="JobCateTitle">Job category <span class="clear"> Clear X</span></label>
+      <div class="job-options">
+      <label>
+  <input type="checkbox" 
+         [value]="'Food & Beverage'" 
+         (change)="onCategoryChange($event)">
+  Food & Beverage
+</label>
+
+<label>
+  <input type="checkbox" 
+         [value]="'Hospitality'" 
+         (change)="onCategoryChange($event)">
+  Hospitality
+</label>
+
+<label>
+  <input type="checkbox" 
+         [value]="'Housekeeping'" 
+         (change)="onCategoryChange($event)">
+  Housekeeping
+</label>
+
+<label>
+  <input type="checkbox" 
+         [value]="'Manual Labour'" 
+         (change)="onCategoryChange($event)">
+  Manual Labour
+</label>
+
+<label>
+  <input type="checkbox" 
+         [value]="'Retail'" 
+         (change)="onCategoryChange($event)">
+  Retail
+</label>
+        
+      </div>
+  </div>
+ <div class="JobCat">
+  <label class="JobCateTitle">Amount </label>
+  <div class="inputRow">
+    <input [(ngModel)]="amountVal" (ngModelChange)="applyFilters()"  type="number" class="inputStyle" placeholder="Rs">
+    <span class="clear2">Clear X</span>
+  </div>
+</div>
+
+<div class="JobCat">
+  <label class="JobCateTitle">Max Distance </label>
+  <div class="inputRow">
+    <input  [(ngModel)]="showDistVal" (ngModelChange)="applyFilters()" type="number" class="inputStyle" placeholder="Km">
+    <span class="clear2">Clear X</span>
+  </div>
+</div>
+<div class="JobCat">
+  <label class="JobCateTitle">Area</label>
+  <div class="inputRow">
+    <input [(ngModel)]="showAreaVal" (ngModelChange)="applyFilters()" type="text" class="inputStyle2">
+    <span class="clear2">Clear X</span>
+  </div>
+</div>
+
+<div class="JobCat">
+  <label class="JobCateTitle">City</label>
+  <div class="inputRow">
+    <input [(ngModel)]="showCityVal" (ngModelChange)="applyFilters()" type="text" class="inputStyle2">
+    <span class="clear2">Clear X</span>
+  </div>
+</div>
+
+<div class="JobCat">
+  <label class="JobCateTitle">Start Time <span (click)="clearStartTime()" class="clear2">clear X</span></label>
+  <div class="inputRow">
+    <input type="time"  [(ngModel)]="startTime"  (ngModelChange)="applyFilters()" class="inputStyle2">
+   
+  </div>
+</div>
+
+<div class="JobCat">
+  <label class="JobCateTitle">End Time <span (click)="clearEndTime()" class="clear2">clear X</span></label>
+  <div class="inputRow">
+    <input [(ngModel)]="endTime" (ngModelChange)="applyFilters()" type="time" class="inputStyle2">
+   
+  </div>
+</div>
+
+<div class="JobCat">
+  <label class="JobCateTitleDates">Posted By</label>
+  <div class="inputRow">
+
+
+  <!-- 1 Week ago chip -->
+<span 
+  class="chip" 
+  [ngClass]="{'active': showWeek}" 
+  (click)="showWeekAgo()" >
+  1 week ago
+  <span class="cross" (click)="showWeekAgo2($event)">✕</span>
+</span>
+
+<!-- 1 Month ago chip -->
+<span 
+  class="chip" 
+  [ngClass]="{'active': showMonth}" 
+  (click)="showMonthAgo()">
+  1 month ago
+  <span class="cross" (click)="showMonthAgo2($event)">✕</span>
+</span>
+
+  </div>
+</div>
+</div>
+
+     <div class="SearchPart">
+      <!-- searchBar -->
+     <div class="Searchbar">
+  <div class="SearchWrapper">
+    <img src="assets/search.png" alt="search" class="SearchIcon">
+    <input [(ngModel)]="jobTitle" (ngModelChange)="applyFilters()" type="text" placeholder="Search" class="SearchBarInput">
+  </div>
+</div>
+     
+      <!-- belowDivShowsAvailable JobPosts  } -->
+       <div class="BelowJobDetailsitems">
+
+   <!-- belowDivShowsAvailable JobPosts and Selection for particular jobPost -->
+        
+          <div    class="JobDetails"
+  *ngFor="let job of postedJobsAvailable"
+  (click)="SelectedJobDesc(job.jobPostId)"
+  [ngClass]="{ 'selected-border': job.jobPostId == SelectedJobPostId }">
+  
+  <!-- Header row -->
+  <div class="job-header">
+    <img [src]="job.image" lt="Job image" class="job-image" />
+   <div class="job-info">
+  <h3 class="title">{{job.jobTitle}}</h3>
+  <span class="company3">{{job.businessName}}</span>
+  <div class="tag-distance">
+    <span class="tag">{{job.jobCategory}}</span>
+    <span class="distance">{{job.distance}} Km</span>
+  </div>
+</div>
+    <span class="posted">Posted {{ getDaysAgo(job.postedDay) }}</span>
+    <span class="applied" *ngIf="job.applied">Applied</span>
+  </div>
+
+  <!-- Location -->
+  <div class="job-location">
+   <img height="12px" width="12px" src="../../assets/location.png" alt=""> {{job.location.area}},
+    {{job.location.city}}, {{job.location.state}}
+  </div>
+
+  <!-- Stats row -->
+  <div class="job-stats">
+    <span class="pill">Applicants: {{job.applicantsRequired}}</span>
+ <span class="pill">Hired: {{job.hired}}</span>
+    <span class="pill urgent" *ngIf="job.availabilty === 'Immediate Hiring'">Urgent hiring</span>
+       <span class="pill urgent" *ngIf="job.resumeNeed === 'Yes'">Resume Needed</span>
+  </div>
+   
+  <!-- Footer row -->
+   <div class="footerBar"></div>
+  <div class="job-footer">
+    <span class="time"><img src="../../assets/maxhour.png" class="ImgHr2"> {{job.startTime}} - {{job.endTime}}</span>
+    <span class="rate"><img src="../../assets/dollar.png" class="amnt2"> {{job.amount}}</span>
+    <span class="type"><img src="../../assets/part-time.png" class="partTimeImg2"> {{job.jobType}}</span>
+  </div>
+</div>
+            
+       </div>
+     </div>
+     <ng-container *ngIf="showSelectedJobPostDesc">
+      <div class="JobDesc"  
+     >
+         <div class="MainHeading">
+          <div class="ImageHead">
+             <img class="imageContent"
+                  [src]="showSelectedJobPostDesc.image || '../../assets/sampleImages/default.jpg'" alt="">
+          </div>
+  <div class="MainContent">
+  <p class="job-title">{{showSelectedJobPostDesc.jobTitle}}</p>
+  <p class="job-subtitle">{{showSelectedJobPostDesc.businessName}}</p>
+
+  <div class="job-meta">
+    <p class="job-category">{{showSelectedJobPostDesc.jobCategory}}</p>
+    <span class="job-distance">{{showSelectedJobPostDesc.distance}} km</span>
+  </div>
+
+  <p class="desContent">
+    {{showSelectedJobPostDesc.description}}
+  </p>
+  <div class="ApplyBtnWrapper">
+  <!-- Show Apply button if not applied -->
+<ng-container *ngIf="showSelectedJobPostDesc.hired < showSelectedJobPostDesc.applicantsRequired">
+  <button 
+    *ngIf="!showSelectedJobPostDesc.applied" 
+    (click)="clickedOnApplication(showSelectedJobPostDesc.jobPostId)" 
+    class="ApplyBtn">
+    Apply
+  </button>
+</ng-container>
+ 
+
+  <!-- Show Applied (disabled) if already applied -->
+  <button 
+    *ngIf="showSelectedJobPostDesc.applied" 
+    class="ApplyBtn appliedBtn" 
+    disabled>
+    ✅ Applied
+  </button>
+</div>
+</div>
+
+
+
+         </div>
+<div class="otherDetails">
+     <div class="EmployeTypeClass">
+       <label class="heading"> Employement Type</label>
+       <p class="subHeading">{{showSelectedJobPostDesc.jobType}}</p>
+     </div>
+      <div class="EmployeTypeClass">
+       <label class="heading">Hourly Rate</label>
+       <p class="subHeading"> {{showSelectedJobPostDesc.amount}}</p>
+     </div>
+      <div class="EmployeTypeClass">
+       <label class="heading"> Working Days</label>
+       <p class="subHeading">{{showSelectedJobPostDesc.workingDays}}</p>
+     </div>
+      <div class="EmployeTypeClass">
+       <label class="heading"> Working Time</label>
+       <p class="subHeading2"> <img src="../../assets/maxhour.png" class="partTimeImg3"> {{showSelectedJobPostDesc.startTime}} - {{showSelectedJobPostDesc.endTime}} </p>
+     </div>
+      <div class="EmployeTypeClass">
+       <label class="heading">Last day</label>
+       <p class="subHeading"> {{showSelectedJobPostDesc.lastDay  | date:'dd-MMM-yyyy'}}</p>
+     </div>
+</div>
+<div class="locationDetails">
+      <div class="locImage">
+         <img src="../../assets/location.png" class="imgLoc" height="10px"
+         width="10px" alt=""><span class="locDesc">{{showSelectedJobPostDesc.location.area}},
+{{showSelectedJobPostDesc.location.city}},{{showSelectedJobPostDesc.location.state}}
+         </span>
+      </div>
+       <div class="locImage">
+  <img src="../../assets/sampleforfigma/home.png" class="imgLoc" alt="" />
+
+  <!-- Show location text when not editing -->
+  <span class="locDesc2" *ngIf="!isEditing">
+    Lulu Mall Entrance Opposite Metro Station Near Signal Junction, Edappally, Kochi, Kerala, India 682024
+
+  </span>
+  
+
+
+  <!-- Edit button (when not editing) -->
+
+  <!-- Save + Cancel buttons (when editing) -->
+  <span class="SaveCancelBtns" *ngIf="isEditing">
+    <button class="savBtn" (click)="saveEdit()">Save</button>
+    <button  class="clsBtn" (click)="cancelEdit()">❌</button>
+  </span>
+</div>
+      
+</div>
+
+<div class="ResAndReqDesc">
+  
+    <label class="ResLabel" > Responsibilites</label>
+          <ul>
+             <li *ngFor="let task of showSelectedJobPostDesc?.responsibilities">{{task}}</li>
+           
+          </ul>
+       
+ 
+ 
+    <label class="ReqLabel" > Requirements</label>
+          <ul>
+    <li *ngFor="let task of showSelectedJobPostDesc?.requirements">{{task}}</li>
+    
+          </ul>
+              
+</div>
+
+     </div>
+</ng-container>
+</div>
+

@@ -1,0 +1,168 @@
+<form [formGroup]="jobSeekerForm" (ngSubmit)="onSubmit()">
+  <h2 class="title">Job Seeker Registration</h2>
+
+
+   <div class="Main">
+
+    <div class="Left">
+        <!-- Full Name -->
+     
+       <label class="Labeltitle">Full Name <span class="required-star">*</span></label>
+    <br>
+  <input class="inputStyle" type="text" formControlName="fullName" placeholder="Your Name">
+  <div class="error" *ngIf="jobSeekerForm.get('fullName')?.touched && jobSeekerForm.get('fullName')?.errors?.['required']">
+    Full Name is required.
+  </div>
+    <br>
+  <!-- Email -->
+  <label class="Labeltitle">Email <span class="required-star">*</span></label>
+    <br>
+  <input  class="inputStyle" type="email" formControlName="email" placeholder="example@email.com">
+  <div class="error" *ngIf="jobSeekerForm.get('email')?.touched && jobSeekerForm.get('email')?.errors?.['required']">
+    Email is required.
+  </div>
+  <div class="error" *ngIf="jobSeekerForm.get('email')?.touched && jobSeekerForm.get('email')?.errors?.['email']">
+    Enter a valid email.
+  </div>
+  <br>
+  <!-- Password -->
+  <label class="Labeltitle">Password <span class="required-star">*</span></label>
+    <br>
+  <input class="inputStyle"  type="password" formControlName="password" placeholder="********">
+  <div class="error" *ngIf="jobSeekerForm.get('password')?.touched && jobSeekerForm.get('password')?.errors?.['required']">
+    Password is required.
+  </div>
+  <div class="error" *ngIf="jobSeekerForm.get('password')?.touched && jobSeekerForm.get('password')?.errors?.['minlength']">
+    Password must be at least 6 characters.
+  </div>
+  <br>
+  <!-- Confirm Password -->
+  <label class="Labeltitle" >Confirm Password <span class="required-star">*</span></label>
+    <br>
+  <input class="inputStyle" type="password" formControlName="confirmPassword" placeholder="Re-enter password">
+  <div class="error" *ngIf="jobSeekerForm.get('confirmPassword')?.touched && jobSeekerForm.get('confirmPassword')?.errors?.['required']">
+    Confirm Password is required.
+  </div>
+  <div class="error" *ngIf="jobSeekerForm.hasError('passwordsMismatch') && jobSeekerForm.get('confirmPassword')?.touched">
+    Passwords do not match.
+  </div>
+  <br>
+  <!-- Contact Number -->
+  <label class="Labeltitle">Contact Number <span class="required-star">*</span></label>
+    <br>
+  <input  class="inputStyle" type="text" formControlName="contactNumber" placeholder="10 digit number">
+  <div class="error" *ngIf="jobSeekerForm.get('contactNumber')?.touched && jobSeekerForm.get('contactNumber')?.errors?.['required']">
+    Contact Number is required.
+  </div>
+  <div class="error" *ngIf="jobSeekerForm.get('contactNumber')?.touched && jobSeekerForm.get('contactNumber')?.errors?.['pattern']">
+    Enter a valid 10-digit number.
+  </div>
+  <br>
+    <label class="Labeltitle">Preferred Job Types</label>
+    <br>
+  <input  class="inputStyle"  type="text" formControlName="preferredJobTypes" placeholder="e.g., Delivery, Data Entry">
+  <br>
+    </div>
+    
+   <br>
+   <div class="Right">
+    <!-- Date of Birth -->
+
+  <label class="Labeltitle">Date of Birth <span class="required-star">*</span></label>
+    <br>
+  <input  class="inputStyle"  type="date" formControlName="dateOfBirth">
+  <div class="error" *ngIf="jobSeekerForm.get('dateOfBirth')?.touched && jobSeekerForm.get('dateOfBirth')?.errors?.['required']">
+    Date of Birth is required.
+  </div>
+  <div class="error" *ngIf="
+  jobSeekerForm.get('dateOfBirth')?.touched &&
+  jobSeekerForm.get('dateOfBirth')?.errors?.['minAge']
+">
+  You must be at least 18 years old.
+</div>
+  <br>
+  <!-- Address -->
+  <label class="Labeltitle">Address <span class="required-star">*</span></label>
+    <br>
+  <input  class="inputStyle"  type="text" formControlName="address" placeholder="Your City / Locality">
+  <div class="error" *ngIf="jobSeekerForm.get('address')?.touched && jobSeekerForm.get('address')?.errors?.['required']">
+    Address is required.
+  </div>
+  
+  <div class="error" *ngIf="jobSeekerForm.get('address')?.touched && jobSeekerForm.get('address')?.errors?.['minlength']">
+  Address must be at least 4 characters.
+</div>
+<br>
+   <label class="Labeltitle">Area <span class="required-star">*</span></label>
+    <br>
+  <input  class="inputStyle"  type="text" formControlName="area" placeholder="Your Area">
+  <div class="error" *ngIf="jobSeekerForm.get('area')?.touched && jobSeekerForm.get('area')?.errors?.['required']">
+    Area is required
+  </div>
+
+  <div class="error" *ngIf="jobSeekerForm.get('area')?.touched && jobSeekerForm.get('area')?.errors?.['minlength']">
+  Address must be at least 3 characters.
+</div>
+  <br>
+     <label class="Labeltitle">City <span class="required-star">*</span></label>
+    <br>
+  <input  class="inputStyle"  type="text" formControlName="city" placeholder="Your city">
+  <div class="error" *ngIf="jobSeekerForm.get('city')?.touched && jobSeekerForm.get('city')?.errors?.['required']">
+    City is required
+  </div>
+ 
+   <div class="error" *ngIf="jobSeekerForm.get('city')?.touched && jobSeekerForm.get('city')?.errors?.['minlength']">
+  Address must be at least 3 characters.
+</div>
+ <br>
+       <label class="Labeltitle">State <span class="required-star">*</span></label>
+    <br>
+  <input  class="inputStyle"  type="text" formControlName="state" placeholder="Your State">
+  <div class="error" *ngIf="jobSeekerForm.get('state')?.touched && jobSeekerForm.get('state')?.errors?.['required']">
+    State is required
+  </div>
+ 
+    <div class="error" *ngIf="jobSeekerForm.get('state')?.touched && jobSeekerForm.get('state')?.errors?.['minlength']">
+  Address must be at least 3 characters.
+</div>
+ <br>
+  <!-- Preferred Job Types -->
+
+  <!-- Skills  -->
+  <label class="Labeltitle">Skills</label>
+    <br>
+  <input class="inputStyle" type="text" formControlName="skills" placeholder="e.g., Typing, Driving">
+  <br>
+  <button  class="btn" [disabled]="!jobSeekerForm.valid" type="submit">Register</button>
+       </div>
+  
+   </div>
+
+</form>
+<div class="ForShowingLoadingPage" *ngIf="loadingService.loading$ |async">
+  <svg
+    class="container"
+    viewBox="0 0 40 40"
+    height="40"
+    width="40"
+  >
+    <circle 
+      class="track"
+      cx="20" 
+      cy="20" 
+      r="17.5" 
+      pathlength="100" 
+      stroke-width="5px" 
+      fill="none" 
+    />
+    <circle 
+      class="car"
+      cx="20" 
+      cy="20" 
+      r="17.5" 
+      pathlength="100" 
+      stroke-width="5px" 
+      fill="none" 
+    />
+  </svg>
+</div>
