@@ -1159,7 +1159,7 @@ display: flex;
 }
 
 .job-category {
-  display: inline-block;
+  display: flex;
   background: #e6f2ff;   /* light blue background */
   color: #1a73e8;        /* nice blue text */
   font-size: 13px;
@@ -1168,6 +1168,7 @@ display: flex;
   border-radius: 12px;
   margin: 0 0 10px 0;
   width: 32%;
+  justify-content: center;
 }
 
 .desContent {
