@@ -258,8 +258,8 @@ position: relative;
 }
 .WhenNoSchedules{
   height: 350px;
-  width: 300px;
-  background-color: white;
+  width: 340px;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
