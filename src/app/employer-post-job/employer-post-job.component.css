@@ -63,12 +63,12 @@
       padding-right: 10px;
 }
 .ShowLoadingPageForPostingJOb {
-  position: absolute;
-    height: 80%;
-    width: 92%;
+      position: absolute;
+    height: 87%;
+    width: 95%;
     background-color: #eeeeeeb3;
-    left: 90px;
-    top: 80px;
+    left: 80px;
+    top: 61px;
     display: flex
 ;
     justify-content: center;
