@@ -124,8 +124,8 @@ if (storedValue === 'true') {
     console.log('Today:', this.todayFormatted);
   //   this.singleObjectmaxHourEachDay.date =  this.todayFormatted
   this.currentDateFromSchedulesDate = this.todayFormatted
-  //         this.maxHourPerDay =  Number(data.message.result.MaxHourPerDay ?? 0);
-  //    this.singleObjectmaxHourEachDay.remainingHours= this.maxHourPerDay
+          this.maxHourPerDay =  Number(data.message.result.MaxHourPerDay ?? 0);
+     this.singleObjectmaxHourEachDay.remainingHours= this.maxHourPerDay
   //  this.numberOfUpcomingSchedulesDate.push(this.singleObjectmaxHourEachDay)
 
           //  Patch fetched data into the form
@@ -136,7 +136,7 @@ if (storedValue === 'true') {
     console.log('Today:', this.todayFormatted);
              this.maxHourPerDay = 10;
                this.currentDateFromSchedulesDate = this.todayFormatted
-  //           this.singleObjectmaxHourEachDay.remainingHours= this.maxHourPerDay
+            this.singleObjectmaxHourEachDay.remainingHours= this.maxHourPerDay
   //  this.numberOfUpcomingSchedulesDate.push(this.singleObjectmaxHourEachDay)
         }
       },
