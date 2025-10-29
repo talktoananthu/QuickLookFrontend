@@ -94,6 +94,7 @@ getPostedJObs() {
       if (result) {
         this.AvailablePostedJobs = result;
         console.log(' AvailablePostedJobs ', this.AvailablePostedJobs);
+        this.jobsAvailable =true
 
       } else {
           this.AvailablePostedJobs = result;
