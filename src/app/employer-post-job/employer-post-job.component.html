@@ -470,7 +470,7 @@
 
  <!-----------------Forms validation //End  ----------------->
       </div>
-<div class="ShowLoadingPageForPostingJOb" *ngIf="loadingService.loading$ ">
+<div class="ShowLoadingPageForPostingJOb" *ngIf="loadingService.loading$ | async">
   <svg
     class="container"
     viewBox="0 0 40 40"
