@@ -271,30 +271,48 @@ GotoRegister(){
   
 }
 
-//for storing and generating token in the localStorage
-GotoJobSeeker(){
+GotoJobSeeker() {
   this.loadingService.show();
-   console.log('This is jobseeker')
-   this.jobseekerService.loginToJobSeeker(this.userEmail,this.userPassword).subscribe(result=>{
-      console.log('Message:', result.message);
-          console.log('JobSeeker',result.jobSeekerName)
-        console.log('Token:', result.token);
-         console.log('jobRole',result.jobRole)
-         console.log('empId',result.jobSeekerId)
-         console.log('Address Name',result.jobSeekerAddress)
-        console.log('Area Name',result.jobSeekerArea)
-        console.log('City Name',result.jobSeekerCity)
-        console.log('State Name',result.jobSeekerState)
-    this.authService.authLocalJobSeekerService(result.jobSeekerName, result.jobRole,
-      result.token,result.jobSeekerId,result.jobSeekerAddress,result.jobSeekerArea,
-       result.jobSeekerCity,result.jobSeekerState
-    )
-   
-      this.goToJObSeekerProfile()
-   }
-     
-   )
+  console.log('This is jobseeker');
 
+  this.jobseekerService.loginToJobSeeker(this.userEmail, this.userPassword).subscribe({
+    next: (result) => {
+      console.log('Message:', result.message);
+      console.log('JobSeeker', result.jobSeekerName);
+      console.log('Token:', result.token);
+      console.log('jobRole', result.jobRole);
+      console.log('empId', result.jobSeekerId);
+      console.log('Address Name', result.jobSeekerAddress);
+      console.log('Area Name', result.jobSeekerArea);
+      console.log('City Name', result.jobSeekerCity);
+      console.log('State Name', result.jobSeekerState);
+
+      this.authService.authLocalJobSeekerService(
+        result.jobSeekerName,
+        result.jobRole,
+        result.token,
+        result.jobSeekerId,
+        result.jobSeekerAddress,
+        result.jobSeekerArea,
+        result.jobSeekerCity,
+        result.jobSeekerState
+      );
+
+      this.goToJObSeekerProfile();
+    },
+    error: (error) => {
+      this.loadingService.hide();
+      console.error('Login failed:', error);
+      
+      if (error.status === 401) {
+        alert('Invalid email or password!');
+      } else if (error.status === 500) {
+        alert('Server error. Please try again later.');
+      } else {
+        alert('Something went wrong. Please check your internet connection.');
+      }
+    },
+  });
 }
   goToJObSeekerProfile(){
     
