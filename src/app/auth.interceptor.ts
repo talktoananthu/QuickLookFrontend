@@ -42,7 +42,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
     return next(authReq);
   } 
   console.log(' Intercepted request URL:', req.url);
-  if(token && req.url.includes('https://quicklookbackendserver.onrender.com/employerPost')) 
+  if(token && req.url.includes('http://localhost:3000/employerPost')) 
     {
         console.log('this is interceptor for postjob');
   const authReq = req.clone({

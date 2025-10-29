@@ -32,7 +32,7 @@ export class EmployerService {
 
   gotoEmployerProfileUrl='https://quicklookbackendserver.onrender.com'
 
-  postingJobUrl= 'https://quicklookbackendserver.onrender.com'
+  postingJobUrl= 'http://localhost:3000'
 
  updatePostedJob = 'https://quicklookbackendserver.onrender.com'
 
